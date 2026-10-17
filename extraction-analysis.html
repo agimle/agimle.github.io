@@ -1,0 +1,139 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>方思源·游戏系统策划作品集</title><meta name="description" content="从资源循环而非单一战斗形式出发，分析搜打撤与MMO的结合基础，以及风险、回报和长期积累之间的取舍。"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script></head><body><a class="skip-link" href="#main">跳至正文</a><progress class="reading-progress" max="100" value="0" aria-label="阅读进度"></progress><header class="site-header wrap"><a class="brand" href="index.html"><span>游戏系统策划 <small>/ 作品集</small></span></a><button class="menu-toggle" aria-controls="navigation" aria-expanded="false">菜单 ＋</button><nav id="navigation" aria-label="主导航"><a href="index.html#project">项目作品</a><a href="index.html#design">策划作品</a><a href="index.html#about">个人简介</a><a href="documents/resume.pdf" target="_blank" rel="noopener">简历 PDF ↗</a></nav></header><main id="main"><div class="wrap"><section class="doc-cover"><p class="breadcrumb"><a href="index.html">作品集首页</a> / <a href="index.html#design">策划作品</a></p><p class="document-type">玩法适配分析</p><h1>MMORPG搜打撤<br>玩法适配分析</h1><p class="doc-abstract">从资源循环而非单一战斗形式出发，分析搜打撤与MMO的结合基础，以及风险、回报和长期积累之间的取舍。</p><div class="doc-meta"><span>独立分析作品</span><span>5章</span><span>1张泳道图 / 1张对比表</span></div><div class="page-actions"><a class="text-link" href="documents/mmo-design-sources.zip" download>下载完整源文件 ↓</a></div><dl class="document-overview"><div><dt>视角</dt><dd>投入、局内收益、撤离与失败代价</dd></div><div><dt>取舍</dt><dd>保护长期积累，让可补充投入承担主要损失</dd></div><div><dt>范围</dt><dd>玩法适配分析，不展开具体地图与数值配置</dd></div></dl></section><div class="document-layout"><aside class="document-sidebar"><details open><summary>文档目录</summary><nav class="document-toc" aria-label="文档目录"><a class="toc-main" href="#section-1">一、问题来源与核心判断</a><a class="toc-sub" href="#section-2">1.1 问题来源</a><a class="toc-sub" href="#section-3">1.2 核心判断与分析范围</a><a class="toc-main" href="#section-4">二、从资源循环理解搜打撤</a><a class="toc-sub" href="#section-5">2.1 搜集、战斗与撤离的作用</a><a class="toc-sub" href="#section-6">2.2 单局循环与局内选择</a><a class="toc-sub" href="#section-7">2.3 区分临时收益、长期资源与携入资产</a><a class="toc-sub" href="#section-8">2.4 核心体验来自收益兑现前的取舍</a><a class="toc-sub" href="#section-9">2.5 相较于常规资源副本的拓展价值</a><a class="toc-main" href="#section-11">三、与MMORPG结合的基础</a><a class="toc-sub" href="#section-12">3.1 长期成长为产出提供用途</a><a class="toc-sub" href="#section-13">3.2 经济流转连接不同参与者</a><a class="toc-sub" href="#section-14">3.3 结合入口存在，但不能直接照搬</a><a class="toc-main" href="#section-15">四、适配时的主要取舍</a><a class="toc-sub" href="#section-16">4.1 划清长期积累与局内风险的边界</a><a class="toc-sub" href="#section-17">4.2 保留长期成长的价值，也保留局内决策空间</a><a class="toc-sub" href="#section-18">4.3 让战备、产出与消耗连接局内外</a><a class="toc-sub" href="#section-20">4.4 让战斗与撤离共同服务于决策</a><a class="toc-main" href="#section-21">五、结论</a></nav></details></aside><article class="document-body"><section class="doc-chapter"><h2 class="chapter-title" id="section-1"><span class="chapter-number" aria-hidden="true">01</span><span>一、问题来源与核心判断</span></h2>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-2"><span class="sub-number">1.1</span>问题来源</h3>
+<p>在一次面试中，我被问到：“能否在MMO中增加搜打撤玩法？”当时我的回答是“很难”。受自己对射击类搜打撤游戏的体验影响，我把注意力过多放在战斗形式上，没有充分考虑资源、撤离与长期成长之间的关系。</p>
+<p>重新梳理后，我认为分析的起点应当是资源循环：玩家投入什么、在局内获得什么、如何把收益带出，以及失败需要承担什么代价。战斗形式是其中一个设计环节，但不能单独决定两类玩法能否结合。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-3"><span class="sub-number">1.2</span>核心判断与分析范围</h3>
+<p class="key-callout">我的判断是：<strong>MMO的长期成长与经济体系，为搜打撤的投入和产出提供了衔接基础，但共享资源需求并不意味着两者可以直接拼接。适配的关键，在于划清长期积累与局内风险的边界，并让产出、消耗和玩家决策形成持续联系。</strong></p>
+<p>本文聚焦具备长期成长、资源获取与经济流转的MMORPG，分析搜打撤的资源循环、与原有系统的结合基础，以及相应的适配原则，不展开具体地图、技能或数值配置。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-4"><span class="chapter-number" aria-hidden="true">02</span><span>二、从资源循环理解搜打撤</span></h2>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-5"><span class="sub-number">2.1</span>搜集、战斗与撤离的作用</h3>
+<p>本文不局限于射击操作形式，而是从三个环节在资源循环中的作用展开分析：</p>
+<ul>
+<li>搜集：玩家探索区域，发现并获取资源，同时决定路线、停留地点与投入时间。</li>
+<li>战斗：玩家通过对抗争取收益、保护已有收获或获得继续行动的空间。本文讨论其资源与风险作用，不将“进入战斗状态”本身作为玩法定义。</li>
+<li>撤离：玩家结束局内行动，并按结算规则把成果带回长期体系。撤离不仅是离开地图，也是兑现局内收益的环节。</li>
+</ul>
+<p>资源是本文重点分析的目标与载体，但不代表所有玩家只为经济收益行动，也不代表每次战斗都必须直接产出物资。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-6"><span class="sub-number">2.2</span>单局循环与局内选择</h3>
+<p>本文采用以下单局循环作为分析框架：</p>
+<ol>
+<li>局外准备：根据目标选择装备、消耗品与本次投入。</li>
+<li>进入区域：携带战备开始局内行动。</li>
+<li>探索与获取：选择路线，通过搜集或战斗争取收益。</li>
+<li>调整决策：结合已有收获、剩余补给及风险，决定继续、转移或撤离。</li>
+<li>结果结算：根据撤离与失败规则处理局内成果及携入资产。</li>
+<li>局外反馈：将带出的收益用于成长、制作、交易或后续准备。</li>
+</ol>
+<p>其中，探索、搜集和战斗可以多次往返，并非固定顺序的任务链。玩家可以更换地点，也可以留在原处继续行动；关键是根据自身状态与目标作出选择。</p>
+<p>因此，适配时需要保留局内决策空间。如果玩家只能沿固定路线完成规定战斗再离场，资源获取虽然存在，但继续行动与及时撤离之间的取舍就会减弱。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-7"><span class="sub-number">2.3</span>区分临时收益、长期资源与携入资产</h3>
+<p>为避免混淆，本文区分以下概念：</p>
+<ul>
+<li>长期资源：已进入局外体系、可用于后续成长、使用或流转的资源。</li>
+<li>临时收益：在本局获得、尚未完成收益结算的成果。</li>
+<li>携入资产：从局外带入的装备、物品等。它们原本属于长期积累，但在局内承担相应风险，不等同于本局新获得的临时收益。</li>
+<li>本局消耗：参与过程中实际使用或损耗的物资。</li>
+<li>门票或准入成本：为取得参与资格而支付的费用，应与携入资产分别记录，不预设所有玩法都必须设置门票。</li>
+</ul>
+<p>携带一件装备进入，不等于已经把它作为入场费用消耗；在局内获得一份资源，也不等于已经把它纳入长期积累。分别说明这些状态，才能清楚表达投入、收益与失败代价。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-8"><span class="sub-number">2.4</span>核心体验来自收益兑现前的取舍</h3>
+<p>在本文的分析框架中，搜打撤的重要体验是：玩家在收益尚未兑现时，决定是否继续承担风险。</p>
+<p>随着资源、补给和所处环境变化，同样的行动可能具有不同意义。继续搜集或战斗可以争取更多收益，也可能让已有收获面临更大风险；撤离能够兑现成果，但意味着放弃本局剩余机会。</p>
+<p>因此，分析重点不只是“能获得多少资源”，还包括玩家何时愿意停手、为何改变路线，以及哪些风险值得承担。成功与失败的反馈，应当与这些选择发生联系。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-9"><span class="sub-number">2.5</span>相较于常规资源副本的拓展价值</h3>
+<p>本文希望引入的搜打撤模式，不只是增加一个资源获取场所，而是在常规资源获取之外，提供更丰富的局内决策与更具变化的单局体验。资源分布、遭遇和行动结果的随机性，让玩家需要结合本局情况调整目标，而不是每次重复相同的获取流程。这里比较的是以稳定获取资源为主要目标的常规副本，不意味着所有资源副本都缺少随机性或决策空间。</p>
+<p>在这一设计方向中，玩家不仅可能失去尚未兑现的收益，也需要让部分携入物资承担损失。因此，相较于失败损失较低的资源副本，模式应提供更高的潜在收益，使新增风险具有值得承担的回报。<strong>高风险高回报不意味着每次参与都能盈利，而是让收益机会与损失代价相匹配，使继续探索与及时撤离都具有选择价值。</strong></p>
+<p>实际的物资消耗与损耗，还能形成重新准备、补充战备的需求，为MMO提供持续的资源需求和长期玩法支持。但消耗本身不是长期吸引力：玩家还需要认可局内选择、收益用途及再次参与的机会，才能让资源循环与玩法体验共同支撑持续游玩。</p>
+<h4 id="section-10">表2-1 常规资源副本与本文设想的搜打撤模式对比</h4>
+<p>以下以稳定获取资源、失败损失较低的常规副本作为比较对象，说明本文设计方向的差异，不将其概括为所有同类玩法的固定特征。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>比较维度</th>
+  <th>常规资源副本（本文比较对象）</th>
+  <th>本文设想的搜打撤模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>收益兑现</td>
+  <td>主要围绕完成既定目标或结算节点取得资源</td>
+  <td>将撤离作为兑现局内收益的关键环节，获得不等于已经带出</td>
+</tr>
+<tr>
+  <td>失败代价</td>
+  <td>失败损失较低，主要损失本次时间与已使用的投入</td>
+  <td>未兑现收益与部分携入物资承担风险，主要损失应处于可补充范围</td>
+</tr>
+<tr>
+  <td>局内决策</td>
+  <td>主要围绕既定目标安排执行过程</td>
+  <td>随当前收益、补给及风险变化，反复选择继续、转移或撤离</td>
+</tr>
+<tr>
+  <td>随机性的作用</td>
+  <td>可提供掉落或遭遇变化，但不以其持续改变行动目标为主要差异点</td>
+  <td>通过资源、遭遇与局势变化，使玩家调整本局目标和行动</td>
+</tr>
+<tr>
+  <td>风险与回报</td>
+  <td>更侧重相对稳定的资源获取</td>
+  <td>提供与额外风险相匹配的更高潜在收益，不保证单局盈利</td>
+</tr>
+<tr>
+  <td>资源循环作用</td>
+  <td>作为成长和制作的资源供给入口，也可存在消耗</td>
+  <td>同时承担产出与战备消耗功能，通过实际消耗形成补充需求；物品转移不直接算作回收</td>
+</tr>
+</tbody>
+</table></div>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-11"><span class="chapter-number" aria-hidden="true">03</span><span>三、与MMORPG结合的基础</span></h2>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-12"><span class="sub-number">3.1</span>长期成长为产出提供用途</h3>
+<p>本文关注的MMORPG可以通过等级、装备、技能及其他养成内容提供长期目标。资源由此具有用途：支持能力提升、配置调整与后续挑战。</p>
+<p>从成长角度，可以概括为：</p>
+<p>获取资源 → 投入成长 → 能力或配置变化 → 选择后续内容。</p>
+<p>搜打撤带出的成果如果能够服务于这些目标，就有机会接入原有成长体系。反之，如果新增资源与长期玩法缺少联系，玩家可能只在模式内部积累物资，无法形成预期的外部联动。</p>
+<p>这只是本文选择的结合切入点，不将所有MMO内容都归结为提升效率或挑战更高难度。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-13"><span class="sub-number">3.2</span>经济流转连接不同参与者</h3>
+<p>玩家不必亲自完成全部资源获取与制作。具备生产和交易功能的MMO，可以让不同玩家分别承担采集、加工、战斗或物品使用等行为。</p>
+<p>由此，搜打撤的战备可以形成生产需求，带出的资源也可以进入制作、成长和交易环节。生产玩家与战斗玩家能够通过供需建立联系，同一玩家也可以同时参与两类玩法。</p>
+<p>这里需要区分三种资源变化：</p>
+<ul>
+<li>转换：投入原料制作新产物，资源形态或用途发生变化。</li>
+<li>转移：物品或货币在玩家之间流通，所有权改变。</li>
+<li>实际消耗：物品被使用、损耗或由系统回收，不再以原状态流通。</li>
+</ul>
+<p>交易可以传递需求，但不等于资源消失。不能仅因为新增了交易渠道，就认定新增产出已经获得足够消耗。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-14"><span class="sub-number">3.3</span>结合入口存在，但不能直接照搬</h3>
+<p>两类玩法都涉及资源获取和使用，因此存在衔接入口；但原有资源的获取方式、稀缺性、用途和成长价值，并不会因为加入搜打撤就自动保持合理。</p>
+<p>同一种物品进入新的产出渠道后，可能改变供应；成为战备后，可能产生补充需求；承担失败损失后，也可能改变玩家对它的使用意愿。适配分析需要同时考虑这些变化。</p>
+<p>所以，更准确的结论是：<strong>既有成长、生产和经济功能可以成为结合基础，资源在新模式中的角色仍需重新梳理。</strong> “都需要资源”不能直接推导出“原有资源系统可以原样照搬”。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-15"><span class="chapter-number" aria-hidden="true">04</span><span>四、适配时的主要取舍</span></h2>
+<p>以下原则是从前述资源循环出发提出的设计思路，不对应某款游戏已经实施的规则。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-16"><span class="sub-number">4.1</span>划清长期积累与局内风险的边界</h3>
+<p>MMO中的长期成长与搜打撤的局内损失需要分别处理。失败代价可以产生风险，但不能把“存在风险”简单理解为“所有长期成果都应当可能失去”。</p>
+<p>我的取舍是：<strong>保护通过长期积累取得、重新获得成本较高的成长成果，让能够通过较短周期重新获取、补充成本可承受的投入承担主要损失。</strong> 局内新收益、携入战备与长期角色成长需要分别处理；携入资产虽然来自局外积累，也不能因此一概归为必须保护或可以损失的内容，仍需考虑其获取周期与替代成本。</p>
+<p>判断损失是否可承受，不能只看物品名义上的价值，还要考虑重新准备需要的时间、货币和材料。玩家应当在进入前理解本次承担的代价，失败后也有可行的补充与重新参与路径，避免一次失败抹去与本局投入不相称的长期努力。</p>
+<p>这一取舍也考虑了玩家对损失的感受。前景理论指出，人们对收益和损失的评价依赖参照点，损失在价值评价中可能具有更大权重；但后续实验也显示，损失厌恶会随选择情境变化。因此，不能直接把它推导为“失败必然增强再次投入的欲望”，也不能仅凭投入较少，就认定玩家不会产生负担。<a href="https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_Tversky_1979_Prospect_theory.pdf">Kahneman与Tversky，1979</a>；<a href="https://wrap.warwick.ac.uk/id/eprint/66021/">Walasek与Stewart，2015</a>。</p>
+<p>在设计上，我希望达到的是“失败有分量，但损失可以补充”：既让玩家在收益兑现前认真权衡，也让其在失败后保有继续参与的基础。再次投入的理由应来自可承受的准备成本与有吸引力的收益机会，而不是单纯依靠追回损失的冲动。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-17"><span class="sub-number">4.2</span>保留长期成长的价值，也保留局内决策空间</h3>
+<p>如果局内结果完全由长期数值决定，路线、补给和撤离时机的作用就可能被压缩；如果长期投入完全失去意义，又可能削弱与原有成长体系的联系。</p>
+<p>因此，适配不能只考虑“原角色能否进入”，还要考虑成长差距具体影响哪些行为。长期成长可以带来能力或配置选择，但玩家仍应有围绕本局目标作出有效决策的空间。</p>
+<p>新老玩家的参与体验也与此相关。高成长玩家的优势、低成长玩家的目标及其可承担投入，需要放在同一套风险收益关系中考虑，而不是仅提供相同入口。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-18"><span class="sub-number">4.3</span>让战备、产出与消耗连接局内外</h3>
+<p>要让搜打撤与MMO其他系统发生持续联系，不能只增加一个资源产出入口。局外投入需要有实际用途，局内成果需要有带出价值，带出后也需要存在制作、成长、使用或其他合理去向。</p>
+<p>若以生产系统作为衔接方向，可形成以下关系：</p>
+<h4 id="section-19">图4-1 搜打撤与MMO资源循环泳道图</h4>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：图4-1 搜打撤与MMO资源循环泳道图"><img width="1200" height="1200" style="width:100%;aspect-ratio:1200/1200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxMjAwIDEyMDAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbGxlZGJ5PSJ0aXRsZSBkZXNjIj4KICA8dGl0bGUgaWQ9InRpdGxlIj7mkJzmiZPmkqTkuI5NTU/otYTmupDlvqrnjq/ms7PpgZPlm748L3RpdGxlPgogIDxkZXNjIGlkPSJkZXNjIj7mjInlsYDlpJblh4blpIfjgIHlsYDlhoXooYzliqjlkozlsYDlpJbmib/mjqXkuInkuKrpmLbmrrXlsZXnpLrotYTmupDlvqrnjq/jgILnlJ/kuqfmiJbkuqTmmJPlh4blpIfmiJjlpIflkI7vvIznjqnlrrbpgInmi6nmkLrlhaXmipXlhaXvvIzmjqLntKLjgIHmkJzpm4bkuI7miJjmlpfvvIzlubbmoLnmja7mlLbnm4rjgIHooaXnu5nlkozpo47pmanpgInmi6nnu6fnu63jgIHovaznp7vmiJbmkqTnprvjgILmiJDlip/mkqTnprvnmoTmlLbnm4rov5vlhaXmiJDplb/jgIHliLbkvZzjgIHkvb/nlKjlkozkuqTmmJPvvJvmnKrog73mkqTnprvml7bmjInop4TliJnlpITnkIbmlLbnm4rkuI7miJjlpIfjgILkuKTnp43nu5PmnpzlnYflj6/ooZTmjqXkuIvkuIDova7lh4blpIfjgILnianlk4Hovaznp7vkuI3nrYnkuo7lrp7pmYXmtojogJfjgII8L2Rlc2M+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI5IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+PHBhdGggZD0iTSAwIDEgTCA5IDUgTCAwIDkgWiIgZmlsbD0iIzU1NSIvPjwvbWFya2VyPgogICAgPHN0eWxlPgogICAgICB0ZXh0e2ZvbnQtZmFtaWx5OiJNaWNyb3NvZnQgWWFIZWkiLCJOb3RvIFNhbnMgQ0pLIFNDIixzYW5zLXNlcmlmO2ZpbGw6IzIwMjAyMDt0ZXh0LWFuY2hvcjptaWRkbGV9CiAgICAgIC5sYW5le2ZpbGw6I2ZmZjtzdHJva2U6I2FhYTtzdHJva2Utd2lkdGg6MS4yfQogICAgICAuaGVhZHtmaWxsOiNmMmYyZjI7c3Ryb2tlOiNhYWE7c3Ryb2tlLXdpZHRoOjEuMn0KICAgICAgLm5vZGV7ZmlsbDojZmZmO3N0cm9rZTojNTU1O3N0cm9rZS13aWR0aDoxLjV9CiAgICAgIC5lZGdle2ZpbGw6bm9uZTtzdHJva2U6IzU1NTtzdHJva2Utd2lkdGg6MS42O3N0cm9rZS1saW5lam9pbjpyb3VuZDttYXJrZXItZW5kOnVybCgjYXJyb3cpfQogICAgICAubGFiZWx7Zm9udC1zaXplOjE4cHh9CiAgICAgIC5ib2R5e2ZvbnQtc2l6ZToyMXB4fQogICAgICAuc21hbGx7Zm9udC1zaXplOjE4cHh9CiAgICAgIC5iYWNre2ZpbGw6I2ZmZn0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiIGZpbGw9IiNmZmYiLz4KICA8dGV4dCB4PSI2MDAiIHk9IjM5IiBmb250LXNpemU9IjI3IiBmb250LXdlaWdodD0iNjAwIj7mkJzmiZPmkqTkuI5NTU/otYTmupDlvqrnjq88L3RleHQ+CiAgPHRleHQgeD0iNjAwIiB5PSI3MCIgY2xhc3M9InNtYWxsIj7ku6XnlJ/kuqfkuI7kuqTmmJPkvZzkuLrooZTmjqXmlrnlkJHnmoTliIbmnpDmoYbmnrY8L3RleHQ+CiAgPHJlY3QgY2xhc3M9ImxhbmUiIHg9IjIwIiB5PSI5NSIgd2lkdGg9IjM4MCIgaGVpZ2h0PSIxMDM1Ii8+CiAgPHJlY3QgY2xhc3M9ImxhbmUiIHg9IjQwMCIgeT0iOTUiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTAzNSIvPgogIDxyZWN0IGNsYXNzPSJsYW5lIiB4PSI4MDAiIHk9Ijk1IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjEwMzUiLz4KICA8cmVjdCBjbGFzcz0iaGVhZCIgeD0iMjAiIHk9Ijk1IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjU0Ii8+CiAgPHJlY3QgY2xhc3M9ImhlYWQiIHg9IjQwMCIgeT0iOTUiIHdpZHRoPSI0MDAiIGhlaWdodD0iNTQiLz4KICA8cmVjdCBjbGFzcz0iaGVhZCIgeD0iODAwIiB5PSI5NSIgd2lkdGg9IjM4MCIgaGVpZ2h0PSI1NCIvPgogIDx0ZXh0IHg9IjIxMCIgeT0iMTMwIiBmb250LXNpemU9IjIzIiBmb250LXdlaWdodD0iNjAwIj7lsYDlpJblh4blpIc8L3RleHQ+CiAgPHRleHQgeD0iNjAwIiB5PSIxMzAiIGZvbnQtc2l6ZT0iMjMiIGZvbnQtd2VpZ2h0PSI2MDAiPuWxgOWGheihjOWKqDwvdGV4dD4KICA8dGV4dCB4PSI5OTAiIHk9IjEzMCIgZm9udC1zaXplPSIyMyIgZm9udC13ZWlnaHQ9IjYwMCI+5bGA5aSW5om/5o6lPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZWRnZSIgZD0iTSAyMDAgMzMwIEwgMjAwIDQyMCIvPgogIDxwYXRoIGNsYXNzPSJlZGdlIiBkPSJNIDMzMCA0NjUgTCA0NjAgNDY1Ii8+CiAgPHBhdGggY2xhc3M9ImVkZ2UiIGQ9Ik0gNTk1IDUxMCBMIDU5NSA2MTAiLz4KICA8cGF0aCBjbGFzcz0iZWRnZSIgZD0iTSA0NjAgNjU1IEwgNDIwIDY1NSBMIDQyMCA0NjUgTCA0NjAgNDY1Ii8+CiAgPHBhdGggY2xhc3M9ImVkZ2UiIGQ9Ik0gNTk1IDcwMCBMIDU5NSA4MTAiLz4KICA8cGF0aCBjbGFzcz0iZWRnZSIgZD0iTSA3MTUgODcwIEwgNzkwIDg3MCBMIDc5MCA4NTUgTCA4NjAgODU1Ii8+CiAgPHBhdGggY2xhc3M9ImVkZ2UiIGQ9Ik0gNTk1IDkzMCBMIDU5NSAxMDE1IEwgODYwIDEwMTUiLz4KICA8cGF0aCBjbGFzcz0iZWRnZSIgZD0iTSA5OTAgODEwIEwgOTkwIDY2MCIvPgogIDxwYXRoIGNsYXNzPSJlZGdlIiBkPSJNIDk5MCA1NjAgTCA5OTAgMTkwIEwgMjAwIDE5MCBMIDIwMCAyNDAiLz4KICA8cGF0aCBjbGFzcz0iZWRnZSIgZD0iTSA5OTAgMTA2MCBMIDk5MCAxMTAwIEwgMjAwIDExMDAgTCAyMDAgNTEwIi8+CgogIDxyZWN0IGNsYXNzPSJub2RlIiB4PSI3MCIgeT0iMjQwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjkwIiByeD0iNyIvPgogIDx0ZXh0IGNsYXNzPSJib2R5IiB4PSIyMDAiIHk9IjI3OCI+PHRzcGFuIHg9IjIwMCI+55Sf5Lqn5oiW5Lqk5piTPC90c3Bhbj48dHNwYW4geD0iMjAwIiBkeT0iMjkiPuWHhuWkh+aImOWkhzwvdHNwYW4+PC90ZXh0PgogIDxyZWN0IGNsYXNzPSJub2RlIiB4PSI3MCIgeT0iNDIwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjkwIiByeD0iNyIvPgogIDx0ZXh0IGNsYXNzPSJib2R5IiB4PSIyMDAiIHk9IjQ1OCI+PHRzcGFuIHg9IjIwMCI+6YCJ5oup55uu5qCH5LiOPC90c3Bhbj48dHNwYW4geD0iMjAwIiBkeT0iMjkiPuacrOasoeaQuuWFpeaKleWFpTwvdHNwYW4+PC90ZXh0PgogIDxyZWN0IGNsYXNzPSJub2RlIiB4PSI0NjAiIHk9IjQyMCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSI5MCIgcng9IjciLz4KICA8dGV4dCBjbGFzcz0iYm9keSIgeD0iNTk1IiB5PSI0NTgiPjx0c3BhbiB4PSI1OTUiPuaOoue0ouOAgeaQnOmbhuS4juaImOaWlzwvdHNwYW4+PHRzcGFuIHg9IjU5NSIgZHk9IjI5Ij7mtojogJfooaXnu5kgwrcg6I635Y+W5Li05pe25pS255uKPC90c3Bhbj48L3RleHQ+CiAgPHJlY3QgY2xhc3M9Im5vZGUiIHg9IjQ2MCIgeT0iNjEwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjkwIiByeD0iNyIvPgogIDx0ZXh0IGNsYXNzPSJib2R5IiB4PSI1OTUiIHk9IjY0OCI+PHRzcGFuIHg9IjU5NSI+57uT5ZCI5pS255uK44CB6KGl57uZ5LiO6aOO6ZmpPC90c3Bhbj48dHNwYW4geD0iNTk1IiBkeT0iMjkiPuiwg+aVtOihjOWKqDwvdHNwYW4+PC90ZXh0PgogIDxwb2x5Z29uIGNsYXNzPSJub2RlIiBwb2ludHM9IjU5NSw4MTAgNzE1LDg3MCA1OTUsOTMwIDQ3NSw4NzAiLz4KICA8dGV4dCBjbGFzcz0iYm9keSIgeD0iNTk1IiB5PSI4NzciPuacrOWxgOe7k+eulzwvdGV4dD4KICA8cmVjdCBjbGFzcz0ibm9kZSIgeD0iODYwIiB5PSI4MTAiIHdpZHRoPSIyNjAiIGhlaWdodD0iOTAiIHJ4PSI3Ii8+CiAgPHRleHQgY2xhc3M9ImJvZHkiIHg9Ijk5MCIgeT0iODQ4Ij48dHNwYW4geD0iOTkwIj7luKblh7rmlLbnm4o8L3RzcGFuPjx0c3BhbiB4PSI5OTAiIGR5PSIyOSI+6L+b5YWl5bGA5aSW5L2T57O7PC90c3Bhbj48L3RleHQ+CiAgPHJlY3QgY2xhc3M9Im5vZGUiIHg9Ijg2MCIgeT0iOTcwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjkwIiByeD0iNyIvPgogIDx0ZXh0IGNsYXNzPSJib2R5IiB4PSI5OTAiIHk9IjEwMDgiPjx0c3BhbiB4PSI5OTAiPuaMieinhOWImeWkhOeQhjwvdHNwYW4+PHRzcGFuIHg9Ijk5MCIgZHk9IjI5Ij7lsYDlhoXmlLbnm4rkuI7mkLrlhaXotYTkuqc8L3RzcGFuPjwvdGV4dD4KICA8cmVjdCBjbGFzcz0ibm9kZSIgeD0iODYwIiB5PSI1NjAiIHdpZHRoPSIyNjAiIGhlaWdodD0iMTAwIiByeD0iNyIvPgogIDx0ZXh0IGNsYXNzPSJib2R5IiB4PSI5OTAiIHk9IjYwMSI+PHRzcGFuIHg9Ijk5MCI+5oiQ6ZW/44CB5Yi25L2c44CB5L2/55SoPC90c3Bhbj48dHNwYW4geD0iOTkwIiBkeT0iMjkiPuaIluS6pOaYk+a1gei9rDwvdHNwYW4+PC90ZXh0PgoKICA8cmVjdCBjbGFzcz0iYmFjayIgeD0iMzQwIiB5PSI0MzEiIHdpZHRoPSIxMDAiIGhlaWdodD0iMjYiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjM5MCIgeT0iNDUwIj7mkLrluKbmiJjlpIc8L3RleHQ+CiAgPHJlY3QgY2xhc3M9ImJhY2siIHg9IjM2MCIgeT0iNTU0IiB3aWR0aD0iODAiIGhlaWdodD0iNTYiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjQwMCIgeT0iNTc1Ij48dHNwYW4geD0iNDAwIj7nu6fnu608L3RzcGFuPjx0c3BhbiB4PSI0MDAiIGR5PSIyNSI+5oiW6L2s56e7PC90c3Bhbj48L3RleHQ+CiAgPHJlY3QgY2xhc3M9ImJhY2siIHg9IjYxMCIgeT0iNzM2IiB3aWR0aD0iMTQ4IiBoZWlnaHQ9IjUyIi8+CiAgPHRleHQgY2xhc3M9ImxhYmVsIiB4PSI2ODQiIHk9Ijc1NiI+PHRzcGFuIHg9IjY4NCI+5pKk56a75oiW5bGA5YaF5aSx6LSlPC90c3Bhbj48dHNwYW4geD0iNjg0IiBkeT0iMjUiPui/m+WFpee7k+eulzwvdHNwYW4+PC90ZXh0PgogIDxyZWN0IGNsYXNzPSJiYWNrIiB4PSI3NDEiIHk9IjgyMiIgd2lkdGg9Ijk5IiBoZWlnaHQ9IjI2Ii8+CiAgPHRleHQgY2xhc3M9ImxhYmVsIiB4PSI3OTAiIHk9Ijg0MyI+5oiQ5Yqf5pKk56a7PC90ZXh0PgogIDxyZWN0IGNsYXNzPSJiYWNrIiB4PSI2OTQiIHk9Ijk3OSIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIyNyIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNzQ4IiB5PSIxMDAwIj7mnKrog73mkqTnprs8L3RleHQ+CiAgPHJlY3QgY2xhc3M9ImJhY2siIHg9IjQxMiIgeT0iMTc1IiB3aWR0aD0iMzgyIiBoZWlnaHQ9IjI5Ii8+CiAgPHRleHQgY2xhc3M9ImxhYmVsIiB4PSI2MDMiIHk9IjE5NiI+5bim5Ye65oiQ5p6c5pSv5oyB5ZCO57ut5oiQ6ZW/5LiO5YaN5qyh5YeG5aSHPC90ZXh0PgogIDxyZWN0IGNsYXNzPSJiYWNrIiB4PSIzMzUiIHk9IjEwODQiIHdpZHRoPSI0MjUiIGhlaWdodD0iMzAiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjU0NyIgeT0iMTEwNSI+5oyJ5Ymp5L2Z6LWE5Lqn5LiO6KGl5YWF6ZyA5rGC6YeN5paw5YeG5aSHPC90ZXh0PgoKICA8dGV4dCBjbGFzcz0ic21hbGwiIHg9IjYwMCIgeT0iMTE2MSI+54mp5ZOB6L2s56e777ya5omA5pyJ5p2D5Y+Y5YyW77yM5LiN55u05o6l562J5LqO57O757uf5Zue5pS244CCPC90ZXh0PgogIDx0ZXh0IGNsYXNzPSJzbWFsbCIgeD0iNjAwIiB5PSIxMTg4Ij7lrp7pmYXmtojogJfvvJrkvb/nlKjjgIHmjZ/ogJfmiJbns7vnu5/lm57mlLbvvJvlpLHotKXmjZ/lpLHlupTmjInlhbblhbfkvZPljrvlkJHljLrliIbjgII8L3RleHQ+Cjwvc3ZnPgo=" alt="图4-1 搜打撤与MMO资源循环泳道图"></button><figcaption><span>图4-1 搜打撤与MMO资源循环泳道图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>图中泳道按参与阶段划分，而非不同玩家或部门。成功撤离的成果进入局外体系；未能撤离时，按规则处理局内收益与携入资产，再结合剩余资产和补充需求重新准备。循环箭头表示资源与需求的衔接，不代表强制连续参与。</p>
+<p>这是一种结合方向，不代表所有MMO都必须采用相同来源，也不要求玩家必须向别人购买。玩家可以自行生产，关键是模式与外部体系保持实际联系，不能在局内完全自给的同时，让外部资源失去用途。</p>
+<p>资源损失也需要辨别性质：装备转移给另一名玩家，不等于系统回收；额外投放货币，也不能直接由材料消耗抵消。新增产出与实际消耗需要分别核对。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-20"><span class="sub-number">4.4</span>让战斗与撤离共同服务于决策</h3>
+<p>PVE、PVP或两者结合，都可以作为适配思路，但不能只靠增加怪物或玩家对抗来完成设计。</p>
+<p>更重要的是，这些内容如何改变玩家的行动选择：是否继续获取资源、是否消耗补给、是否转移路线，以及是否结束本局。地图、搜集、战斗和撤离应围绕这些选择组织，而不是彼此独立的功能清单。</p>
+<p>撤离也需要具有收益兑现的意义。玩家选择撤离，应当能够说明“为什么现在离开”，而不只是因为已经完成了固定流程。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-21"><span class="chapter-number" aria-hidden="true">05</span><span>五、结论</span></h2>
+<p>重新分析后，我不再仅凭战斗形式判断MMO与搜打撤是否适配。</p>
+<p>从资源循环看，两者具备结合基础：长期成长与经济体系可以承接产出，生产和交易可以支持战备，搜打撤则可以通过更丰富的局内选择、高风险高回报的收益机会，以及实际消耗带来的补充需求，为MMO提供长期玩法支持。</p>
+<p>但这一基础不等于所有MMO都适合直接加入搜打撤。我的适配倾向是保护长期积累的成长成果，让可在较短周期内补充的投入承担主要损失；同时保留成长价值与局内决策空间，使投入、产出和消耗形成合理联系。</p>
+<p>因此，我倾向于将其视为一条有条件的玩法拓展方向：<strong>围绕资源状态与风险收益设计循环，再选择能够承载这一循环的战斗、地图和社交形式。</strong></p>
+</section><div class="document-end"><span>全文结束</span><a href="index.html#design">返回策划作品 ↗</a></div></article></div></div></main><dialog class="figure-dialog" aria-labelledby="figure-title"><header><p id="figure-title">图示</p><button type="button" data-figure-close>关闭 ×</button></header><div class="figure-toolbar"><button type="button" data-zoom="out" aria-label="缩小图片">−</button><output id="figure-scale">100%</output><button type="button" data-zoom="in" aria-label="放大图片">＋</button><button type="button" data-zoom="fit">适应窗口</button><button type="button" data-zoom="actual">原尺寸</button></div><div class="figure-scroll" tabindex="0" role="region" aria-label="图示放大查看区域"><img id="figure-image" alt=""></div></dialog><footer class="site-footer wrap"><span>方思源 · 游戏系统策划作品集</span><span class="site-credit">页面由Codex生成</span><a href="#main">回到顶部 ↑</a></footer></body></html>

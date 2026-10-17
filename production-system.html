@@ -1,0 +1,897 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>方思源·游戏系统策划作品集</title><meta name="description" content="基于既有MMORPG的生活职业与生产玩法，梳理核心循环、成长目标、资源流转及多人协作规则。"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script></head><body><a class="skip-link" href="#main">跳至正文</a><progress class="reading-progress" max="100" value="0" aria-label="阅读进度"></progress><header class="site-header wrap"><a class="brand" href="index.html"><span>游戏系统策划 <small>/ 作品集</small></span></a><button class="menu-toggle" aria-controls="navigation" aria-expanded="false">菜单 ＋</button><nav id="navigation" aria-label="主导航"><a href="index.html#project">项目作品</a><a href="index.html#design">策划作品</a><a href="index.html#about">个人简介</a><a href="documents/resume.pdf" target="_blank" rel="noopener">简历 PDF ↗</a></nav></header><main id="main"><div class="wrap"><section class="doc-cover"><p class="breadcrumb"><a href="index.html">作品集首页</a> / <a href="index.html#design">策划作品</a></p><p class="document-type">系统设计提案</p><h1>《生产大爆炸》<br>MMORPG生产系统设计</h1><p class="doc-abstract">基于既有MMORPG的生活职业与生产玩法，梳理核心循环、成长目标、资源流转及多人协作规则。</p><div class="doc-meta"><span>独立策划作品</span><span>8章</span><span>11张关系图 / 11张表格</span></div><div class="page-actions"><a class="text-link" href="documents/mmo-design-sources.zip" download>下载完整源文件 ↓</a></div><dl class="document-overview"><div><dt>定位</dt><dd>已有MMORPG的生产玩法改良与拓展</dd></div><div><dt>重点</dt><dd>生产体验、成长、经济与协作的联系</dd></div><div><dt>范围</dt><dd>基础规则与职业案例，另列可拓展方向</dd></div></dl></section><div class="document-layout"><aside class="document-sidebar"><details open><summary>文档目录</summary><nav class="document-toc" aria-label="文档目录"><a class="toc-main" href="#section-1">一、设计概述与系统定位</a><a class="toc-sub" href="#section-2">1.1 设计背景与现有问题</a><a class="toc-sub" href="#section-3">1.2 系统定位与适用前提</a><a class="toc-sub" href="#section-4">1.3 目标玩家与参与方式</a><a class="toc-sub" href="#section-5">1.4 设计目标与核心体验</a><a class="toc-sub" href="#section-6">1.5 设计范围与系统边界</a><a class="toc-main" href="#section-7">二、核心循环与玩家体验流程</a><a class="toc-sub" href="#section-8">2.1 核心玩法循环</a><a class="toc-sub" href="#section-9">2.2 单次体验流程示例：钓鱼</a><a class="toc-sub" href="#section-10">2.3 非生产玩家的获取与使用流程</a><a class="toc-sub" href="#section-11">2.4 不同阶段的持续参与循环</a><a class="toc-main" href="#section-12">三、系统架构总览</a><a class="toc-sub" href="#section-13">3.1 核心功能模块</a><a class="toc-sub" href="#section-14">3.2 模块之间的关联</a><a class="toc-sub" href="#section-15">3.3 与外部系统的关联</a><a class="toc-main" href="#section-16">四、生活职业与生产规则设计</a><a class="toc-sub" href="#section-17">4.1 职业分类与资源获取</a><a class="toc-sub" href="#section-18">4.2 加工与制作职业的原料及产出</a><a class="toc-sub" href="#section-19">4.3 产品用途与职业关联</a><a class="toc-sub" href="#section-20">4.4 钓鱼职业设计样例</a><a class="toc-main" href="#section-21">五、成长系统设计</a><a class="toc-sub" href="#section-22">5.1 核心成长维度</a><a class="toc-sub" href="#section-23">5.2 基础资源收集度</a><a class="toc-sub" href="#section-24">5.3 职业等级</a><a class="toc-sub" href="#section-25">5.4 数值成长与毕业目标</a><a class="toc-sub" href="#section-26">5.5 区域解锁条件</a><a class="toc-sub" href="#section-27">5.6 成长联动示例：挖矿</a><a class="toc-main" href="#section-28">六、经济与资源流转设计</a><a class="toc-sub" href="#section-29">6.1 流通原则与权限条件</a><a class="toc-sub" href="#section-30">6.2 交易途径、手续费与资源流向</a><a class="toc-sub" href="#section-31">6.3 NPC交易与成长兑换</a><a class="toc-sub" href="#section-32">6.4 货币与兑换回路约束</a><a class="toc-sub" href="#section-33">6.5 装备成长与失败反馈</a><a class="toc-sub" href="#section-34">6.6 长期需求与毕业边界</a><a class="toc-main" href="#section-35">七、社交与协作设计</a><a class="toc-sub" href="#section-36">7.1 协作结构与组织方式</a><a class="toc-sub" href="#section-37">7.2 正式组队协作</a><a class="toc-sub" href="#section-38">7.3 无需正式组队的开放协作</a><a class="toc-sub" href="#section-39">7.4 收益归属与规则边界</a><a class="toc-sub" href="#section-40">7.5 社交联系与组织</a><a class="toc-sub" href="#section-41">7.6 协作关系示例</a><a class="toc-main" href="#section-42">八、内容与玩法拓展</a><a class="toc-sub" href="#section-43">8.1 外观消费与长期目标拓展</a><a class="toc-sub" href="#section-44">8.2 搜打撤模式与生产经济联动</a><a class="toc-sub" href="#section-45">8.3 生产主题秘境与活动示例</a></nav></details></aside><article class="document-body"><section class="doc-chapter"><h2 class="chapter-title" id="section-1"><span class="chapter-number" aria-hidden="true">01</span><span>一、设计概述与系统定位</span></h2>
+<p>本章说明系统定位、目标玩家、设计目标与范围。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-2"><span class="sub-number">1.1</span>设计背景与现有问题</h3>
+<p class="topic-label"><strong>设计背景：</strong></p>
+<p>本方案聚焦MMORPG中的生活职业与生产玩法。玩家自由选择生活职业，通过采集、加工与制作获得产物并推进成长。生产玩法提供战斗之外的休闲体验，其产物也可用于交易、战斗与社交。</p>
+<p>本方案参考《魔兽世界》《最终幻想14》在产物用途和系统联动上的设计，重点改良部分生产系统中依赖升级、固定任务提交与限次生产，过程和长期目标相对单一的问题。</p>
+<p class="topic-label"><strong>体验观察与现有问题：</strong></p>
+<p>基于个人游玩观察，本方案重点关注以下四类问题。所述问题不一定同时存在于同一款游戏，也不代表所有玩家的体验。</p>
+<ol>
+<li><strong>产物需求依赖固定任务。</strong> 部分产物主要用于升级任务或每日任务提交，其他用途较少。固定任务虽然提供了消耗渠道，但当生产主要服务于任务奖励时，玩家缺少基于实际用途主动生产的理由。</li>
+<li><strong>生产过程缺少有意义的选择。</strong> 当体验集中于“获取材料—制作产物—提交任务—提升等级—解锁更高级产物”时，升级和产物收益可能仍有吸引力，但重复操作本身未必有趣。产物的实用价值与生产过程的乐趣需要分别设计。</li>
+<li><strong>参与时间受次数或体力限制。</strong> 玩家可能在用完当日额度后无法继续生产，也可能因担心体力溢出而定时上线消耗。此类机制容易带来“按时完成日常”的负担，压缩玩家依据兴趣与空闲时间安排体验的空间。</li>
+<li><strong>满级后缺少持续目标。</strong> 对以职业升级为主要目标的玩家而言，若满级后缺少新的挑战、探索或生产目标，原有成长循环便难以继续提供动力。</li>
+</ol>
+<p>次数与体力限制可以调节成长速度、产出数量及贵重资源供应，但不能替代玩法本身的吸引力；缺少持续参与理由时，这些限制还可能强化日常任务感。</p>
+<p class="topic-label"><strong>核心设计问题：</strong></p>
+<p>本方案要回答的是：除了升级和产物收益，生产过程如何吸引玩家选择、尝试并重复体验？满级后，玩家还有哪些值得追求的目标？</p>
+<p>设计上区分玩法体验与成长、产出收益的控制，在保留必要约束的同时，减少次数和体力限制对体验的直接阻断，让玩家自主安排游玩时间。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-3"><span class="sub-number">1.2</span>系统定位与适用前提</h3>
+<p>本方案定位为已有MMORPG的生活玩法改良与拓展，不作为独立游戏，也不整体重做其他核心系统。</p>
+<p>本文为系统设计提案：第二至七章说明基础循环、通用规则及职业案例，第八章提出可拓展方向。案例与示例数值在对应章节单独标明。</p>
+<p>方案以既有战斗、交易、生产与社交系统为基础，重点设计生产循环及其与其他玩法的联系。其中，资源转移功能需支持生产玩家与产物使用者之间的交易和交付。</p>
+<p>系统旨在提供日常及版本内容间歇期可持续参与的休闲玩法，减少对版本更新的依赖。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-4"><span class="sub-number">1.3</span>目标玩家与参与方式</h3>
+<p class="topic-label"><strong>目标玩家群体：</strong></p>
+<ol>
+<li>喜爱生活职业，愿意持续体验生产过程的玩家。</li>
+<li>希望在版本内容间歇期获得休闲体验的玩家。</li>
+<li>希望积累生产成果、完成收集目标的玩家。</li>
+<li>希望通过生产、交易与委托获得经济收益的玩家。</li>
+</ol>
+<p class="topic-label"><strong>参与方式：</strong></p>
+<p><strong>主要参与生产玩法的玩家：</strong> 通过采集、加工与制作获得产物并推进职业成长。产物可用于任务提交、装备升级，也可出售或按委托交付。</p>
+<p><strong>主要参与其他玩法的玩家：</strong> 按需购买资源、产物或委托生产，无需亲自采集与制作。产物应服务于实际需求，不强制所有玩家使用生产产物。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-5"><span class="sub-number">1.4</span>设计目标与核心体验</h3>
+<p>围绕“生产过程本身具有吸引力”这一核心，提出四项设计目标：</p>
+<ol>
+<li><strong>拓展产物用途。</strong> 在固定任务之外，连接其他长期玩法的实际需求，通过交易与委托促进产物在生产者与使用者之间流转。</li>
+<li><strong>增加有意义的选择。</strong> 让玩家尝试不同生产方式、感知选择结果，使过程本身成为参与理由。</li>
+<li><strong>提高时间自主性。</strong> 保留必要的成长与产出约束，减少次数和体力限制对体验的直接阻断，降低围绕每日额度安排游玩的压力。</li>
+<li><strong>建立满级后目标。</strong> 以挑战、探索、收集与协作等内容延续参与动力，使职业满级不等于玩法结束。</li>
+</ol>
+<p>期望玩家能享受生产中的选择与尝试，看到产物被实际使用，并按兴趣追求成长、收集、交易或协作；不亲自生产的玩家也能通过购买与委托满足需求。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-6"><span class="sub-number">1.5</span>设计范围与系统边界</h3>
+<p class="topic-label"><strong>重点设计内容：</strong></p>
+<p>重点设计生活职业与生产规则、核心循环、职业成长、资源获取及产物用途、资源流转与生产协作。</p>
+<p class="topic-label"><strong>外部系统关联边界：</strong></p>
+<p>基于原游戏的战斗、交易与社交等基础功能设计衔接规则，不重做完整系统。生产专属装备、属性及战斗技能来源见3.3节；交易渠道、权限与委托结算原则见第六章，社交组织与协作关系见第七章。交易平台、完整订单状态及底层多人功能不在本方案中全部展开。</p>
+<p class="topic-label"><strong>拓展方向：</strong></p>
+<ol>
+<li><strong>外观消费与长期目标：</strong> 通过外观追求延续参与动力，并由系统回收购买时支付的游戏货币。</li>
+<li><strong>搜打撤与生产经济联动：</strong> 通过战备投入、局内消耗与撤离产出，连接战斗玩法和生产循环。</li>
+<li><strong>生产主题秘境与活动：</strong> 增加生产参与方式，以万食节展示活动阶段、内容选择及成果反馈。</li>
+</ol>
+<p>上述方向在第八章展开，侧重与生产循环的关联，不作为基础循环成立的前提。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-7"><span class="chapter-number" aria-hidden="true">02</span><span>二、核心循环与玩家体验流程</span></h2>
+<p>本章从玩家视角说明核心循环、单次体验、产物获取及阶段目标。具体职业规则、配方、数值与收益限制在对应章节展开。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-8"><span class="sub-number">2.1</span>核心玩法循环</h3>
+<p class="topic-label"><strong>核心循环：</strong></p>
+<ol>
+<li>产生需求或兴趣：因自用、收集或经济收益产生参与意愿，也可通过响应其他玩家的交易与委托需求确定方向。</li>
+<li>确定目标：选择本次要获取、制作或交付的产物，确认所需条件。</li>
+<li>开展生产：选择材料来源、生产地点、装备与活动方式，完成采集、制作等活动。</li>
+<li>使用或交付：将产物用于自身目标，或通过交易、委托交付给需求玩家。</li>
+<li>获得反馈：获得产物、职业成长或经济收益，并感知不同选择的结果。</li>
+<li>形成新目标：由新内容解锁、未完成收集、自身新增需求或其他玩家的需求，再次进入循环。</li>
+</ol>
+<p>以上步骤描述目标驱动的循环，不要求每次游玩都完成全部步骤。玩家可依据兴趣与时间结束本次游玩，具体活动的退出与中断处理按对应规则确定。</p>
+<div class="exhibit-title"><strong>图2-1 核心玩法循环</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：核心玩法循环"><img width="1030" height="880" style="width:100%;aspect-ratio:1030/880" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDMwIiBoZWlnaHQ9Ijg4MCIgdmlld0JveD0iMCAwIDEwMzAgODgwIj4NCjx0aXRsZT7moLjlv4Pnjqnms5Xlvqrnjq88L3RpdGxlPjxkZXNjPuWxleekuuato+aWh+S4reeahOinhOWImeWFs+ezu+S4juWPr+aLk+WxleaWueWQkeOAgjwvZGVzYz4NCjxkZWZzPjxtYXJrZXIgaWQ9ImFycm93IiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjkiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIG9yaWVudD0iYXV0by1zdGFydC1yZXZlcnNlIj48cGF0aCBkPSJNIDAgMSBMIDkgNSBMIDAgOSB6IiBmaWxsPSIjNjI2OTcwIi8+PC9tYXJrZXI+PC9kZWZzPg0KPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0id2hpdGUiLz4NCjxnIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWksIHNhbnMtc2VyaWYiIGZpbGw9IiMxRDIzMjkiIGZvbnQtd2VpZ2h0PSI0MDAiPjxwYXRoIGQ9Ik0gNDM1LDEyNSBMIDQzNSwxOTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDQzNSwyNTUgTCA0MzUsMzIwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA0MzUsMzg1IEwgNDM1LDQ1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNDM1LDUxNSBMIDQzNSw1ODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDQzNSw2NDUgTCA0MzUsNzEwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA2MTAsNzU3IEwgMTAwMCw3NTcgTCAxMDAwLDkyIEwgNjEwLDkyIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA2MTAsMzUyIEwgODQ1LDM1MiBMIDg0NSw0MjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjYgNCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxyZWN0IHg9IjI2MCIgeT0iNjAiIHdpZHRoPSIzNTAiIGhlaWdodD0iNjUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjQzNS4wIiB5PSI5OC41Ij7kuqfnlJ/pnIDmsYLmiJblhbTotqM8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjI2MCIgeT0iMTkwIiB3aWR0aD0iMzUwIiBoZWlnaHQ9IjY1IiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI0MzUuMCIgeT0iMjI4LjUiPuehruWumuacrOasoeebruaghzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iMjYwIiB5PSIzMjAiIHdpZHRoPSIzNTAiIGhlaWdodD0iNjUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjQzNS4wIiB5PSIzNTguNSI+6YCJ5oup5YeG5aSH5pa55qGI5bm25byA5bGV55Sf5LqnPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSIyNjAiIHk9IjQ1MCIgd2lkdGg9IjM1MCIgaGVpZ2h0PSI2NSIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iNDM1LjAiIHk9IjQ4OC41Ij7kvb/nlKjkuqfnianmiJblrozmiJDkuqTku5g8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjI2MCIgeT0iNTgwIiB3aWR0aD0iMzUwIiBoZWlnaHQ9IjY1IiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI0MzUuMCIgeT0iNjE4LjUiPuiOt+W+l+S6p+eJqeOAgeaIkOmVv+aIlue7j+a1juWPjemmiDwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iMjYwIiB5PSI3MTAiIHdpZHRoPSIzNTAiIGhlaWdodD0iOTUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjQzNS4wIiB5PSI3NTAuMiI+6Kej6ZSB5YaF5a6544CB5pyq5a6M5oiQ5pS26ZuGPC90c3Bhbj48dHNwYW4geD0iNDM1LjAiIHk9Ijc3Ni44Ij7oh6rouqvmiJblhbbku5bnjqnlrrbnmoTmlrDpnIDmsYI8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjcxMCIgeT0iNDI1IiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjExNSIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtZGFzaGFycmF5PSI2IDQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciPjx0c3BhbiB4PSI4NDUuMCIgeT0iNDc1LjkiPuiHquS4u+e7k+adn+acrOasoea4uOeOqTwvdHNwYW4+PHRzcGFuIHg9Ijg0NS4wIiB5PSI1MDEuMSI+5rS75Yqo6YCA5Ye65oyJ5a+55bqU6KeE5YiZ5aSE55CGPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI3NTUuMCIgeT0iNzE1LjIiIHdpZHRoPSIxMTAuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjgxMCIgeT0iNzM1LjAiPuW9ouaIkOS4i+S4gOebruaghzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNzE1LjAiIHk9IjMwNS4yIiB3aWR0aD0iMTkwLjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI4MTAiIHk9IjMyNS4wIj7lj6/kuK3mraLvvIzml6DpnIDlhYjlrozmiJDnm67moIc8L3RzcGFuPjwvdGV4dD48L2c+PC9zdmc+DQo=" alt="核心玩法循环"></button><figcaption><span>核心玩法循环</span><span>点击放大 ↗</span></figcaption></figure></p>
+</section><section class="doc-subsection example-section"><h3 class="subsection-title example-title" id="section-9"><span class="sub-number">2.2</span>单次体验流程示例：钓鱼<small class="example-label">案例</small></h3>
+<p>以获取海怪材料、升级渔具为例，展示一次完整的生产体验。该样例仅适用于钓鱼职业，相关属性、环境条件与战斗环节不作为其他职业的统一要求；专属设定见4.4节。</p>
+<p class="topic-label"><strong>单次体验流程：</strong></p>
+<ol>
+<li>确定目标：达到对应钓鱼职业等级，解锁渔具升级目标，确认所需材料来自新解锁海怪的掉落物。</li>
+<li>准备配置：确认目标水域与前置条件，选择装备、渔具及鱼饵，并结合水域属性上限，在渔速、海怪率与稀有海怪率之间取舍。</li>
+<li>获取材料：前往水域，在满足目标条件后钓鱼；钓上目标海怪并完成讨伐，获取掉落物。战斗与生产能力的关系见3.3节。</li>
+<li>升级渔具：材料满足要求后，升级当前渔具。</li>
+<li>感知反馈：查看属性变化，调整后续生产配置。</li>
+<li>决定后续：围绕新内容、未完成收集或资源需求选择下一目标，也可结束本次游玩。</li>
+</ol>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-10"><span class="sub-number">2.3</span>非生产玩家的获取与使用流程</h3>
+<p class="topic-label"><strong>获取流程：</strong></p>
+<ol>
+<li>产生需求：因战斗、休闲社交或收集目标，需要相应资源或产物。</li>
+<li>选择方式：根据现货供应、时效与费用，选择购买或委托生产。</li>
+<li>获取产物：完成购买，或在委托完成后接收交付。</li>
+<li>实际使用：在对应玩法中使用或消耗产物，完成本次目标。</li>
+<li>再次获取：因消耗品补充、装备更换或新的外观与收集目标，重新进入流程。</li>
+</ol>
+<p class="topic-label"><strong>获取原因：</strong></p>
+<ol>
+<li>PVP/PVE：用于装备获取、升级与强化，或通过食品、药品提供角色增益，具体效果及适用范围按对应规则确定。</li>
+<li>休闲社交：以衣物、饰品等产物满足外观搭配与收集需求。</li>
+</ol>
+<p class="topic-label"><strong>获取方式：</strong></p>
+<ol>
+<li>购买：基础资源可通过集市买卖挂单获取；装备及存在个体差异的道具可通过交易行直接购买或竞拍，也支持符合规则的玩家直接交易。具体方式与手续费见6.2节。</li>
+<li>物品委托：提出需求并约定资源提供方式、报酬及交付条件，完成时由需求方支付手续费，适合稀有材料、特定道具或愿意等待的需求。支持预付型与提交型两种形式，基本规则见6.2节；行为类雇佣由赏金小队组织，定位见7.5节。</li>
+</ol>
+<p>社交组织方式见第七章。</p>
+<div class="exhibit-title"><strong>图2-2 非生产玩家获取与使用流程</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：非生产玩家获取与使用泳道图"><img width="1160" height="1020" style="width:100%;aspect-ratio:1160/1020" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTYwIiBoZWlnaHQ9IjEwMjAiIHZpZXdCb3g9IjAgMCAxMTYwIDEwMjAiPg0KPHRpdGxlPumdnueUn+S6p+eOqeWutuiOt+WPluS4juS9v+eUqOazs+mBk+WbvjwvdGl0bGU+PGRlc2M+5bGV56S65q2j5paH5Lit55qE6KeE5YiZ5YWz57O75LiO5Y+v5ouT5bGV5pa55ZCR44CCPC9kZXNjPg0KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0gMCAxIEwgOSA1IEwgMCA5IHoiIGZpbGw9IiM2MjY5NzAiLz48L21hcmtlcj48L2RlZnM+DQo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ3aGl0ZSIvPg0KPGcgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSwgc2Fucy1zZXJpZiIgZmlsbD0iIzFEMjMyOSIgZm9udC13ZWlnaHQ9IjQwMCI+PHJlY3QgeD0iMjAuMCIgeT0iMjAiIHdpZHRoPSIzNzMuMzMzMzMzMzMzMzMzMyIgaGVpZ2h0PSI5ODAiIGZpbGw9IndoaXRlIiBzdHJva2U9IiNCQkMxQzciLz48cmVjdCB4PSIyMC4wIiB5PSIyMCIgd2lkdGg9IjM3My4zMzMzMzMzMzMzMzMzIiBoZWlnaHQ9IjU0IiBmaWxsPSIjRjFGM0Y0IiBzdHJva2U9IiNCQkMxQzciLz4NCjxyZWN0IHg9IjM5My4zMzMzMzMzMzMzMzMzIiB5PSIyMCIgd2lkdGg9IjM3My4zMzMzMzMzMzMzMzMzIiBoZWlnaHQ9Ijk4MCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iI0JCQzFDNyIvPjxyZWN0IHg9IjM5My4zMzMzMzMzMzMzMzMzIiB5PSIyMCIgd2lkdGg9IjM3My4zMzMzMzMzMzMzMzMzIiBoZWlnaHQ9IjU0IiBmaWxsPSIjRjFGM0Y0IiBzdHJva2U9IiNCQkMxQzciLz4NCjxyZWN0IHg9Ijc2Ni42NjY2NjY2NjY2NjY2IiB5PSIyMCIgd2lkdGg9IjM3My4zMzMzMzMzMzMzMzMzIiBoZWlnaHQ9Ijk4MCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iI0JCQzFDNyIvPjxyZWN0IHg9Ijc2Ni42NjY2NjY2NjY2NjY2IiB5PSIyMCIgd2lkdGg9IjM3My4zMzMzMzMzMzMzMzMzIiBoZWlnaHQ9IjU0IiBmaWxsPSIjRjFGM0Y0IiBzdHJva2U9IiNCQkMxQzciLz4NCjxwYXRoIGQ9Ik0gMjA1LDE3NSBMIDIwNSwyMTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDIwNSwzMTUgTCAyMDUsMzc1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA1MCwyNjUgTCAzOCwyNjUgTCAzOCw1OTAgTCA3MCw1OTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDM0MCw0MTAgTCA0NDUsNDEwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA4MjAsNDEwIEwgNzE1LDQxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNDQ1LDQzMCBMIDM5NSw0MzAgTCAzOTUsODQ3IEwgMzQwLDg0NyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gMzQwLDU5MCBMIDgyMCw1OTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDk1NSw2MjUgTCA5NTUsNzAwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA4MjAsNzM1IEwgNzE1LDczNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNTgwLDc3MCBMIDU4MCw4NDcgTCAzNDAsODQ3IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSAyMDUsODgwIEwgMjA1LDkyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjEiPjx0c3BhbiB4PSIyMDYuNjY2NjY2NjY2NjY2NjYiIHk9IjU0LjAiPumcgOaxgueOqeWutjwvdHNwYW4+PC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMSI+PHRzcGFuIHg9IjU4MC4wIiB5PSI1NC4wIj7ns7vnu588L3RzcGFuPjwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjEiPjx0c3BhbiB4PSI5NTMuMzMzMzMzMzMzMzMzMyIgeT0iNTQuMCI+55Sf5Lqn77yP5L6b57uZ546p5a62PC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI3MCIgeT0iMTEwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjY1IiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSIyMDUuMCIgeT0iMTQ4LjUiPuS6p+eUn+S9v+eUqOmcgOaxgjwvdHNwYW4+PC90ZXh0Pg0KPHBvbHlnb24gcG9pbnRzPSIyMDUuMCwyMTUgMzYwLDI2NS4wIDIwNS4wLDMxNSA1MCwyNjUuMCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciPjx0c3BhbiB4PSIyMDUuMCIgeT0iMjU4LjQiPuaMieS+m+W6lOOAgeaXtuaViOS4jui0ueeUqDwvdHNwYW4+PHRzcGFuIHg9IjIwNS4wIiB5PSIyODMuNiI+6YCJ5oup6I635Y+W5pa55byPPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI3MCIgeT0iMzc1IiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjcwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSIyMDUuMCIgeT0iNDE2LjAiPui0reS5sOeOsOi0pzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNDQ1IiB5PSIzNzUiIHdpZHRoPSIyNzAiIGhlaWdodD0iNzAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjU4MC4wIiB5PSI0MDIuNyI+5oyJ5rig6YGT6KeE5YiZPC90c3Bhbj48dHNwYW4geD0iNTgwLjAiIHk9IjQyOS4zIj7lip7nkIbmiJDkuqTkuI7kuqTku5g8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjgyMCIgeT0iMzc1IiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjcwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI5NTUuMCIgeT0iNDE2LjAiPuaPkOS+m+eOsOi0pzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNzAiIHk9IjU1NSIgd2lkdGg9IjI3MCIgaGVpZ2h0PSI3MCIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iMjA1LjAiIHk9IjU5Ni4wIj7lj5HluIPnianlk4Hlp5TmiZg8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjgyMCIgeT0iNTU1IiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjcwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI5NTUuMCIgeT0iNTk2LjAiPuaMieimgeaxguWHhuWkh+S6p+eJqTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iODIwIiB5PSI3MDAiIHdpZHRoPSIyNzAiIGhlaWdodD0iNzAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9Ijk1NS4wIiB5PSI3NDEuMCI+5Lqk5LuY56ym5ZCI6KaB5rGC55qE5Lqn54mpPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI0NDUiIHk9IjcwMCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSI3MCIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iNTgwLjAiIHk9Ijc0MS4wIj7mjInorqLljZXlip7nkIbkuqTku5jkuI7nu5Pnrpc8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjcwIiB5PSI4MTUiIHdpZHRoPSIyNzAiIGhlaWdodD0iNjUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjIwNS4wIiB5PSI4NTMuNSI+5o6l5pS25Lqn54mpPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI3MCIgeT0iOTI1IiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjYwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSIyMDUuMCIgeT0iOTYxLjAiPuS9v+eUqOaIlua2iOiAl+S6p+eJqTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iMjI3LjAiIHk9IjMzMC4yIiB3aWR0aD0iNDYuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjI1MCIgeT0iMzUwLjAiPui0reS5sDwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNTUuMCIgeT0iNDgwLjIiIHdpZHRoPSI0Ni4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iNzgiIHk9IjUwMC4wIj7lp5TmiZg8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjUwMS4wIiB5PSI1NTAuMiIgd2lkdGg9IjE1OC4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iNTgwIiB5PSI1NzAuMCI+5Y+R5biD6ZyA5rGC5Y+K5Lqk5LuY5p2h5Lu2PC90c3Bhbj48L3RleHQ+PC9nPjwvc3ZnPg0K" alt="非生产玩家获取与使用泳道图"></button><figcaption><span>非生产玩家获取与使用泳道图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>图中只说明获取路径与参与角色，不替代各交易渠道的权限、费用及订单规则。同一玩家可在不同交易中承担不同角色。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-11"><span class="sub-number">2.4</span>不同阶段的持续参与循环</h3>
+<div class="exhibit-title"><strong>表2-1 不同阶段的参与目标</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>阶段</th>
+  <th>主要目标</th>
+  <th>参与内容</th>
+  <th>成长与反馈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>初始阶段</td>
+  <td>理解并完成首次生产循环</td>
+  <td>任务引导、基础目标选择、生产与产物使用</td>
+  <td>获得等级与属性提升，理解基础配置的作用</td>
+</tr>
+<tr>
+  <td>成长阶段</td>
+  <td>解锁内容，尝试新的配置与参与方式</td>
+  <td>更多生产途径、地点、目标与挑战，部分内容开放多人协作</td>
+  <td>效率提高，配置与参与方式发生变化</td>
+</tr>
+<tr>
+  <td>满级阶段</td>
+  <td>转向供货、收集、挑战与社交等追求</td>
+  <td>资源供应、交易与委托、稀有目标、收集成就及多人活动</td>
+  <td>以成果、经济收益与合作关系延续参与；社交与师徒成就作为进一步拓展</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>单次游玩之间：</strong> 常规生产支持自主安排开始和结束，不要求围绕每日次数或体力清空安排游玩。玩家主动进入的限时活动仍遵循活动时限；进度保留、中断处理及收益限制需按活动分别确定，不统一承诺随时中断与恢复。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-12"><span class="chapter-number" aria-hidden="true">03</span><span>三、系统架构总览</span></h2>
+<p>本章说明功能模块及其与外部系统的关系。各职业采用各自的玩法规则，不统一要求环境条件、战斗或副本参与；职业设计见第四章。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-13"><span class="sub-number">3.1</span>核心功能模块</h3>
+<p>生产系统按职责划分为六个模块。同一玩法可由多个模块共同支撑，分工及关联如下。</p>
+<div class="exhibit-title"><strong>表3-1 六个功能模块的职责</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>模块</th>
+  <th>主要职责</th>
+  <th>包含内容</th>
+  <th>职责边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>生产职业成长</td>
+  <td>提供成长目标与能力配置，支持内容解锁和策略调整</td>
+  <td>职业等级、生产属性、装备与工具提升、内容解锁条件</td>
+  <td>新增生产成长规则，不重做战斗职业成长；各职业可独立成长，通过材料、产物与协作保持联系</td>
+</tr>
+<tr>
+  <td>生产玩法</td>
+  <td>组织准备、选择、操作及产物获取</td>
+  <td>参与入口、采集制作、地点与目标条件、装备工具使用、产出规则</td>
+  <td>设计生产活动，不重做物品管理等基础功能；涉及战斗时明确触发、材料与能力关系，见3.3节</td>
+</tr>
+<tr>
+  <td>资源流转</td>
+  <td>将资源交付给需要它的玩家，支持成长及其他玩法</td>
+  <td>产物去向、交易范围、购买与委托、成本与手续费</td>
+  <td>基于既有货币与交易功能；材料获取归生产玩法，获取后的流转与用途归本模块</td>
+</tr>
+<tr>
+  <td>任务与活动</td>
+  <td>提供教学、阶段目标和活动选择</td>
+  <td>教学与阶段任务、活动条件、流程、奖励、时限与场地需求</td>
+  <td>沿用既有任务活动功能；合作组织归多人协作，长期记录归收集与成就</td>
+</tr>
+<tr>
+  <td>收集与成就</td>
+  <td>将探索、收集和挑战成果转为长期目标</td>
+  <td>资源与产物收集、稀有目标记录、生产挑战与协作成就</td>
+  <td>设计生产相关记录、完成条件与反馈，不重做完整成就系统；不替代产物用途，社交与师徒成就为可拓展方向</td>
+</tr>
+<tr>
+  <td>多人协作</td>
+  <td>围绕共同目标组织分工与配合</td>
+  <td>活动组织、参与角色、合作关系、成果归属与分配</td>
+  <td>依托既有组队社交与副本功能，不重做底层多人系统；活动整体流程归任务与活动，战斗关联见3.3节</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-14"><span class="sub-number">3.2</span>模块之间的关联</h3>
+<p>玩家的主要行为发生在生产玩法中，其他模块提供目标、成长反馈、资源和合作机会。</p>
+<ol>
+<li><p><strong>收集与成就提供目标，生产成果推进目标。</strong></p>
+<p>玩家根据未获取的产物、稀有目标和未完成挑战选择地点与活动。生产成果更新收集记录及成就进度，帮助玩家确认进展、选择下一目标。</p>
+</li>
+<li><p><strong>任务引导入门，活动扩展选择。</strong></p>
+<p>教学任务引导玩家完成基础循环，理解材料获取、生产选择与产物使用的关系。后续任务与活动以不同目标和流程提供选择，让玩家按兴趣与时间参与，并接触新的参与方式。</p>
+</li>
+<li><p><strong>生产支持成长，成长拓展生产选择。</strong></p>
+<p>玩家通过生产获得经验与成长资源，提升装备和工具。能力提高、内容解锁后，玩家可以调整配置，选择新目标和参与方式。</p>
+</li>
+<li><p><strong>资源流转支持成长，也传递外部需求。</strong></p>
+<p>玩家可购买或委托获取成长材料，也可出售产物、接受委托，以经济收益支持后续成长和生产准备，无需自行完成所有资源获取环节。</p>
+<p>其他玩家对装备、食品、药品及外观等产物的需求，通过购买与委托转化为生产目标。交易转移资源，产物的实际用途支撑持续需求，不能只依赖生产系统内部升级。</p>
+</li>
+<li><p><strong>协作改变参与形式，成果连接多个目标。</strong></p>
+<p>部分生产内容围绕共同目标组织玩家，通过配合与共同挑战形成有别于单人生产的体验。任务与活动模块确定目标、条件和流程，多人协作模块确定合作关系与成果分配。</p>
+<p>协作成果可按规则用于成长、交易或收集。共同挑战与合作关系也可成为满级后的参与理由，具体形式由活动需求决定。</p>
+</li>
+</ol>
+<div class="exhibit-title"><strong>图3-1 功能模块关系</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：六个功能模块之间的关系"><img width="1140" height="800" style="width:100%;aspect-ratio:1140/800" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTQwIiBoZWlnaHQ9IjgwMCIgdmlld0JveD0iMCAwIDExNDAgODAwIj4NCjx0aXRsZT7lip/og73mqKHlnZflhbPns7vvvIjnu4Tku7bop4blm77vvIk8L3RpdGxlPjxkZXNjPuWxleekuuato+aWh+S4reeahOinhOWImeWFs+ezu+S4juWPr+aLk+WxleaWueWQkeOAgjwvZGVzYz4NCjxkZWZzPjxtYXJrZXIgaWQ9ImFycm93IiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjkiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIG9yaWVudD0iYXV0by1zdGFydC1yZXZlcnNlIj48cGF0aCBkPSJNIDAgMSBMIDkgNSBMIDAgOSB6IiBmaWxsPSIjNjI2OTcwIi8+PC9tYXJrZXI+PC9kZWZzPg0KPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0id2hpdGUiLz4NCjxnIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWksIHNhbnMtc2VyaWYiIGZpbGw9IiMxRDIzMjkiIGZvbnQtd2VpZ2h0PSI0MDAiPjxwYXRoIGQ9Ik0gMjMwLDE2MCBMIDIzMCwyNDUgTCA1MTAsMjQ1IEwgNTEwLDMzNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gOTEwLDE2MCBMIDkxMCwyNDUgTCA2MzAsMjQ1IEwgNjMwLDMzNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNzAwLDM1MCBMIDczNSwzNTAgTCA3MzUsMTk1IEwgOTEwLDE5NSBMIDkxMCwxNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDQ0MCwzNjUgTCAzMjAsMzY1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSAzMjAsNDI1IEwgNDQwLDQyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNzAwLDM3NSBMIDgyMCwzNzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDgyMCw0MjUgTCA3MDAsNDI1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA1MzAsNjUwIEwgNTMwLDQ1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNjIwLDQ1NSBMIDYyMCw2NTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cmVjdCB4PSI4MCIgeT0iNjAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMTAwIiByeD0iMCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjxyZWN0IHg9IjM1NCIgeT0iNzAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIvPjxyZWN0IHg9IjM0OSIgeT0iNzMiIHdpZHRoPSI5IiBoZWlnaHQ9IjUiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiLz48cmVjdCB4PSIzNDkiIHk9IjgzIiB3aWR0aD0iOSIgaGVpZ2h0PSI1IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iMjMwLjAiIHk9IjEwMi43Ij7ku7vliqHkuI7mtLvliqg8L3RzcGFuPjx0c3BhbiB4PSIyMzAuMCIgeT0iMTI5LjMiPuaVmeWtpuOAgemYtuauteWGheWuuTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNzYwIiB5PSI2MCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHJlY3QgeD0iMTAzNCIgeT0iNzAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIvPjxyZWN0IHg9IjEwMjkiIHk9IjczIiB3aWR0aD0iOSIgaGVpZ2h0PSI1IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIi8+PHJlY3QgeD0iMTAyOSIgeT0iODMiIHdpZHRoPSI5IiBoZWlnaHQ9IjUiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI5MTAuMCIgeT0iMTAyLjciPuaUtumbhuS4juaIkOWwsTwvdHNwYW4+PHRzcGFuIHg9IjkxMC4wIiB5PSIxMjkuMyI+6ZW/5pyf55uu5qCH5LiO6K6w5b2VPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSIzMCIgeT0iMzM1IiB3aWR0aD0iMjkwIiBoZWlnaHQ9IjEyMCIgcng9IjAiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8cmVjdCB4PSIyOTQiIHk9IjM0NSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIxIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIi8+PHJlY3QgeD0iMjg5IiB5PSIzNDgiIHdpZHRoPSI5IiBoZWlnaHQ9IjUiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiLz48cmVjdCB4PSIyODkiIHk9IjM1OCIgd2lkdGg9IjkiIGhlaWdodD0iNSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjE3NS4wIiB5PSIzODcuNyI+55Sf5Lqn6IGM5Lia5oiQ6ZW/PC90c3Bhbj48dHNwYW4geD0iMTc1LjAiIHk9IjQxNC4zIj7nrYnnuqfjgIHog73lipvkuI7op6PplIE8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjQ0MCIgeT0iMzM1IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjEyMCIgcng9IjAiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8cmVjdCB4PSI2NzQiIHk9IjM0NSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIxIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIi8+PHJlY3QgeD0iNjY5IiB5PSIzNDgiIHdpZHRoPSI5IiBoZWlnaHQ9IjUiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiLz48cmVjdCB4PSI2NjkiIHk9IjM1OCIgd2lkdGg9IjkiIGhlaWdodD0iNSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjU3MC4wIiB5PSIzODcuNyI+55Sf5Lqn546p5rOVPC90c3Bhbj48dHNwYW4geD0iNTcwLjAiIHk9IjQxNC4zIj7lh4blpIfjgIHpgInmi6nkuI7mk43kvZw8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjgyMCIgeT0iMzM1IiB3aWR0aD0iMjkwIiBoZWlnaHQ9IjEyMCIgcng9IjAiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8cmVjdCB4PSIxMDg0IiB5PSIzNDUiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyMSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIvPjxyZWN0IHg9IjEwNzkiIHk9IjM0OCIgd2lkdGg9IjkiIGhlaWdodD0iNSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIvPjxyZWN0IHg9IjEwNzkiIHk9IjM1OCIgd2lkdGg9IjkiIGhlaWdodD0iNSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9Ijk2NS4wIiB5PSIzODcuNyI+6LWE5rqQ5rWB6L2sPC90c3Bhbj48dHNwYW4geD0iOTY1LjAiIHk9IjQxNC4zIj7kuqTmmJPjgIHkuqTku5jkuI7nlKjpgJQ8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjQxMCIgeT0iNjUwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjEwMCIgcng9IjAiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8cmVjdCB4PSI3MDQiIHk9IjY2MCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIxIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIi8+PHJlY3QgeD0iNjk5IiB5PSI2NjMiIHdpZHRoPSI5IiBoZWlnaHQ9IjUiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiLz48cmVjdCB4PSI2OTkiIHk9IjY3MyIgd2lkdGg9IjkiIGhlaWdodD0iNSIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjU3MC4wIiB5PSI2OTIuNyI+5aSa5Lq65Y2P5L2cPC90c3Bhbj48dHNwYW4geD0iNTcwLjAiIHk9IjcxOS4zIj7nu4Tnu4fjgIHphY3lkIjkuI7liIbphY08L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjI4Ni4wIiB5PSIyMDAuMiIgd2lkdGg9IjE1OC4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iMzY1IiB5PSIyMjAuMCI+5pWZ5a2m5byV5a+877yP5rS75Yqo6YCJ5oupPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI3MzAuMCIgeT0iMjAwLjIiIHdpZHRoPSIxMTAuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9Ijc4NSIgeT0iMjIwLjAiPuaPkOS+m+i/veaxguebruaghzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iODM3LjAiIHk9IjE2NS4yIiB3aWR0aD0iMTI2LjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI5MDAiIHk9IjE4NS4wIj7mm7TmlrDorrDlvZXkuI7ov5vluqY8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjM0MS4wIiB5PSIyNjguMyIgd2lkdGg9Ijc4LjAiIGhlaWdodD0iNTMuNCIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSIzODAiIHk9IjI4OC4yIj7nu4/pqozkuI48L3RzcGFuPjx0c3BhbiB4PSIzODAiIHk9IjMxMS44Ij7miJDplb/otYTmupA8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjM0MS4wIiB5PSI0NjMuMyIgd2lkdGg9Ijc4LjAiIGhlaWdodD0iNTMuNCIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSIzODAiIHk9IjQ4My4yIj7og73lipvmj5DljYc8L3RzcGFuPjx0c3BhbiB4PSIzODAiIHk9IjUwNi44Ij7lhoXlrrnop6PplIE8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjcyMS4wIiB5PSIzMDAuMiIgd2lkdGg9Ijc4LjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI3NjAiIHk9IjMyMC4wIj7mj5Dkvpvkuqfniak8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjcyMS4wIiB5PSI0NjMuMyIgd2lkdGg9Ijc4LjAiIGhlaWdodD0iNTMuNCIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI3NjAiIHk9IjQ4My4yIj7kvKDpgJLpnIDmsYI8L3RzcGFuPjx0c3BhbiB4PSI3NjAiIHk9IjUwNi44Ij7mlK/mjIHlh4blpIc8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjM3MC4wIiB5PSI1NTAuMiIgd2lkdGg9IjExMC4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iNDI1IiB5PSI1NzAuMCI+5ZCI5L2c5Y+C5LiO5pa55byPPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI2ODAuMCIgeT0iNTUwLjIiIHdpZHRoPSIxMTAuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjczNSIgeT0iNTcwLjAiPuWFseWQjOeUn+S6p+ebruaghzwvdHNwYW4+PC90ZXh0PjwvZz48L3N2Zz4NCg==" alt="六个功能模块之间的关系"></button><figcaption><span>六个功能模块之间的关系</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>图以UML组件视图组织功能模块，箭头文字说明设计上的作用关系，不代表程序调用或固定执行顺序。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-15"><span class="sub-number">3.3</span>与外部系统的关联</h3>
+<p>生产系统依托原有世界、战斗、交易与社交功能开展玩法，并以产物用途连接其他玩家的需求。</p>
+<ol>
+<li><p><strong>与战斗系统及角色能力的关联</strong></p>
+<p>生产系统新增职业装备与属性，具体作用按职业确定。涉及战斗挑战的内容，还可提供针对特定目标的战斗属性。</p>
+<p>战斗能力衔接可沿用原有战斗职业的技能与战斗方式，结合生产专属装备及属性参与挑战；也可拓展生产专属技能与战斗方式。两类方式均围绕生产相关挑战组织，不要求所有生产职业采用相同形式。</p>
+<p>本方案区分两类作用：生产专属装备与属性用于相关挑战，生产产物用于支持常规PVP/PVE装备成长，不整体重做原有战斗职业。</p>
+</li>
+<li><p><strong>与大世界及环境条件的关联</strong></p>
+<p>生产内容可利用原有大世界地点，也可按职业或活动需求新增区域。目标获取所需的场所与环境条件，由各职业分别设计。</p>
+<p>玩家行为可改变局部环境的玩法，需明确作用区域、变化方式及其对目标获取的影响。</p>
+<p>本方案仅设计生产内容的场所及环境需求，不重做完整世界与天气系统。环境前置条件与变化机制按职业配置，不作为统一参与要求。</p>
+</li>
+<li><p><strong>与交易及经济系统的关联</strong></p>
+<p>依托原有货币与交易功能实现资源转移。需求玩家购买现货或发起委托，生产玩家通过出售、交付获得报酬，支持后续成长与生产准备。</p>
+<p>流转覆盖职业内部成长、跨职业加工及非生产玩家的使用需求。本方案设计可流转范围、获取与交付方式及成本，不重做货币和交易平台；产出、消耗与费用规则在第六章展开。</p>
+</li>
+<li><p><strong>与社交、组队及副本系统的关联</strong></p>
+<p>依托原有社交与组队功能，支持活动组织、合作及共同目标。生产系统设计参与和成果分配规则，不重做底层多人功能。</p>
+<p>需要独立活动空间的内容可由副本承载。进入条件、时限、合作与成果规则，分别归任务与活动模块、多人协作模块设计。</p>
+<p>社交活动与师徒玩法作为拓展方向，重点说明其对生产体验和满级目标的支持。</p>
+</li>
+<li><p><strong>生产产物对外部玩法的支持</strong></p>
+<p>原料可经其他生产职业加工，最终服务于战斗或其他玩法。玩家可通过购买与委托取得材料或加工成果，无需亲自参与所有环节。</p>
+<p>具体加工链、产物效果及PVP/PVE适用范围按资源、配方与物品分别确定，不统一规定材料必须经过哪些职业或由哪类玩家使用。</p>
+</li>
+</ol>
+<div class="exhibit-title"><strong>图3-2 生产系统与外部系统的边界</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：生产系统与外部系统边界图"><img width="674" height="648" style="width:100%;aspect-ratio:674/648" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iDQogImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIEdlbmVyYXRlZCBieSBncmFwaHZpeiB2ZXJzaW9uIDEyLjIuMSAoMjAyNDEyMDYuMjM1MykNCiAtLT4NCjwhLS0gVGl0bGU6IEcgUGFnZXM6IDEgLS0+DQo8c3ZnIHdpZHRoPSI2NzRwdCIgaGVpZ2h0PSI2NDhwdCINCiB2aWV3Qm94PSIwLjAwIDAuMDAgNjczLjU4IDY0OC4yMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQo8ZyBpZD0iZ3JhcGgwIiBjbGFzcz0iZ3JhcGgiIHRyYW5zZm9ybT0ic2NhbGUoMSAxKSByb3RhdGUoMCkgdHJhbnNsYXRlKDIxLjYgNjI2LjYpIj4NCjx0aXRsZT5HPC90aXRsZT4NCjxwb2x5Z29uIGZpbGw9IndoaXRlIiBzdHJva2U9Im5vbmUiIHBvaW50cz0iLTIxLjYsMjEuNiAtMjEuNiwtNjI2LjYgNjUxLjk4LC02MjYuNiA2NTEuOTgsMjEuNiAtMjEuNiwyMS42Ii8+DQo8ZyBpZD0iY2x1c3QxIiBjbGFzcz0iY2x1c3RlciI+DQo8dGl0bGU+Y2x1c3Rlcl9wcm9kdWN0aW9uPC90aXRsZT4NCjxwb2x5Z29uIGZpbGw9IndoaXRlIiBzdHJva2U9IiM3ZDg1OGQiIHBvaW50cz0iMzUwLjE3LC04IDM1MC4xNywtNTk3IDYyMi4zOCwtNTk3IDYyMi4zOCwtOCAzNTAuMTcsLTgiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ4Ni4yOCIgeT0iLTU3My4wNSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIyMS4wMCI+5pys5pa55qGI6YeN54K56K6+6K6h6IyD5Zu0PC90ZXh0Pg0KPC9nPg0KPCEtLSBXJiM0NTsmZ3Q7cFcgLS0+DQo8ZyBpZD0iZWRnZTEiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5XJiM0NTsmZ3Q7cFc8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE2NC4yNSwtNTI0QzIxNS44MiwtNTI0IDI4Ni42LC01MjQgMzQ4LjU3LC01MjQiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMzQ4LjIzLC01MjYuOCAzNTYuMjMsLTUyNCAzNDguMjMsLTUyMS4yIDM0OC4yMywtNTI2LjgiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI2OS42NyIgeT0iLTUzMC43NSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNS4wMCIgZmlsbD0iIzMzMzgzZCI+5o+Q5L6b5LiW55WM5Zy65omAPC90ZXh0Pg0KPC9nPg0KPCEtLSBCJiM0NTsmZ3Q7cEIgLS0+DQo8ZyBpZD0iZWRnZTIiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5CJiM0NTsmZ3Q7cEI8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE1NS43MSwtNDIwQzIxNC4yOSwtNDIwIDMwMi4yMiwtNDIwIDM3Mi41MywtNDIwIi8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjM3Mi41MSwtNDIyLjggMzgwLjUxLC00MjAgMzcyLjUxLC00MTcuMiAzNzIuNTEsLTQyMi44Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIyNjkuNjciIHk9Ii00MjYuNzUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuihlOaOpeaImOaWl+iDveWKmzwvdGV4dD4NCjwvZz4NCjwhLS0gRSYjNDU7Jmd0O3BFIC0tPg0KPGcgaWQ9ImVkZ2UzIiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+RSYjNDU7Jmd0O3BFPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0xODEuNDEsLTMwMEMyMzAuNzUsLTMwMCAyOTIuOTksLTMwMCAzNDguMjYsLTMwMCIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIzNDcuOTYsLTMwMi44IDM1NS45NiwtMzAwIDM0Ny45NiwtMjk3LjIgMzQ3Ljk2LC0zMDIuOCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjY5LjY3IiB5PSItMzA2Ljc1IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE1LjAwIiBmaWxsPSIjMzMzODNkIj7mlK/mjIHotYTmupDkuI7otKfluIHovaznp7s8L3RleHQ+DQo8L2c+DQo8IS0tIFMmIzQ1OyZndDtwUyAtLT4NCjxnIGlkPSJlZGdlNCIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPlMmIzQ1OyZndDtwUzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMTgxLjQxLC0xODBDMjM4LjE3LC0xODAgMzExLjk5LC0xODAgMzcyLjY2LC0xODAiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMzcyLjQ2LC0xODIuOCAzODAuNDYsLTE4MCAzNzIuNDYsLTE3Ny4yIDM3Mi40NiwtMTgyLjgiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI2OS42NyIgeT0iLTE4Ni43NSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNS4wMCIgZmlsbD0iIzMzMzgzZCI+5pSv5oyB546p5a6257uE57uHPC90ZXh0Pg0KPC9nPg0KPCEtLSBEJiM0NTsmZ3Q7cEQgLS0+DQo8ZyBpZD0iZWRnZTUiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5EJiM0NTsmZ3Q7cEQ8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE1NS43MSwtNjBDMjE0LjI5LC02MCAzMDIuMjIsLTYwIDM3Mi41MywtNjAiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMzcyLjUxLC02Mi44IDM4MC41MSwtNjAgMzcyLjUxLC01Ny4yIDM3Mi41MSwtNjIuOCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjY5LjY3IiB5PSItNjYuNzUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuaJv+i9veeLrOeri+a0u+WKqOepuumXtDwvdGV4dD4NCjwvZz4NCjwhLS0gVyAtLT4NCjxnIGlkPSJub2RlMSIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPlc8L3RpdGxlPg0KPHBvbHlnb24gZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTYzLjkyLC01NDMuODkgMTcuMjUsLTU0My44OSAxNy4yNSwtNTM5Ljg5IDEzLjI1LC01MzkuODkgMTMuMjUsLTUzNS44OSAxNy4yNSwtNTM1Ljg5IDE3LjI1LC01MTIuMTEgMTMuMjUsLTUxMi4xMSAxMy4yNSwtNTA4LjExIDE3LjI1LC01MDguMTEgMTcuMjUsLTUwNC4xMSAxNjMuOTIsLTUwNC4xMSAxNjMuOTIsLTU0My44OSIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTcuMjUsLTUzOS44OSAyMS4yNSwtNTM5Ljg5IDIxLjI1LC01MzUuODkgMTcuMjUsLTUzNS44OSIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTcuMjUsLTUxMi4xMSAyMS4yNSwtNTEyLjExIDIxLjI1LC01MDguMTEgMTcuMjUsLTUwOC4xMSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iOTAuNTkiIHk9Ii01MTkuMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5pei5pyJ5aSn5LiW55WM57O757ufPC90ZXh0Pg0KPC9nPg0KPCEtLSBCIC0tPg0KPGcgaWQ9Im5vZGUyIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+QjwvdGl0bGU+DQo8cG9seWdvbiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIxNTUuMywtNDM5Ljg5IDI1Ljg4LC00MzkuODkgMjUuODgsLTQzNS44OSAyMS44OCwtNDM1Ljg5IDIxLjg4LC00MzEuODkgMjUuODgsLTQzMS44OSAyNS44OCwtNDA4LjExIDIxLjg4LC00MDguMTEgMjEuODgsLTQwNC4xMSAyNS44OCwtNDA0LjExIDI1Ljg4LC00MDAuMTEgMTU1LjMsLTQwMC4xMSAxNTUuMywtNDM5Ljg5Ii8+DQo8cG9seWxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIyNS44OCwtNDM1Ljg5IDI5Ljg4LC00MzUuODkgMjkuODgsLTQzMS44OSAyNS44OCwtNDMxLjg5Ii8+DQo8cG9seWxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIyNS44OCwtNDA4LjExIDI5Ljg4LC00MDguMTEgMjkuODgsLTQwNC4xMSAyNS44OCwtNDA0LjExIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI5MC41OSIgeT0iLTQxNS4xIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7ml6LmnInmiJjmlpfns7vnu588L3RleHQ+DQo8L2c+DQo8IS0tIEUgLS0+DQo8ZyBpZD0ibm9kZTMiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5FPC90aXRsZT4NCjxwb2x5Z29uIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjE4MS4xNywtMzE5Ljg5IDAsLTMxOS44OSAwLC0zMTUuODkgLTQsLTMxNS44OSAtNCwtMzExLjg5IDAsLTMxMS44OSAwLC0yODguMTEgLTQsLTI4OC4xMSAtNCwtMjg0LjExIDAsLTI4NC4xMSAwLC0yODAuMTEgMTgxLjE3LC0yODAuMTEgMTgxLjE3LC0zMTkuODkiLz4NCjxwb2x5bGluZSBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjAsLTMxNS44OSA0LC0zMTUuODkgNCwtMzExLjg5IDAsLTMxMS44OSIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMCwtMjg4LjExIDQsLTI4OC4xMSA0LC0yODQuMTEgMCwtMjg0LjExIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI5MC41OSIgeT0iLTI5NS4xIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7ml6LmnInotKfluIHkuI7kuqTmmJPlip/og708L3RleHQ+DQo8L2c+DQo8IS0tIFMgLS0+DQo8ZyBpZD0ibm9kZTQiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5TPC90aXRsZT4NCjxwb2x5Z29uIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjE4MS4xNywtMTk5Ljg5IDAsLTE5OS44OSAwLC0xOTUuODkgLTQsLTE5NS44OSAtNCwtMTkxLjg5IDAsLTE5MS44OSAwLC0xNjguMTEgLTQsLTE2OC4xMSAtNCwtMTY0LjExIDAsLTE2NC4xMSAwLC0xNjAuMTEgMTgxLjE3LC0xNjAuMTEgMTgxLjE3LC0xOTkuODkiLz4NCjxwb2x5bGluZSBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjAsLTE5NS44OSA0LC0xOTUuODkgNCwtMTkxLjg5IDAsLTE5MS44OSIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMCwtMTY4LjExIDQsLTE2OC4xMSA0LC0xNjQuMTEgMCwtMTY0LjExIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI5MC41OSIgeT0iLTE3NS4xIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7ml6LmnInnpL7kuqTkuI7nu4TpmJ/lip/og708L3RleHQ+DQo8L2c+DQo8IS0tIEQgLS0+DQo8ZyBpZD0ibm9kZTUiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5EPC90aXRsZT4NCjxwb2x5Z29uIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjE1NS4zLC03OS44OSAyNS44OCwtNzkuODkgMjUuODgsLTc1Ljg5IDIxLjg4LC03NS44OSAyMS44OCwtNzEuODkgMjUuODgsLTcxLjg5IDI1Ljg4LC00OC4xMSAyMS44OCwtNDguMTEgMjEuODgsLTQ0LjExIDI1Ljg4LC00NC4xMSAyNS44OCwtNDAuMTEgMTU1LjMsLTQwLjExIDE1NS4zLC03OS44OSIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMjUuODgsLTc1Ljg5IDI5Ljg4LC03NS44OSAyOS44OCwtNzEuODkgMjUuODgsLTcxLjg5Ii8+DQo8cG9seWxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIyNS44OCwtNDguMTEgMjkuODgsLTQ4LjExIDI5Ljg4LC00NC4xMSAyNS44OCwtNDQuMTEiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjkwLjU5IiB5PSItNTUuMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5pei5pyJ5Ymv5pys5Yqf6IO9PC90ZXh0Pg0KPC9nPg0KPCEtLSBwVyAtLT4NCjxnIGlkPSJub2RlNiIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPnBXPC90aXRsZT4NCjxlbGxpcHNlIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iNDg2LjI4IiBjeT0iLTUyNCIgcng9IjEyOC4xMSIgcnk9IjI4LjEzIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0ODYuMjgiIHk9Ii01MTkuMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+55Sf5Lqn5Zyw54K55LiO546v5aKD6ZyA5rGCPC90ZXh0Pg0KPC9nPg0KPCEtLSBwQiAtLT4NCjxnIGlkPSJub2RlNyIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPnBCPC90aXRsZT4NCjxlbGxpcHNlIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iNDg2LjI4IiBjeT0iLTQyMCIgcng9IjEwMy43MSIgcnk9IjQ0LjA0Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0ODYuMjgiIHk9Ii00MjYuMzUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPueUn+S6p+ijheWkh+OAgeWxnuaApzwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ4Ni4yOCIgeT0iLTQwMy44NSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5Y+K5oyR5oiY6KGU5o6lPC90ZXh0Pg0KPC9nPg0KPCEtLSBwRSAtLT4NCjxnIGlkPSJub2RlOCIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPnBFPC90aXRsZT4NCjxlbGxpcHNlIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iNDg2LjI4IiBjeT0iLTMwMCIgcng9IjEyOC4xMSIgcnk9IjQ0LjA0Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0ODYuMjgiIHk9Ii0zMDYuMzUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuS6p+eJqeeUqOmAlOOAgeS6pOaYk+a4oOmBkzwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ4Ni4yOCIgeT0iLTI4My44NSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5LiO5Lqk5LuY6KeE5YiZPC90ZXh0Pg0KPC9nPg0KPCEtLSBwUyAtLT4NCjxnIGlkPSJub2RlOSIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPnBTPC90aXRsZT4NCjxlbGxpcHNlIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iNDg2LjI4IiBjeT0iLTE4MCIgcng9IjEwMy43MSIgcnk9IjQ0LjA0Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0ODYuMjgiIHk9Ii0xODYuMzUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuWQiOS9nOWFs+ezu+OAgee7hOe7hzwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ4Ni4yOCIgeT0iLTE2My44NSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5LiO5oiQ5p6c5YiG6YWNPC90ZXh0Pg0KPC9nPg0KPCEtLSBwRCAtLT4NCjxnIGlkPSJub2RlMTAiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5wRDwvdGl0bGU+DQo8ZWxsaXBzZSBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgY3g9IjQ4Ni4yOCIgY3k9Ii02MCIgcng9IjEwMy43MSIgcnk9IjQ0LjA0Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0ODYuMjgiIHk9Ii02Ni4zNSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+55Sf5Lqn5rS75Yqo55qE6L+b5YWlPC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNDg2LjI4IiB5PSItNDMuODUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPua1geeoi+S4juepuumXtOmcgOaxgjwvdGV4dD4NCjwvZz4NCjwvZz4NCjwvc3ZnPg0K" alt="生产系统与外部系统边界图"></button><figcaption><span>生产系统与外部系统边界图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>边界内为本方案重点设计的衔接内容，边界外为沿用的既有系统；不将生产相关需求扩展为对外部系统的整体重做。</p>
+<p class="topic-label"><strong>产物链路示例：</strong></p>
+<p>以下链路仅说明跨职业加工与最终使用的关系，不作为全部产物的统一流程，也不作为正式配方配置：</p>
+<ul>
+<li>鱼经烹饪加工为食品，角色食用后获得增益。</li>
+<li>PVP/PVE玩家购买某类海怪核心，再委托锻造职业玩家用于装备升级。</li>
+</ul>
+<p>上述链路分别以食品增益和装备升级作为最终用途。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-16"><span class="chapter-number" aria-hidden="true">04</span><span>四、生活职业与生产规则设计</span></h2>
+<p>本章说明职业分工、原料来源与产品用途，并以钓鱼为重点样例。各职业保留自身的参与方式与成长路径，具体操作、配方和数值规则分别细化。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-17"><span class="sub-number">4.1</span>职业分类与资源获取</h3>
+<p>系统规划11个生活职业，按主要职责分为两类：</p>
+<ul>
+<li>资源获取类：挖矿、伐木、农业、钓鱼、狩猎。</li>
+<li>加工与制作类：锻造、裁缝、木工、附魔、烹饪、制药。</li>
+</ul>
+<p class="topic-label"><strong>资源获取职业的主要产出：</strong></p>
+<div class="exhibit-title"><strong>表4-1 资源获取职业分工</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>职业</th>
+  <th>主要获取资源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>挖矿</td>
+  <td>各类矿石及相关稀有资源</td>
+</tr>
+<tr>
+  <td>伐木</td>
+  <td>各类木材及相关稀有资源</td>
+</tr>
+<tr>
+  <td>农业</td>
+  <td>农作物、其他植物及相关稀有资源</td>
+</tr>
+<tr>
+  <td>钓鱼</td>
+  <td>鱼类、海怪掉落物及相关稀有资源</td>
+</tr>
+<tr>
+  <td>狩猎</td>
+  <td>动物相关材料及稀有资源</td>
+</tr>
+</tbody>
+</table></div>
+<p>资源可用于自身职业成长，也可进入其他职业的加工环节。具体用途与可交易范围按资源及配方规则确定。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-18"><span class="sub-number">4.2</span>加工与制作职业的原料及产出</h3>
+<div class="exhibit-title"><strong>表4-2 加工与制作职业的原料及产出</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>职业</th>
+  <th>原料来源</th>
+  <th>主要产出或功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>锻造</td>
+  <td>矿石及相关稀有资源为主，其他稀有资源与加工品为辅</td>
+  <td>工具、铠甲、宝石、饰品</td>
+</tr>
+<tr>
+  <td>裁缝</td>
+  <td>植物及相关稀有资源为主，其他稀有资源与加工品为辅</td>
+  <td>衣物、饰品</td>
+</tr>
+<tr>
+  <td>木工</td>
+  <td>木材及相关稀有资源为主，其他稀有资源与加工品为辅</td>
+  <td>工具</td>
+</tr>
+<tr>
+  <td>附魔</td>
+  <td>各类基础资源及加工品</td>
+  <td>通过附魔增强装备，可采用直接服务或附魔道具的形式</td>
+</tr>
+<tr>
+  <td>烹饪</td>
+  <td>农作物、其他植物、狩猎动物资源、鱼类及相关稀有资源</td>
+  <td>食品，食用后为角色提供效果</td>
+</tr>
+<tr>
+  <td>制药</td>
+  <td>挖矿、伐木、农业与钓鱼获取的资源</td>
+  <td>药品，使用后为角色提供效果</td>
+</tr>
+</tbody>
+</table></div>
+<p>上述范围用于明确职业定位，实际原料组合与职业依赖由具体配方确定。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-19"><span class="sub-number">4.3</span>产品用途与职业关联</h3>
+<p class="topic-label"><strong>产品用途：</strong></p>
+<div class="exhibit-title"><strong>表4-3 产品分类与用途</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>分类</th>
+  <th>包含内容</th>
+  <th>主要用途</th>
+  <th>规则边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>装备类</td>
+  <td>工具、铠甲、衣物、饰品</td>
+  <td>支持生产能力、生产相关挑战或常规PVP/PVE</td>
+  <td>适用场景按装备规则确定</td>
+</tr>
+<tr>
+  <td>装备增强类</td>
+  <td>宝石、附魔相关产物或服务</td>
+  <td>宝石用于镶嵌，附魔提供增强效果</td>
+  <td>按各自产物与服务规则区分效果及成本</td>
+</tr>
+<tr>
+  <td>直接使用的消耗品</td>
+  <td>食品、药品</td>
+  <td>使用后为角色提供效果</td>
+  <td>增益、持续方式与适用场景按产物规则确定</td>
+</tr>
+</tbody>
+</table></div>
+<p class="topic-label"><strong>职业关联：</strong></p>
+<p>资源获取职业提供原料，加工职业据此制作装备、宝石与消耗品，或提供装备增强服务；部分加工品还可作为其他产品的材料。最终成果既支持生产职业自身成长，也通过交易与委托服务于其他玩法。</p>
+<p>各职业按主要原料分工，通过辅助材料与加工品相互联系，具体依赖由配方决定，不要求所有职业两两关联。</p>
+</section><section class="doc-subsection example-section"><h3 class="subsection-title example-title" id="section-20"><span class="sub-number">4.4</span>钓鱼职业设计样例<small class="example-label">案例</small></h3>
+<p>钓鱼以目标选择和配置取舍为主要策略内容，基础操作保持轻量。本节说明参与流程、结果结算及收益归属，与2.2节体验流程对应。</p>
+<p class="topic-label"><strong>参与条件与操作循环：</strong></p>
+<p>玩家持有鱼竿，在可钓水域即可开始钓鱼。装备、工具、鱼饵与水域可按目标调整，不将额外操作小游戏作为基础钓鱼的必要环节。</p>
+<p>一次基础操作为“抛竿—等待上钩提示—收竿”。收竿后，根据钓获类别获取产物或进入海怪战斗，再自行决定是否继续抛竿。</p>
+<p>玩家无需完成目标才能停止钓鱼，尚未上钩时也可提前收竿离开。已触发战斗或进入限时活动时，按对应离场规则处理。</p>
+<p class="topic-label"><strong>玩法要素与属性：</strong></p>
+<p>主要要素包括装备、渔具、鱼饵、水域、钓鱼职业等级、鱼类、海怪、宝藏及目标前置条件。主要属性包括：</p>
+<ul>
+<li>渔速：影响等待上钩的时间，上限因水域而异。</li>
+<li>海怪率：在未判定为宝藏的前提下，影响判定为海怪的概率。</li>
+<li>宝藏率：影响钓上宝藏的概率。</li>
+<li>稀有海怪率：影响钓上海怪时，该海怪属于稀有目标的概率。</li>
+<li>海怪增伤与海怪抵抗：钓鱼装备可提供的海怪战斗专属属性。</li>
+</ul>
+<p>装备主要影响常规属性，鱼饵可提供常规属性或条件效果。水域影响区域属性上限与产物范围，目标前置条件影响特定产物能否上钩。</p>
+<p>设有水域上限的属性，超出部分不再生效。各项属性未必能同时达到上限，玩家需结合目标与水域条件取舍。</p>
+<p>鱼饵效果示例（非正式配置）：渔速饵提高渔速，夜饵在夜间提高渔速，分别说明常规加成与条件加成。</p>
+<p class="topic-label"><strong>结果结算与目标配置：</strong></p>
+<p>鱼类、海怪与宝藏在上钩前的表现一致，收竿时按以下顺序判定类别：</p>
+<ol>
+<li>根据有效宝藏率判定是否获得宝藏；成功则结算为宝藏，不再进行海怪判定。</li>
+<li>未判定为宝藏时，根据有效海怪率判定是否出现海怪；成功则结算为海怪。</li>
+<li>两次判定均未成功时，结算为普通鱼。</li>
+</ol>
+<p>有效属性指按当前条件计算，并受对应水域上限约束后的属性。设有效宝藏率为T、有效海怪率为M，均以0到1表示，则最终类别概率为：</p>
+<ul>
+<li>宝藏：T。</li>
+<li>海怪：(1 − T) × M。</li>
+<li>普通鱼：(1 − T) × (1 − M)。</li>
+</ul>
+<p>因此，海怪率不是最终海怪出现率。在其他条件不变时，提高宝藏率会减少进入海怪判定的机会，降低最终海怪出现率。判定为海怪后，稀有海怪率再影响其中稀有目标的出现概率。</p>
+<p>只有满足前置条件的目标，才进入本次可获取的产物池；不满足条件的目标直接排除。</p>
+<p>不同目标对应不同的配置方向。相关属性提高目标类别的出现机会，不等于直接保证获得指定产物。</p>
+<p>目标获取具有概率性。海怪相关资源还需经历海怪出现、完成讨伐与掉落结算，因此无法保证在一次短期体验中完成目标。玩家可保留已获得的产物，并自行决定继续尝试或结束游玩。</p>
+<p>目标配置示例（非正式产物表）：假设潮涌宝石位于宝藏产物池，虎鲨位于海怪产物池，玩家可分别偏向提高宝藏率或海怪率，以追求对应目标。</p>
+<p class="topic-label"><strong>产物获取与收益归属：</strong></p>
+<ul>
+<li>普通钓获产物直接进入背包。</li>
+<li>普通大世界海怪出现后进入战斗，击败后结算资源；主要收益归钓获该海怪的玩家。</li>
+<li>其他参与战斗的玩家可获得一份协助战利品。</li>
+<li>副本与大型讨伐目标不直接套用上述归属方式，其分配规则单独设计。</li>
+</ul>
+<p class="topic-label"><strong>目标前置条件与水域环境：</strong></p>
+<p>部分稀有目标设有特定前置条件，天气是其中一种，并非所有钓鱼活动都要求特定天气。这些条件应形成路线选择、准备与挑战，而非仅增加等待。</p>
+<p>水域可分布于原有大世界或新增区域。玩家既可选择长期处于雨天或晴天的水域，也可通过行为改变局部条件，例如钓上海怪以积累落雷值。环境变化仅作用于当前水域，不影响其他区域。</p>
+<p class="topic-label"><strong>成长方向与协作活动：</strong></p>
+<p>内容解锁后，玩家可探索新水域、选择海怪或宝藏目标，并挑战更多海怪。</p>
+<p>秘境海域可采用独立副本形式：玩家主动购买船票进入，在时限内钓鱼，有机会钓上传奇海怪并通过多人讨伐获取产物，以稀有目标和共同挑战组织钓鱼聚会。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-21"><span class="chapter-number" aria-hidden="true">05</span><span>五、成长系统设计</span></h2>
+<p>成长系统包含基础资源收集度、职业等级与数值成长，分别对应前期探索与解锁、中长期职业进度，以及能力与配置目标。三者并行推进、相互影响，不必依次完成。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-22"><span class="sub-number">5.1</span>核心成长维度</h3>
+<div class="exhibit-title"><strong>表5-1 三个成长维度</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>维度</th>
+  <th>记录或体现的内容</th>
+  <th>推进方式</th>
+  <th>主要作用与目标定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>基础资源收集度</td>
+  <td>本人生产获取的基础资源种类与各类累计数量</td>
+  <td>符合统计规则的资源获取行为</td>
+  <td>以里程碑解锁配方和区域，为资源获取职业提供前期目标，并影响加工制作职业前期内容开放</td>
+</tr>
+<tr>
+  <td>职业等级</td>
+  <td>职业经验与等级进度</td>
+  <td>通过有效生产行为获得经验</td>
+  <td>提供属性成长、区域解锁与物品使用权限，承载中长期进度</td>
+</tr>
+<tr>
+  <td>数值成长</td>
+  <td>多种来源共同形成的能力与配置</td>
+  <td>职业等级、物品收集、装备与工具等途径</td>
+  <td>影响效率与策略，以各生产方向的数值毕业为终极成长目标</td>
+</tr>
+</tbody>
+</table></div>
+<p>数值成长是多种来源共同形成的能力结果，不另设独立经验进度。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-23"><span class="sub-number">5.2</span>基础资源收集度</h3>
+<p class="topic-label"><strong>统计范围：</strong></p>
+<p>仅统计玩家本人通过生产行为获取的基础资源，同时记录已获取的资源种类与每种资源的累计获取数量。购买或接收其他玩家交付的资源不计入收集度；本人承接委托并亲自生产获取的基础资源，仍按实际生产行为统计。</p>
+<p>资源种类反映探索范围，累计数量反映对应资源的收集进度。具体统计条目与里程碑要求按资源规则确定。</p>
+<p class="topic-label"><strong>解锁作用：</strong></p>
+<p>收集里程碑用于解锁配方与区域，支持前期目标推进。相关配方的开放也影响加工与制作职业接触内容的节奏，具体对应关系按配方和区域条目设定。</p>
+<p>配方解锁条件与制作材料消耗分别设计：收集里程碑决定是否获得配方权限，实际制作仍需满足对应材料要求。</p>
+<div class="exhibit-title"><strong>图5-1 基础资源收集度统计</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：基础资源收集度判定流程图"><img width="665" height="954" style="width:100%;aspect-ratio:665/954" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iDQogImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIEdlbmVyYXRlZCBieSBncmFwaHZpeiB2ZXJzaW9uIDEyLjIuMSAoMjAyNDEyMDYuMjM1MykNCiAtLT4NCjwhLS0gVGl0bGU6IEcgUGFnZXM6IDEgLS0+DQo8c3ZnIHdpZHRoPSI2NjVwdCIgaGVpZ2h0PSI5NTRwdCINCiB2aWV3Qm94PSIwLjAwIDAuMDAgNjY0LjcwIDk1NC4yOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQo8ZyBpZD0iZ3JhcGgwIiBjbGFzcz0iZ3JhcGgiIHRyYW5zZm9ybT0ic2NhbGUoMSAxKSByb3RhdGUoMCkgdHJhbnNsYXRlKDIxLjYgOTMyLjY4KSI+DQo8dGl0bGU+RzwvdGl0bGU+DQo8cG9seWdvbiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSJub25lIiBwb2ludHM9Ii0yMS42LDIxLjYgLTIxLjYsLTkzMi42OCA2NDMuMSwtOTMyLjY4IDY0My4xLDIxLjYgLTIxLjYsMjEuNiIvPg0KPCEtLSBBJiM0NTsmZ3Q7QiAtLT4NCjxnIGlkPSJlZGdlMSIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPkEmIzQ1OyZndDtCPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik00MDUuODMsLTg3MS4yNUM0MDUuODMsLTg2MS45MSA0MDUuODMsLTg1MC4xNiA0MDUuODMsLTgzOC41MSIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSI0MDguNjQsLTgzOC42MiA0MDUuODQsLTgzMC42MiA0MDMuMDQsLTgzOC42MiA0MDguNjQsLTgzOC42MiIvPg0KPC9nPg0KPCEtLSBCJiM0NTsmZ3Q7QyAtLT4NCjxnIGlkPSJlZGdlMiIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPkImIzQ1OyZndDtDPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0zNjkuNjgsLTc1NS4zQzM0NC4xNCwtNzMyLjU0IDMwOS4zOCwtNzAxLjU3IDI4MC4wOSwtNjc1LjQ3Ii8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjI4MS45NiwtNjczLjM5IDI3NC4xMiwtNjcwLjE2IDI3OC4yMywtNjc3LjU3IDI4MS45NiwtNjczLjM5Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIzNDMuNjEiIHk9Ii03MTMuNDkiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuaYrzwvdGV4dD4NCjwvZz4NCjwhLS0gQiYjNDU7Jmd0O0ggLS0+DQo8ZyBpZD0iZWRnZTMiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5CJiM0NTsmZ3Q7SDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNNDEyLjM2LC03NDkuNjJDNDIzLjUsLTY4NC45MSA0NDUuOTUsLTU1NC41MyA0NTUuODksLTQ5Ni43NCIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSI0NTguNjQsLTQ5Ny4yOSA0NTcuMjQsLTQ4OC45MyA0NTMuMTIsLTQ5Ni4zNCA0NTguNjQsLTQ5Ny4yOSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNDUxLjU3IiB5PSItNjE5LjcxIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE1LjAwIiBmaWxsPSIjMzMzODNkIj7lkKY8L3RleHQ+DQo8L2c+DQo8IS0tIEMmIzQ1OyZndDtEIC0tPg0KPGcgaWQ9ImVkZ2U0IiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+QyYjNDU7Jmd0O0Q8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTIyMi44MywtNTYwLjk5QzIyMi44MywtNTQzLjE1IDIyMi44MywtNTI0LjE1IDIyMi44MywtNTA4LjAxIi8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjIyNS42NCwtNTA4LjE4IDIyMi44NCwtNTAwLjE4IDIyMC4wNCwtNTA4LjE4IDIyNS42NCwtNTA4LjE4Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIyMzAuMzMiIHk9Ii01MjUuOTMiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuaYrzwvdGV4dD4NCjwvZz4NCjwhLS0gQyYjNDU7Jmd0O0ggLS0+DQo8ZyBpZD0iZWRnZTUiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5DJiM0NTsmZ3Q7SDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjg1LjA2LC01ODIuMDlDMzI4Ljg1LC01NTMuNjggMzg2LjA0LC01MTYuNTcgNDIzLjEsLTQ5Mi41MiIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSI0MjQuNDQsLTQ5NC45OSA0MjkuNjIsLTQ4OC4yOSA0MjEuMzksLTQ5MC4zIDQyNC40NCwtNDk0Ljk5Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIzODQuNTYiIHk9Ii01MjUuOTMiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuWQpjwvdGV4dD4NCjwvZz4NCjwhLS0gRCYjNDU7Jmd0O0UgLS0+DQo8ZyBpZD0iZWRnZTYiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5EJiM0NTsmZ3Q7RTwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjIyLjgzLC00MzUuNjVDMjIyLjgzLC00MjUuMjEgMjIyLjgzLC00MTMuNTQgMjIyLjgzLC00MDMuMTkiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMjI1LjY0LC00MDMuMiAyMjIuODQsLTM5NS4yIDIyMC4wNCwtNDAzLjIgMjI1LjY0LC00MDMuMiIvPg0KPC9nPg0KPCEtLSBFJiM0NTsmZ3Q7RiAtLT4NCjxnIGlkPSJlZGdlNyIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPkUmIzQ1OyZndDtGPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0yMjIuODMsLTM1My4wN0MyMjIuODMsLTM0My43MyAyMjIuODMsLTMzMS45OCAyMjIuODMsLTMyMC4zMyIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIyMjUuNjQsLTMyMC40NCAyMjIuODQsLTMxMi40NCAyMjAuMDQsLTMyMC40NCAyMjUuNjQsLTMyMC40NCIvPg0KPC9nPg0KPCEtLSBGJiM0NTsmZ3Q7RyAtLT4NCjxnIGlkPSJlZGdlOCIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPkYmIzQ1OyZndDtHPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0xOTQuMTEsLTIzNi4zOUMxNzcuODMsLTIxNy43MSAxNTcuNCwtMTk0LjI4IDE0MC41MSwtMTc0LjkiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTQyLjc5LC0xNzMuMjUgMTM1LjQyLC0xNjkuMDYgMTM4LjU2LC0xNzYuOTMgMTQyLjc5LC0xNzMuMjUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE3Ni4yOCIgeT0iLTE5NS4zMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNS4wMCIgZmlsbD0iIzMzMzgzZCI+5pivPC90ZXh0Pg0KPC9nPg0KPCEtLSBGJiM0NTsmZ3Q7SSAtLT4NCjxnIGlkPSJlZGdlOSIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPkYmIzQ1OyZndDtJPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0yNTEuNTYsLTIzNi4zOUMyNzEuMTEsLTIxMy45NiAyOTYuNjUsLTE4NC42NyAzMTQuODUsLTE2My43OSIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIzMTYuODYsLTE2NS43NCAzMjAuMDEsLTE1Ny44NyAzMTIuNjQsLTE2Mi4wNiAzMTYuODYsLTE2NS43NCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjk4LjE0IiB5PSItMTk1LjMxIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE1LjAwIiBmaWxsPSIjMzMzODNkIj7lkKY8L3RleHQ+DQo8L2c+DQo8IS0tIEcmIzQ1OyZndDtKIC0tPg0KPGcgaWQ9ImVkZ2UxMCIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPkcmIzQ1OyZndDtKPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1kYXNoYXJyYXk9IjUsMiIgZD0iTTEwNy44MywtMTA0Ljk5QzEwNy44MywtOTEuNjYgMTA3LjgzLC03Ni4wNSAxMDcuODMsLTYyLjcxIi8+DQo8L2c+DQo8IS0tIEEgLS0+DQo8ZyBpZD0ibm9kZTEiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5BPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNNDc1Ljc5LC05MTEuMDhDNDc1Ljc5LC05MTEuMDggMzM1Ljg4LC05MTEuMDggMzM1Ljg4LC05MTEuMDggMzI5Ljg4LC05MTEuMDggMzIzLjg4LC05MDUuMDggMzIzLjg4LC04OTkuMDggMzIzLjg4LC04OTkuMDggMzIzLjg4LC04ODMuMyAzMjMuODgsLTg4My4zIDMyMy44OCwtODc3LjMgMzI5Ljg4LC04NzEuMyAzMzUuODgsLTg3MS4zIDMzNS44OCwtODcxLjMgNDc1Ljc5LC04NzEuMyA0NzUuNzksLTg3MS4zIDQ4MS43OSwtODcxLjMgNDg3Ljc5LC04NzcuMyA0ODcuNzksLTg4My4zIDQ4Ny43OSwtODgzLjMgNDg3Ljc5LC04OTkuMDggNDg3Ljc5LC04OTkuMDggNDg3Ljc5LC05MDUuMDggNDgxLjc5LC05MTEuMDggNDc1Ljc5LC05MTEuMDgiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQwNS44MyIgeT0iLTg4Ni4yOSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5Y+R55Sf6LWE5rqQ6I635Y+W6KGM5Li6PC90ZXh0Pg0KPC9nPg0KPCEtLSBCIC0tPg0KPGcgaWQ9Im5vZGUyIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+QjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTM5NC4wMywtODI2LjEyQzM5NC4wMywtODI2LjEyIDIwMS45NywtNzkwLjcgMjAxLjk3LC03OTAuNyAxOTYuMDcsLTc4OS42MSAxOTYuMDcsLTc4Ny40MyAyMDEuOTcsLTc4Ni4zNCAyMDEuOTcsLTc4Ni4zNCAzOTQuMDMsLTc1MC45MiAzOTQuMDMsLTc1MC45MiAzOTkuOTMsLTc0OS44MyA0MTEuNzQsLTc0OS44MyA0MTcuNjQsLTc1MC45MiA0MTcuNjQsLTc1MC45MiA2MDkuNywtNzg2LjM0IDYwOS43LC03ODYuMzQgNjE1LjYsLTc4Ny40MyA2MTUuNiwtNzg5LjYxIDYwOS43LC03OTAuNyA2MDkuNywtNzkwLjcgNDE3LjY0LC04MjYuMTIgNDE3LjY0LC04MjYuMTIgNDExLjc0LC04MjcuMjEgMzk5LjkzLC04MjcuMjEgMzk0LjAzLC04MjYuMTIiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQwNS44MyIgeT0iLTc4My42MiIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5piv5ZCm5pys5Lq66YCa6L+H55Sf5Lqn6I635Y+W77yfPC90ZXh0Pg0KPC9nPg0KPCEtLSBDIC0tPg0KPGcgaWQ9Im5vZGUzIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+QzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTIxMS40OSwtNjgxLjg0QzIxMS40OSwtNjgxLjg0IDUzLjAxLC02MjcuMzYgNTMuMDEsLTYyNy4zNiA0Ny4zNCwtNjI1LjQxIDQ3LjM0LC02MjEuNTEgNTMuMDEsLTYxOS41NiA1My4wMSwtNjE5LjU2IDIxMS40OSwtNTY1LjA4IDIxMS40OSwtNTY1LjA4IDIxNy4xNiwtNTYzLjEzIDIyOC41MSwtNTYzLjEzIDIzNC4xOCwtNTY1LjA4IDIzNC4xOCwtNTY1LjA4IDM5Mi42NiwtNjE5LjU2IDM5Mi42NiwtNjE5LjU2IDM5OC4zMywtNjIxLjUxIDM5OC4zMywtNjI1LjQxIDM5Mi42NiwtNjI3LjM2IDM5Mi42NiwtNjI3LjM2IDIzNC4xOCwtNjgxLjg0IDIzNC4xOCwtNjgxLjg0IDIyOC41MSwtNjgzLjc5IDIxNy4xNiwtNjgzLjc5IDIxMS40OSwtNjgxLjg0Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIyMjIuODMiIHk9Ii02MjkuODEiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuaYr+WQpuWxnuS6jue7n+iuoeiMg+WbtOWGhTwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIyMi44MyIgeT0iLTYwNy4zMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+55qE5Z+656GA6LWE5rqQ77yfPC90ZXh0Pg0KPC9nPg0KPCEtLSBEIC0tPg0KPGcgaWQ9Im5vZGU0IiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+RDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTI5Mi43OSwtNDk4LjE4QzI5Mi43OSwtNDk4LjE4IDE1Mi44OCwtNDk4LjE4IDE1Mi44OCwtNDk4LjE4IDE0Ni44OCwtNDk4LjE4IDE0MC44OCwtNDkyLjE4IDE0MC44OCwtNDg2LjE4IDE0MC44OCwtNDg2LjE4IDE0MC44OCwtNDQ3LjkgMTQwLjg4LC00NDcuOSAxNDAuODgsLTQ0MS45IDE0Ni44OCwtNDM1LjkgMTUyLjg4LC00MzUuOSAxNTIuODgsLTQzNS45IDI5Mi43OSwtNDM1LjkgMjkyLjc5LC00MzUuOSAyOTguNzksLTQzNS45IDMwNC43OSwtNDQxLjkgMzA0Ljc5LC00NDcuOSAzMDQuNzksLTQ0Ny45IDMwNC43OSwtNDg2LjE4IDMwNC43OSwtNDg2LjE4IDMwNC43OSwtNDkyLjE4IDI5OC43OSwtNDk4LjE4IDI5Mi43OSwtNDk4LjE4Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIyMjIuODMiIHk9Ii00NzMuMzkiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuiusOW9leW3suiOt+WPluenjeexuzwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIyMi44MyIgeT0iLTQ1MC44OSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+57Sv5Yqg5a+55bqU6LWE5rqQ5pWw6YePPC90ZXh0Pg0KPC9nPg0KPCEtLSBFIC0tPg0KPGcgaWQ9Im5vZGU1IiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+RTwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTMwMS40MiwtMzkyLjlDMzAxLjQyLC0zOTIuOSAxNDQuMjUsLTM5Mi45IDE0NC4yNSwtMzkyLjkgMTM4LjI1LC0zOTIuOSAxMzIuMjUsLTM4Ni45IDEzMi4yNSwtMzgwLjkgMTMyLjI1LC0zODAuOSAxMzIuMjUsLTM2NS4xMiAxMzIuMjUsLTM2NS4xMiAxMzIuMjUsLTM1OS4xMiAxMzguMjUsLTM1My4xMiAxNDQuMjUsLTM1My4xMiAxNDQuMjUsLTM1My4xMiAzMDEuNDIsLTM1My4xMiAzMDEuNDIsLTM1My4xMiAzMDcuNDIsLTM1My4xMiAzMTMuNDIsLTM1OS4xMiAzMTMuNDIsLTM2NS4xMiAzMTMuNDIsLTM2NS4xMiAzMTMuNDIsLTM4MC45IDMxMy40MiwtMzgwLjkgMzEzLjQyLC0zODYuOSAzMDcuNDIsLTM5Mi45IDMwMS40MiwtMzkyLjkiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjIyMi44MyIgeT0iLTM2OC4xMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5qOA5p+l5a+55bqU5pS26ZuG6YeM56iL56KRPC90ZXh0Pg0KPC9nPg0KPCEtLSBGIC0tPg0KPGcgaWQ9Im5vZGU2IiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+RjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTIxMS4xMSwtMzA3LjU1QzIxMS4xMSwtMzA3LjU1IDUzLjM5LC0yNzIuOTEgNTMuMzksLTI3Mi45MSA0Ny41MywtMjcxLjYzIDQ3LjUzLC0yNjkuMDUgNTMuMzksLTI2Ny43NyA1My4zOSwtMjY3Ljc3IDIxMS4xMSwtMjMzLjEzIDIxMS4xMSwtMjMzLjEzIDIxNi45NywtMjMxLjg1IDIyOC43LC0yMzEuODUgMjM0LjU2LC0yMzMuMTMgMjM0LjU2LC0yMzMuMTMgMzkyLjI4LC0yNjcuNzcgMzkyLjI4LC0yNjcuNzcgMzk4LjE0LC0yNjkuMDUgMzk4LjE0LC0yNzEuNjMgMzkyLjI4LC0yNzIuOTEgMzkyLjI4LC0yNzIuOTEgMjM0LjU2LC0zMDcuNTUgMjM0LjU2LC0zMDcuNTUgMjI4LjcsLTMwOC44MyAyMTYuOTcsLTMwOC44MyAyMTEuMTEsLTMwNy41NSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjIyLjgzIiB5PSItMjY1LjQ0IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7mmK/lkKbovr7liLDlr7nlupTopoHmsYLvvJ88L3RleHQ+DQo8L2c+DQo8IS0tIEcgLS0+DQo8ZyBpZD0ibm9kZTciIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5HPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMTg2LjQyLC0xNjcuNTZDMTg2LjQyLC0xNjcuNTYgMjkuMjUsLTE2Ny41NiAyOS4yNSwtMTY3LjU2IDIzLjI1LC0xNjcuNTYgMTcuMjUsLTE2MS41NiAxNy4yNSwtMTU1LjU2IDE3LjI1LC0xNTUuNTYgMTcuMjUsLTExNy4yOCAxNy4yNSwtMTE3LjI4IDE3LjI1LC0xMTEuMjggMjMuMjUsLTEwNS4yOCAyOS4yNSwtMTA1LjI4IDI5LjI1LC0xMDUuMjggMTg2LjQyLC0xMDUuMjggMTg2LjQyLC0xMDUuMjggMTkyLjQyLC0xMDUuMjggMTk4LjQyLC0xMTEuMjggMTk4LjQyLC0xMTcuMjggMTk4LjQyLC0xMTcuMjggMTk4LjQyLC0xNTUuNTYgMTk4LjQyLC0xNTUuNTYgMTk4LjQyLC0xNjEuNTYgMTkyLjQyLC0xNjcuNTYgMTg2LjQyLC0xNjcuNTYiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwNy44MyIgeT0iLTE0Mi43NyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5byA5pS+5a+55bqU6YWN5pa55p2D6ZmQ77yPPC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTA3LjgzIiB5PSItMTIwLjI3IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7mm7TmlrDljLrln5/op6PplIHmnaHku7Y8L3RleHQ+DQo8L2c+DQo8IS0tIEggLS0+DQo8ZyBpZD0ibm9kZTgiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5IPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNNTY1LjI5LC00ODYuOTNDNTY1LjI5LC00ODYuOTMgMzU2LjM4LC00ODYuOTMgMzU2LjM4LC00ODYuOTMgMzUwLjM4LC00ODYuOTMgMzQ0LjM4LC00ODAuOTMgMzQ0LjM4LC00NzQuOTMgMzQ0LjM4LC00NzQuOTMgMzQ0LjM4LC00NTkuMTUgMzQ0LjM4LC00NTkuMTUgMzQ0LjM4LC00NTMuMTUgMzUwLjM4LC00NDcuMTUgMzU2LjM4LC00NDcuMTUgMzU2LjM4LC00NDcuMTUgNTY1LjI5LC00NDcuMTUgNTY1LjI5LC00NDcuMTUgNTcxLjI5LC00NDcuMTUgNTc3LjI5LC00NTMuMTUgNTc3LjI5LC00NTkuMTUgNTc3LjI5LC00NTkuMTUgNTc3LjI5LC00NzQuOTMgNTc3LjI5LC00NzQuOTMgNTc3LjI5LC00ODAuOTMgNTcxLjI5LC00ODYuOTMgNTY1LjI5LC00ODYuOTMiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ2MC44MyIgeT0iLTQ2Mi4xNCIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5pys5qyh5LiN5aKe5Yqg5Z+656GA6LWE5rqQ5pS26ZuG5bqmPC90ZXh0Pg0KPC9nPg0KPCEtLSBJIC0tPg0KPGcgaWQ9Im5vZGU5IiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+STwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTQzMy42NywtMTU2LjMxQzQzMy42NywtMTU2LjMxIDI0MiwtMTU2LjMxIDI0MiwtMTU2LjMxIDIzNiwtMTU2LjMxIDIzMCwtMTUwLjMxIDIzMCwtMTQ0LjMxIDIzMCwtMTQ0LjMxIDIzMCwtMTI4LjUzIDIzMCwtMTI4LjUzIDIzMCwtMTIyLjUzIDIzNiwtMTE2LjUzIDI0MiwtMTE2LjUzIDI0MiwtMTE2LjUzIDQzMy42NywtMTE2LjUzIDQzMy42NywtMTE2LjUzIDQzOS42NywtMTE2LjUzIDQ0NS42NywtMTIyLjUzIDQ0NS42NywtMTI4LjUzIDQ0NS42NywtMTI4LjUzIDQ0NS42NywtMTQ0LjMxIDQ0NS42NywtMTQ0LjMxIDQ0NS42NywtMTUwLjMxIDQzOS42NywtMTU2LjMxIDQzMy42NywtMTU2LjMxIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIzMzcuODMiIHk9Ii0xMzEuNTIiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuS/neeVmee0r+iuoei/m+W6pu+8jOe7p+e7reeUn+S6pzwvdGV4dD4NCjwvZz4NCjwhLS0gSiAtLT4NCjxnIGlkPSJub2RlMTAiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5KPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1kYXNoYXJyYXk9IjUsMiIgZD0iTTIwMy42NywtNjIuMjhDMjAzLjY3LC02Mi4yOCAxMiwtNjIuMjggMTIsLTYyLjI4IDYsLTYyLjI4IDAsLTU2LjI4IDAsLTUwLjI4IDAsLTUwLjI4IDAsLTEyIDAsLTEyIDAsLTYgNiwwIDEyLDAgMTIsMCAyMDMuNjcsMCAyMDMuNjcsMCAyMDkuNjcsMCAyMTUuNjcsLTYgMjE1LjY3LC0xMiAyMTUuNjcsLTEyIDIxNS42NywtNTAuMjggMjE1LjY3LC01MC4yOCAyMTUuNjcsLTU2LjI4IDIwOS42NywtNjIuMjggMjAzLjY3LC02Mi4yOCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTA3LjgzIiB5PSItMzcuNDkiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuWMuuWfn+iDveWQpui/m+WFpeS7jeaMieivpeWMuuWfnzwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwNy44MyIgeT0iLTE0Ljk5IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7lrozmlbTmnaHku7bnu4TlkIjliKTmlq08L3RleHQ+DQo8L2c+DQo8L2c+DQo8L3N2Zz4NCg==" alt="基础资源收集度判定流程图"></button><figcaption><span>基础资源收集度判定流程图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>图仅说明基础资源收集度的统计与里程碑检查，不适用于职业经验或其他成长收益；区域解锁仍按5.5节的完整条件判断。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-24"><span class="sub-number">5.3</span>职业等级</h3>
+<p>玩家通过生产行为获得职业经验，累积经验提升等级。等级承担中长期成长进度，主要作用包括：</p>
+<ul>
+<li>提供职业相关属性提升。</li>
+<li>作为部分区域的解锁条件。</li>
+<li>解锁物品使用权限。</li>
+</ul>
+<p>不同职业的有效生产行为、经验获取量、升级曲线与等级收益，在各职业成长规则中细化。等级与收集度分别记录，不将二者视为同一进度的重复表达。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-25"><span class="sub-number">5.4</span>数值成长与毕业目标</h3>
+<p>数值成长综合体现多个来源带来的能力变化：</p>
+<ul>
+<li>职业等级提供的属性成长。</li>
+<li>物品收集带来的能力提升。</li>
+<li>装备与工具提供的属性及配置选择。</li>
+<li>其他与职业玩法相关的成长来源。</li>
+</ul>
+<p>数值提升影响生产效率与配置策略。各职业分别确定属性的计算与生效规则，包括是否设上限、上限作用范围及超出部分的处理，不沿用某一职业样例作为通用规则。</p>
+<p>数值毕业按生产方向与配置目标分别设定，不采用唯一毕业路线，也不要求所有属性同时达到上限。达到某一方向的毕业目标后，玩家仍可尝试其他配置，或继续收集、挑战、供货与协作。</p>
+<div class="exhibit-title"><strong>图5-2 成长维度之间的联系</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：基础资源收集度、职业等级与数值成长关系图"><img width="1140" height="1040" style="width:100%;aspect-ratio:1140/1040" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTQwIiBoZWlnaHQ9IjEwNDAiIHZpZXdCb3g9IjAgMCAxMTQwIDEwNDAiPg0KPHRpdGxlPuaIkOmVv+e7tOW6puS5i+mXtOeahOiBlOezuzwvdGl0bGU+PGRlc2M+5bGV56S65q2j5paH5Lit55qE6KeE5YiZ5YWz57O75LiO5Y+v5ouT5bGV5pa55ZCR44CCPC9kZXNjPg0KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0gMCAxIEwgOSA1IEwgMCA5IHoiIGZpbGw9IiM2MjY5NzAiLz48L21hcmtlcj48L2RlZnM+DQo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ3aGl0ZSIvPg0KPGcgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSwgc2Fucy1zZXJpZiIgZmlsbD0iIzFEMjMyOSIgZm9udC13ZWlnaHQ9IjQwMCI+PHBhdGggZD0iTSA1NzAsMTMwIEwgNTcwLDE3NSBMIDE5MCwxNzUgTCAxOTAsMjM1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA1NzAsMTc1IEwgNTcwLDIzNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNTcwLDE3NSBMIDk1MCwxNzUgTCA5NTAsMjM1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSAxOTAsMzMwIEwgMTkwLDQ3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNTcwLDMzMCBMIDU3MCwzOTAgTCAzMzAsMzkwIEwgMzMwLDUwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gMzMwLDUyMCBMIDgxMCw1MjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDk1MCwzMzAgTCA5NTAsNDcwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA0MzAsMjg1IEwgMzg1LDI4NSBMIDM4NSw3MzUgTCA0MzAsNzM1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA5NTAsNTcwIEwgOTUwLDYzMCBMIDcxMCw2MzAgTCA3MTAsNzM1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA1NzAsNzgwIEwgNTcwLDg1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNDMwLDg5MCBMIDI1LDg5MCBMIDI1LDkwIEwgNDQwLDkwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHJlY3QgeD0iNDQwIiB5PSI1MCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI4MCIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iNTcwLjAiIHk9Ijk2LjAiPueUn+S6p+ihjOS4ujwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNTAiIHk9IjIzNSIgd2lkdGg9IjI4MCIgaGVpZ2h0PSI5NSIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iMTkwLjAiIHk9IjI4OC41Ij7ln7rnoYDotYTmupDmlLbpm4borrDlvZU8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjQzMCIgeT0iMjM1IiB3aWR0aD0iMjgwIiBoZWlnaHQ9Ijk1IiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI1NzAuMCIgeT0iMjg4LjUiPuiBjOS4mue7j+mqjOS4juetiee6pzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iODEwIiB5PSIyMzUiIHdpZHRoPSIyODAiIGhlaWdodD0iOTUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9Ijk1MC4wIiB5PSIyODguNSI+6I635b6X5p2Q5paZ5LiO54mp5ZOBPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI1MCIgeT0iNDcwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjEwMCIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iMTkwLjAiIHk9IjUxMi43Ij7mjInnm67moIfliIbliKvphY3nva7nmoQ8L3RzcGFuPjx0c3BhbiB4PSIxOTAuMCIgeT0iNTM5LjMiPumFjeaWue+8j+WGheWuueino+mUgeadoeS7tjwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iODEwIiB5PSI0NzAiIHdpZHRoPSIyODAiIGhlaWdodD0iMTAwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI5NTAuMCIgeT0iNTEyLjciPuijheWkh+OAgeW3peWFt+WPijwvdHNwYW4+PHRzcGFuIHg9Ijk1MC4wIiB5PSI1MzkuMyI+5YW25LuW5oiQ6ZW/5oqV5YWlPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI0MzAiIHk9IjY5MCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSI5MCIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iNTcwLjAiIHk9Ijc0MS4wIj7mlbDlgLzog73lipvkuI7phY3nva7lj5jljJY8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjQzMCIgeT0iODUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjgwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI1NzAuMCIgeT0iODgyLjciPuaViOeOh+OAgeetlueVpeS4juWPr+mAiTwvdHNwYW4+PHRzcGFuIHg9IjU3MC4wIiB5PSI5MDkuMyI+55Sf5Lqn5YaF5a655Y+Y5YyWPC90c3Bhbj48L3RleHQ+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iNTcwIiB5PSI5NzEuNyI+5ZCE55uu5qCH54us56uL6YWN572u5p2h5Lu277yM5LiN57uf5LiA6KaB5rGC5pS26ZuG5bqm5LiO562J57qn5ZCM5pe25ruh6Laz44CCPC90c3Bhbj48dHNwYW4geD0iNTcwIiB5PSI5OTguMyI+5LiJ57G75oiQ6ZW/5bm26KGM77yM5pWw5YC85oiQ6ZW/5LiN5Y+m6K6+54us56uL57uP6aqM5p2h44CCPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSIxMzMuMCIgeT0iMTgwLjIiIHdpZHRoPSIxNzQuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjIyMCIgeT0iMjAwLjAiPuespuWQiOacrOS6uueUn+S6p+e7n+iuoeinhOWImTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNTE1LjAiIHk9IjE4NS4yIiB3aWR0aD0iMTEwLjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI1NzAiIHk9IjIwNS4wIj7ojrflj5bogYzkuJrnu4/pqow8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjkxMS4wIiB5PSIxODUuMiIgd2lkdGg9Ijc4LjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI5NTAiIHk9IjIwNS4wIj7ojrflvpfkuqfniak8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjE0My4wIiB5PSIzOTAuMiIgd2lkdGg9Ijk0LjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSIxOTAiIHk9IjQxMC4wIj7mlLbpm4bph4znqIvnopE8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjQyMS4wIiB5PSIzNTUuMiIgd2lkdGg9Ijc4LjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI0NjAiIHk9IjM3NS4wIj7nrYnnuqfmnaHku7Y8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjQ5OS4wIiB5PSI0ODAuMiIgd2lkdGg9IjE0Mi4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iNTcwIiB5PSI1MDAuMCI+5byA5pS+5a+55bqU5Yi25L2c5p2D6ZmQPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI4OTUuMCIgeT0iMzkwLjIiIHdpZHRoPSIxMTAuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9Ijk1MCIgeT0iNDEwLjAiPueUqOS6juaIkOmVv+aKleWFpTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iMzMwLjAiIHk9IjYwMC4yIiB3aWR0aD0iMTEwLjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSIzODUiIHk9IjYyMC4wIj7nrYnnuqflsZ7mgKfmiJDplb88L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjgxNy4wIiB5PSI1OTAuMiIgd2lkdGg9IjEyNi4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iODgwIiB5PSI2MTAuMCI+6KOF5aSH5LiO5bel5YW36IO95YqbPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSIxNDkuMCIgeT0iODQ1LjIiIHdpZHRoPSIxNDIuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjIyMCIgeT0iODY1LjAiPumAieaLqeWQjue7reeUn+S6p+aWueWQkTwvdHNwYW4+PC90ZXh0PjwvZz48L3N2Zz4NCg==" alt="基础资源收集度、职业等级与数值成长关系图"></button><figcaption><span>基础资源收集度、职业等级与数值成长关系图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>箭头表示成长作用，不表示全部玩家都必须依次完成的解锁路线；区域、配方和物品的具体条件分别配置。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-26"><span class="sub-number">5.5</span>区域解锁条件</h3>
+<p>各区域分别设置解锁条件，明确对应的成长要求及条件组合，不统一采用相同门槛。</p>
+<p>收集里程碑与职业等级均可参与区域解锁，但不预设所有区域都必须同时满足二者。具体条件、要求与开放顺序在区域条目中确定；物品使用条件独立设置，具体原则见6.1节。</p>
+</section><section class="doc-subsection example-section"><h3 class="subsection-title example-title" id="section-27"><span class="sub-number">5.6</span>成长联动示例：挖矿<small class="example-label">案例</small></h3>
+<p>本节用一条挖矿路线说明三类成长的联动。矿物、工具、属性、等级条件及数值均为示例，不作为正式配置。M1、M2表示各资源的收集里程碑阶段，所需数量按资源分别设定。</p>
+<p class="topic-label"><strong>示例属性与资源：</strong></p>
+<ul>
+<li>挖掘速度：与矿物硬度共同影响开采耗时。</li>
+<li>挖掘强度：决定能够开采哪些矿物。</li>
+<li>挖掘精度：影响开采产量。</li>
+<li>稀有挖掘：影响稀有产物掉落率。</li>
+</ul>
+<p>示例包含三种矿物：</p>
+<ul>
+<li>赤铁矿：挖掘强度要求为1，硬度低。</li>
+<li>精金矿：挖掘强度要求为2，硬度中。</li>
+<li>黯晶矿：挖掘强度要求为3，硬度高。</li>
+</ul>
+<p class="topic-label"><strong>成长路线：</strong></p>
+<ol>
+<li>初始开采：初始镐子的挖掘强度为1，仅能开采赤铁矿。</li>
+<li>提升强度：赤铁矿收集度达到M1，解锁赤铁镐配方。获得赤铁镐后，强度提升至2，能够开采精金矿。</li>
+<li>改善效率：精金矿收集度达到M1，解锁精金镐配方。获得精金镐后，挖掘速度提升，加快后续积累。</li>
+<li>拓展开采能力：精金矿收集度达到M2，解锁精金钻头配方。获得钻头后，强度提升至3，具备开采黯晶矿的能力。</li>
+<li>满足等级要求：黯晶矿区要求挖矿职业达到5级。玩家继续开采精金矿积累经验；等级带来的精度提升增加单次产量，进一步提高收集效率。</li>
+<li>追求额外成长：玩家前期开采赤铁矿时还解锁了提灯配方，需用一颗稀有赤铁制作，完成后可通过光环提高挖掘速度。示例玩家返回赤铁矿获取材料，再制作提灯。</li>
+<li>进入新区域：获得精金钻头并达到挖矿5级后，进入黯晶矿区开采新资源。</li>
+</ol>
+<p>解锁配方只开放制作权限，不直接授予工具。提灯仅用于示意额外成长道具，不限定正式道具的形态、获取方式、加成或参与要求；例中的稀有掉落也不保证在固定时长内获得。</p>
+<p class="topic-label"><strong>本例的成长关系：</strong></p>
+<p>收集里程碑解锁配方，工具强度拓展开采范围，速度与精度改善获取效率，职业等级提供属性成长及区域权限。开采能力与区域准入分别判定，获得高强度工具不等于立即进入新矿区。</p>
+<p>额外道具的材料需求为低阶资源提供回访理由，具体采用普通材料还是稀有掉落，由道具定位决定。</p>
+<p class="topic-label"><strong>示例数值与工具收益测算：</strong></p>
+<p>为检验工具的阶段收益，分别比较达到M2与备齐钻头材料两个节点。假设每次开采获得1块精金矿，里程碑按累计获取量统计，材料消耗不扣减收集进度；不计精度变化、移动、资源刷新、制作耗时及材料交易的机会成本。材料核对另假设没有其他消耗或出售。</p>
+<ul>
+<li>赤铁镐开采精金矿：每次2秒。</li>
+<li>精金镐开采精金矿：每次1.5秒。</li>
+<li>精金矿M1：累计收集100块；M2：累计收集500块。</li>
+<li>精金镐制作消耗：80块精金矿。</li>
+<li>精金钻头制作消耗：600块精金矿。</li>
+</ul>
+<p>从M1推进到M2，还需收集400块精金矿，对应开采时间为：</p>
+<ul>
+<li>继续使用赤铁镐：400 × 2 = 800秒，即13分20秒。</li>
+<li>改用精金镐：400 × 1.5 = 600秒，即10分钟。</li>
+<li>开采时间减少200秒，即3分20秒，降幅为25%。</li>
+</ul>
+<p>达到M1时持有100块精金矿，制作精金镐后剩余20块；再获取400块达到M2时，持有420块，距钻头所需的600块还差180块。因此，M2开放的是钻头配方，玩家仍需继续获取材料，不能在解锁时立即制作。80块制作消耗不扣减累计收集度，但会减少可用库存。</p>
+<p>若从M1继续比较至备齐钻头材料：</p>
+<ul>
+<li>不制作精金镐：已有100块，还需开采500块，耗时500 × 2 = 1000秒，即16分40秒。</li>
+<li>制作精金镐：制作后剩余20块，还需开采580块，耗时580 × 1.5 = 870秒，即14分30秒。</li>
+<li>计入80块材料支出后，开采时间净减少130秒，即2分10秒，降幅为13%。</li>
+</ul>
+<p>在上述假设下，精金镐能缩短达到M2和备齐钻头材料的时间，计入制作材料支出后仍有收益。该测算仅说明假设条件下的阶段效率价值，不代表完整成长节奏或市场收益。</p>
+<p class="topic-label"><strong>工具与职业等级的衔接：</strong></p>
+<p>将达到挖矿5级所需经验记为100%。示例设定极限工具推进路线在取得钻头时达到80%，仍需补足20%才能进入矿区。该比例是节奏设计目标，并非由上述开采时间模型推得；经验比例也不等于用时比例，补级时长需结合经验曲线、有效生产行为及获取效率计算。</p>
+<p>常规路线预期通过解锁配方、获取材料与制作道具所需的额外生产行为，自然补充经验，使工具与等级进度衔接。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-28"><span class="chapter-number" aria-hidden="true">06</span><span>六、经济与资源流转设计</span></h2>
+<p>经济设计以资源的实际用途为基础，通过玩家交易、NPC交换及装备成长连接供需。多数物品允许流通，同时保留明确的不可交易物品；长期消耗支持阶段成长与多种配置，不以无限数值增长为前提。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-29"><span class="sub-number">6.1</span>流通原则与权限条件</h3>
+<p>物品能否交易、直接获取、制作与使用，分别判断：</p>
+<div class="exhibit-title"><strong>表6-1 物品的四类独立条件</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>条件类别</th>
+  <th>判断内容</th>
+  <th>与其他条件的关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>交易条件</td>
+  <td>是否允许在玩家之间转移或买卖</td>
+  <td>可交易不等于可直接获取、制作或使用</td>
+</tr>
+<tr>
+  <td>直接获取条件</td>
+  <td>是否满足指定NPC、生产或其他来源的获取要求</td>
+  <td>来源门槛不自动成为使用门槛</td>
+</tr>
+<tr>
+  <td>制作条件</td>
+  <td>是否具备配方与其他制作资格</td>
+  <td>通常决定制作权限，不自动决定使用权限</td>
+</tr>
+<tr>
+  <td>使用条件</td>
+  <td>是否满足物品明确规定的装备或使用要求</td>
+  <td>购买与持有不能绕过使用条件</td>
+</tr>
+</tbody>
+</table></div>
+<p>购买物品不能绕过使用条件。配方解锁通常用于开放制作权限；只有明确注明“使用也需要解锁配方”的物品，才将该配方设为使用条件。NPC购买门槛同样不自动成为使用门槛，是否适用需按物品分别说明。</p>
+<p>多数基础资源、加工品与成品允许交易，部分专精资源等物品仅供本人使用。强化、附魔、镶嵌后的装备仍按物品规则交易，交易不解除使用条件。各物品条目需明确交易例外及获取、使用条件。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-30"><span class="sub-number">6.2</span>交易途径、手续费与资源流向</h3>
+<p class="topic-label"><strong>交易途径：</strong></p>
+<ol>
+<li><p>集市</p>
+<p>用于基础资源交易，支持大宗买卖与买卖挂单撮合。买方可挂买单，卖方可挂卖单；急需资源时可按已有卖单价购买，急需出售时可按已有买单价卖出。</p>
+<p>手续费由买方单边承担：买方支付资源成交金额及手续费，卖方获得资源成交金额。</p>
+</li>
+<li><p>交易行</p>
+<p>面向装备及可能存在个体差异的道具，支持直接购买与拍卖，不提供集市式买卖挂单。成交时买卖双方分别承担手续费。</p>
+</li>
+<li><p>玩家直接交易</p>
+<p>支持玩家直接交换符合流通规则的物品与货币，并按各自的转移行为收取费用：取得物品的一方承担物品收取费，给予货币的一方在转移金额之外承担货币转移费。同一玩家同时取得物品并支付货币时，分别适用这两类费用。</p>
+<p>该收费规则仅适用于玩家直接交易，不替代集市、交易行或委托各自的费用规则。手续费承担收费职责，不作为游戏外现实货币交易（RMT）与异常价值转移的唯一防护。</p>
+</li>
+<li><p>物品委托</p>
+<p>由需求方（委托方）提出采购或制作需求，约定交付条件与报酬，适合愿意等待的稀有材料或特定道具需求。对存在个体差异的物品，订单需明确所接受的属性等条件。报酬可以由材料与货币混合组成；预付资源、履约押金与订单报酬分别记录，明确各自的用途与结算规则。订单完成时由委托方支付手续费。</p>
+<p>订单按是否预先提供资源分为两类：</p>
+<ul>
+<li>预付型：委托方设置预付资源、履约押金与委托期限；接取方提交约定押金后领取预付资源，并在期限内完成交付。预付资源与押金均可为材料或货币，两者的资源类型不必相同。</li>
+<li>提交型：不预先领取委托方资源，由提供方提交符合要求的内容，完成交付与结算。</li>
+</ul>
+<p>预付型订单的履约与取消按以下规则处理：</p>
+<ul>
+<li>正常完成：接取方按约交付后，押金返还接取方，并结算订单报酬。</li>
+<li>接取方违约：接取方未在期限内完成交付，或主动取消接取，押金不予退还，归委托方所有。</li>
+<li>委托方取消：订单被接取后，委托方主动取消订单，押金原路返还接取方，已交付的预付资源不返还委托方。</li>
+</ul>
+<p>行为类需求通过赏金小队组织，见7.5节，不以物品提交作为唯一完成标准。</p>
+</li>
+</ol>
+<div class="exhibit-title"><strong>图6-1 预付型委托履约与结算</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：预付型委托泳道图"><img width="1220" height="1320" style="width:100%;aspect-ratio:1220/1320" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjIwIiBoZWlnaHQ9IjEzMjAiIHZpZXdCb3g9IjAgMCAxMjIwIDEzMjAiPg0KPHRpdGxlPumihOS7mOWei+WnlOaJmOWxpee6puS4jue7k+eul+azs+mBk+WbvjwvdGl0bGU+PGRlc2M+5bGV56S65q2j5paH5Lit55qE6KeE5YiZ5YWz57O75LiO5Y+v5ouT5bGV5pa55ZCR44CCPC9kZXNjPg0KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0gMCAxIEwgOSA1IEwgMCA5IHoiIGZpbGw9IiM2MjY5NzAiLz48L21hcmtlcj48L2RlZnM+DQo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ3aGl0ZSIvPg0KPGcgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSwgc2Fucy1zZXJpZiIgZmlsbD0iIzFEMjMyOSIgZm9udC13ZWlnaHQ9IjQwMCI+PHJlY3QgeD0iMjAuMCIgeT0iMjAiIHdpZHRoPSIzOTMuMzMzMzMzMzMzMzMzMyIgaGVpZ2h0PSIxMjgwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjQkJDMUM3Ii8+PHJlY3QgeD0iMjAuMCIgeT0iMjAiIHdpZHRoPSIzOTMuMzMzMzMzMzMzMzMzMyIgaGVpZ2h0PSI1NCIgZmlsbD0iI0YxRjNGNCIgc3Ryb2tlPSIjQkJDMUM3Ii8+DQo8cmVjdCB4PSI0MTMuMzMzMzMzMzMzMzMzMyIgeT0iMjAiIHdpZHRoPSIzOTMuMzMzMzMzMzMzMzMzMyIgaGVpZ2h0PSIxMjgwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjQkJDMUM3Ii8+PHJlY3QgeD0iNDEzLjMzMzMzMzMzMzMzMzMiIHk9IjIwIiB3aWR0aD0iMzkzLjMzMzMzMzMzMzMzMzMiIGhlaWdodD0iNTQiIGZpbGw9IiNGMUYzRjQiIHN0cm9rZT0iI0JCQzFDNyIvPg0KPHJlY3QgeD0iODA2LjY2NjY2NjY2NjY2NjYiIHk9IjIwIiB3aWR0aD0iMzkzLjMzMzMzMzMzMzMzMzMiIGhlaWdodD0iMTI4MCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iI0JCQzFDNyIvPjxyZWN0IHg9IjgwNi42NjY2NjY2NjY2NjY2IiB5PSIyMCIgd2lkdGg9IjM5My4zMzMzMzMzMzMzMzMzIiBoZWlnaHQ9IjU0IiBmaWxsPSIjRjFGM0Y0IiBzdHJva2U9IiNCQkMxQzciLz4NCjxwYXRoIGQ9Ik0gMjUsNjEwIEwgMTE5NSw2MTAiIHN0cm9rZT0iI0M0QzlDRSIgc3Ryb2tlLWRhc2hhcnJheT0iNCA1IiBmaWxsPSJub25lIi8+DQo8cGF0aCBkPSJNIDI1LDg1MCBMIDExOTUsODUwIiBzdHJva2U9IiNDNEM5Q0UiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNSIgZmlsbD0ibm9uZSIvPg0KPHBhdGggZD0iTSAyNSwxMDU1IEwgMTE5NSwxMDU1IiBzdHJva2U9IiNDNEM5Q0UiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNSIgZmlsbD0ibm9uZSIvPg0KPHBhdGggZD0iTSAzNzUsMTU1IEwgMTAwNSwxNTUgTCAxMDA1LDI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gODQ1LDI4NyBMIDYxMCwyODcgTCA2MTAsMzc1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA3NzAsNDE3IEwgMTAwNSw0MTcgTCAxMDA1LDQ4NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gODQ1LDY5MCBMIDc3MCw2OTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDc3MCw3NDUgTCA4NDUsNzQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA0NTAsNzAwIEwgMzc1LDcwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gMzc1LDc0NSBMIDQ1MCw3NDUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDg0NSw5NDIgTCA3NzAsOTQyIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA0NTAsOTQyIEwgMzc1LDk0MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gMzc1LDExNDcgTCA0NTAsMTE0NyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNzcwLDExNDcgTCA4NDUsMTE0NyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjEiPjx0c3BhbiB4PSIyMTYuNjY2NjY2NjY2NjY2NjYiIHk9IjU0LjAiPuWnlOaJmOaWuTwvdHNwYW4+PC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMSI+PHRzcGFuIHg9IjYxMC4wIiB5PSI1NC4wIj7ns7vnu5/mjInnuqblpITnkIY8L3RzcGFuPjwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjEiPjx0c3BhbiB4PSIxMDAzLjMzMzMzMzMzMzMzMzMiIHk9IjU0LjAiPuaOpeWPluaWuTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNTUiIHk9IjExMCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSI5NSIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iMjE1LjAiIHk9IjE1MC4yIj7orr7nva7pooTku5jotYTmupDjgIHmirzph5E8L3RzcGFuPjx0c3BhbiB4PSIyMTUuMCIgeT0iMTc2LjgiPuiuouWNleaKpemFrOS4juacn+mZkDwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iODQ1IiB5PSIyNDUiIHdpZHRoPSIzMjAiIGhlaWdodD0iODUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjEwMDUuMCIgeT0iMjgwLjIiPuaOpeWPluiuouWNleW5tuaPkOS6pOaKvOmHkTwvdHNwYW4+PHRzcGFuIHg9IjEwMDUuMCIgeT0iMzA2LjgiPumihuWPlue6puWumumihOS7mOi1hOa6kDwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNDUwIiB5PSIzNzUiIHdpZHRoPSIzMjAiIGhlaWdodD0iODUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjYxMC4wIiB5PSI0MTAuMiI+6K6w5b2V5o6l5Y2V5Y+K6LWE5rqQ6L2s56e7PC90c3Bhbj48dHNwYW4geD0iNjEwLjAiIHk9IjQzNi44Ij7pooTku5jotYTmupDkuI7mirzph5HliIbliKvorrDlvZU8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9Ijg0NSIgeT0iNDg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjcwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSIxMDA1LjAiIHk9IjUyNi4wIj7lsaXooYzlp5TmiZg8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjU1IiB5PSI2NjUiIHdpZHRoPSIzMjAiIGhlaWdodD0iMTA1IiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSIyMTUuMCIgeT0iNzEwLjIiPuWPluW+l+espuWQiOe6puWumueahOS6pOS7mOeJqTwvdHNwYW4+PHRzcGFuIHg9IjIxNS4wIiB5PSI3MzYuOCI+5pSv5LuY5oql6YWs5Y+K5a6M5oiQ5omL57ut6LS5PC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI0NTAiIHk9IjY2NSIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxMDUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyI+PHRzcGFuIHg9IjYxMC4wIiB5PSI2OTguMyI+6K6i5Y2V5a6M5oiQ57uT566XPC90c3Bhbj48dHNwYW4geD0iNjEwLjAiIHk9IjcyMy41Ij7mlK/ku5jmiqXphazjgIHov5Tov5jmirzph5E8L3RzcGFuPjx0c3BhbiB4PSI2MTAuMCIgeT0iNzQ4LjciPuaUtuWPluWnlOaJmOaWueWujOaIkOaJi+e7rei0uTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iODQ1IiB5PSI2NjUiIHdpZHRoPSIzMjAiIGhlaWdodD0iMTA1IiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSIxMDA1LjAiIHk9IjcxMC4yIj7mjInmnJ/lrozmiJDkuqTku5g8L3RzcGFuPjx0c3BhbiB4PSIxMDA1LjAiIHk9IjczNi44Ij7pooblj5bmiqXphazkuI7ov5Tov5jmirzph5E8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjU1IiB5PSI5MDAiIHdpZHRoPSIzMjAiIGhlaWdodD0iODUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjIxNS4wIiB5PSI5NDguNSI+5Y+W5b6X5o6l5Y+W5pa55oq86YeRPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI0NTAiIHk9IjkwMCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSI4NSIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iNjEwLjAiIHk9IjkzNS4yIj7mirzph5HkuI3pgIDlm57mjqXlj5bmlrk8L3RzcGFuPjx0c3BhbiB4PSI2MTAuMCIgeT0iOTYxLjgiPui9rOW9kuWnlOaJmOaWuTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iODQ1IiB5PSI5MDAiIHdpZHRoPSIzMjAiIGhlaWdodD0iODUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjEwMDUuMCIgeT0iOTM1LjIiPuacquWcqOacn+mZkOWGheWujOaIkDwvdHNwYW4+PHRzcGFuIHg9IjEwMDUuMCIgeT0iOTYxLjgiPuaIluS4u+WKqOWPlua2iOaOpeWPljwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNTUiIHk9IjExMDUiIHdpZHRoPSIzMjAiIGhlaWdodD0iODUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjIxNS4wIiB5PSIxMTQwLjIiPuaOpeWNleWQjuWPlua2iOiuouWNlTwvdHNwYW4+PHRzcGFuIHg9IjIxNS4wIiB5PSIxMTY2LjgiPuW3suS6pOS7mOeahOmihOS7mOi1hOa6kOS4jei/lOi/mDwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNDUwIiB5PSIxMTA1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9Ijg1IiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI2MTAuMCIgeT0iMTE1My41Ij7mirzph5Hljp/ot6/ov5Tov5jmjqXlj5bmlrk8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9Ijg0NSIgeT0iMTEwNSIgd2lkdGg9IjMyMCIgaGVpZ2h0PSI4NSIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iMTAwNS4wIiB5PSIxMTUzLjUiPuWPluWbnuaKvOmHkTwvdHNwYW4+PC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjYxMCIgeT0iMTIzNi43Ij7kuInnp43nu5PnrpfliIbmlK/mjInlrp7pmYXkuovku7bliIbliKvlpITnkIbvvIzkuI3kvp3mrKHmiafooYzjgII8L3RzcGFuPjx0c3BhbiB4PSI2MTAiIHk9IjEyNjMuMyI+6aKE5LuY6LWE5rqQ5LiO5oq86YeR5Z2H5Y+v5Li65p2Q5paZ5oiW6LSn5biB44CCPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI2NjEuMCIgeT0iMTE1LjIiIHdpZHRoPSI3OC4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iNzAwIiB5PSIxMzUuMCI+5Y+R5biD6K6i5Y2VPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI1NjIuMCIgeT0iMjQ3LjIiIHdpZHRoPSIxMjYuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjYyNSIgeT0iMjY3LjAiPuaOpeWNleWQjuaMiee6puWkhOeQhjwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNDYwLjAiIHk9IjU5NCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMCIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTkiPjx0c3BhbiB4PSI2MTAuMCIgeT0iNjE2LjAiPuato+W4uOWujOaIkOWIhuaUrzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNzg0LjAiIHk9IjY0MC4yIiB3aWR0aD0iNDYuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjgwNyIgeT0iNjYwLjAiPuS6pOS7mDwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNzg0LjAiIHk9Ijc3MC4yIiB3aWR0aD0iNDYuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjgwNyIgeT0iNzkwLjAiPue7k+eulzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNDYwLjAiIHk9IjgzNCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMCIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTkiPjx0c3BhbiB4PSI2MTAuMCIgeT0iODU2LjAiPuaOpeWPluaWuei/nee6puWIhuaUrzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNDYwLjAiIHk9IjEwMzkiIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAiIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE5Ij48dHNwYW4geD0iNjEwLjAiIHk9IjEwNjEuMCI+5aeU5omY5pa55Y+W5raI5YiG5pSvPC90c3Bhbj48L3RleHQ+PC9nPjwvc3ZnPg0K" alt="预付型委托泳道图"></button><figcaption><span>预付型委托泳道图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>图呈现本节的履约与取消规则，预付资源、押金均可为材料或货币。</p>
+<p>NPC交易及其权限条件见6.3节。</p>
+<div class="exhibit-title"><strong>表6-2 交易渠道对照</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>渠道</th>
+  <th>适用对象与需求</th>
+  <th>成交方式</th>
+  <th>手续费承担方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>集市</td>
+  <td>基础资源与大宗交易</td>
+  <td>买卖挂单撮合，可直接按已有报价成交</td>
+  <td>买方单边承担；买方支付货款与手续费，卖方取得货款</td>
+</tr>
+<tr>
+  <td>交易行</td>
+  <td>装备及可能存在个体差异的道具</td>
+  <td>直接购买或拍卖，不提供集市式买卖挂单</td>
+  <td>买卖双方分别承担</td>
+</tr>
+<tr>
+  <td>玩家直接交易</td>
+  <td>符合流通规则的物品与货币交换</td>
+  <td>双方直接交换</td>
+  <td>物品取得方承担收取费；货币给予方另付转移费；同一人同时适用时分别计费</td>
+</tr>
+<tr>
+  <td>物品委托</td>
+  <td>愿意等待的采购或制作需求</td>
+  <td>预付型或提交型，按约交付</td>
+  <td>订单完成时由委托方承担</td>
+</tr>
+</tbody>
+</table></div>
+<p>直接交易的收费方式不套用于其他渠道。</p>
+<p class="topic-label"><strong>资源流向与消耗入口：</strong></p>
+<p>生产资源主要进入以下环节：</p>
+<ol>
+<li>制作与数值成长：用于产物制作、装备升级、强化、镶嵌与附魔，支持角色能力与配置发展。</li>
+<li>NPC交换与订单：提交资源换取物品、属性或成长进度，也可通过NPC订单提升亲密度。</li>
+<li>玩家交易与委托：将资源、加工品或成品交付给需求玩家，获得货币或约定报酬。</li>
+</ol>
+<p>玩家交易只转移资源与货币，不等于系统消耗。制作会消耗原料并产出新物品，NPC交换也可能在回收一种资源的同时提供另一种产出；各环节需分别记录投入与产出，最终用途决定需求能否持续。</p>
+<div class="exhibit-title"><strong>图6-2 资源流转、转换与回收</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：资源与货币的流转、转换及回收关系图"><img width="969" height="836" style="width:100%;aspect-ratio:969/836" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iDQogImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIEdlbmVyYXRlZCBieSBncmFwaHZpeiB2ZXJzaW9uIDEyLjIuMSAoMjAyNDEyMDYuMjM1MykNCiAtLT4NCjwhLS0gVGl0bGU6IEcgUGFnZXM6IDEgLS0+DQo8c3ZnIHdpZHRoPSI5NjlwdCIgaGVpZ2h0PSI4MzZwdCINCiB2aWV3Qm94PSIwLjAwIDAuMDAgOTY4LjY2IDgzNi4xNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQo8ZyBpZD0iZ3JhcGgwIiBjbGFzcz0iZ3JhcGgiIHRyYW5zZm9ybT0ic2NhbGUoMSAxKSByb3RhdGUoMCkgdHJhbnNsYXRlKDIxLjYgODE0LjU2KSI+DQo8dGl0bGU+RzwvdGl0bGU+DQo8cG9seWdvbiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSJub25lIiBwb2ludHM9Ii0yMS42LDIxLjYgLTIxLjYsLTgxNC41NiA5NDcuMDYsLTgxNC41NiA5NDcuMDYsMjEuNiAtMjEuNiwyMS42Ii8+DQo8ZyBpZD0iY2x1c3QxIiBjbGFzcz0iY2x1c3RlciI+DQo8dGl0bGU+Y2x1c3Rlcl9yZXNvdXJjZXM8L3RpdGxlPg0KPHBvbHlnb24gZmlsbD0id2hpdGUiIHN0cm9rZT0iI2FlYjRiYSIgcG9pbnRzPSI3MC40NiwtOTcuMjggNzAuNDYsLTc4NC45NiA1MTYuNDYsLTc4NC45NiA1MTYuNDYsLTk3LjI4IDcwLjQ2LC05Ny4yOCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjkzLjQ2IiB5PSItNzYxLjAxIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjIxLjAwIj7otYTmupDkuI7kuqfniak8L3RleHQ+DQo8L2c+DQo8ZyBpZD0iY2x1c3QyIiBjbGFzcz0iY2x1c3RlciI+DQo8dGl0bGU+Y2x1c3Rlcl9jdXJyZW5jeTwvdGl0bGU+DQo8cG9seWdvbiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjYWViNGJhIiBwb2ludHM9IjUyNC40NiwtOTcuMjggNTI0LjQ2LC00NjIuNjIgOTE3LjQ2LC00NjIuNjIgOTE3LjQ2LC05Ny4yOCA1MjQuNDYsLTk3LjI4Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI3MjAuOTYiIHk9Ii00MzguNjciIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMjEuMDAiPui0p+W4gTwvdGV4dD4NCjwvZz4NCjwhLS0gUCYjNDU7Jmd0O1IgLS0+DQo8ZyBpZD0iZWRnZTEiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5QJiM0NTsmZ3Q7UjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjc1LjQ2LC03MDAuNDNDMjc1LjQ2LC02OTAuNjQgMjc1LjQ2LC02NzguNTIgMjc1LjQ2LC02NjcuNjMiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMjc4LjI2LC02NjcuODkgMjc1LjQ2LC02NTkuODkgMjcyLjY2LC02NjcuODkgMjc4LjI2LC02NjcuODkiLz4NCjwvZz4NCjwhLS0gUiYjNDU7Jmd0O0MgLS0+DQo8ZyBpZD0iZWRnZTIiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5SJiM0NTsmZ3Q7QzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjUxLjM1LC02MTcuNUMyMzguMjIsLTYwNi45OSAyMjEuNTMsLTU5My42MyAyMDYuMDUsLTU4MS4yNSIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIyMDcuOTgsLTU3OS4yIDE5OS45OSwtNTc2LjM5IDIwNC40OCwtNTgzLjU4IDIwNy45OCwtNTc5LjIiLz4NCjwvZz4NCjwhLS0gUiYjNDU7Jmd0O1QgLS0+DQo8ZyBpZD0iZWRnZTQiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5SJiM0NTsmZ3Q7VDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjc3LjI3LC02MTcuNDdDMjgyLjc1LC01NTguOTMgMjk5LjIzLC0zODIuNjggMzA2LjcxLC0zMDIuODEiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMzA5LjQ5LC0zMDMuMTQgMzA3LjQ1LC0yOTQuOTIgMzAzLjkxLC0zMDIuNjIgMzA5LjQ5LC0zMDMuMTQiLz4NCjwvZz4NCjwhLS0gUiYjNDU7Jmd0O04gLS0+DQo8ZyBpZD0iZWRnZTgiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5SJiM0NTsmZ3Q7TjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMzAzLjM0LC02MTcuNUMzMTguOCwtNjA2LjggMzM4LjUzLC01OTMuMTUgMzU2LjcxLC01ODAuNTciLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMzU3LjkxLC01ODMuMTUgMzYyLjg5LC01NzYuMjkgMzU0LjcyLC01NzguNTQgMzU3LjkxLC01ODMuMTUiLz4NCjwvZz4NCjwhLS0gQyYjNDU7Jmd0O08gLS0+DQo8ZyBpZD0iZWRnZTMiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5DJiM0NTsmZ3Q7TzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMTYwLjQ2LC01MTIuMThDMTYwLjQ2LC00ODguMTIgMTYwLjQ2LC00NTQuMzkgMTYwLjQ2LC00MjguMTUiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTYzLjI2LC00MjguMzEgMTYwLjQ2LC00MjAuMzEgMTU3LjY2LC00MjguMzEgMTYzLjI2LC00MjguMzEiLz4NCjwvZz4NCjwhLS0gTyYjNDU7Jmd0O1QgLS0+DQo8ZyBpZD0iZWRnZTUiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5PJiM0NTsmZ3Q7VDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMTk3LjU0LC0zNTUuNTFDMjE4LjE4LC0zMzguNTQgMjQ0LjAzLC0zMTcuMyAyNjUuNzgsLTI5OS40MiIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIyNjcuNDgsLTMwMS42NSAyNzEuODgsLTI5NC40IDI2My45MywtMjk3LjMyIDI2Ny40OCwtMzAxLjY1Ii8+DQo8L2c+DQo8IS0tIE8mIzQ1OyZndDtVIC0tPg0KPGcgaWQ9ImVkZ2U3IiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+TyYjNDU7Jmd0O1U8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE2MC42NiwtMzU1LjY0QzE2MC45NSwtMzEwLjQxIDE2MS40NiwtMjMwLjU2IDE2MS40NiwtMjMwLjU2IDE2MS40NiwtMjMwLjU2IDE2OC42NSwtMjAyLjY2IDE3NS4xNiwtMTc3LjQxIi8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjE3Ny44NiwtMTc4LjEyIDE3Ny4xNSwtMTY5LjY4IDE3Mi40NCwtMTc2LjcyIDE3Ny44NiwtMTc4LjEyIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxOTEuNDYiIHk9Ii0yNTcuOTUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuacrOS6uuS9v+eUqDwvdGV4dD4NCjwvZz4NCjwhLS0gVCYjNDU7Jmd0O1UgLS0+DQo8ZyBpZD0iZWRnZTYiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5UJiM0NTsmZ3Q7VTwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjc5LjU2LC0yMzAuMjNDMjYyLjU4LC0yMTMuNDggMjQxLjM4LC0xOTIuNTggMjIzLjQxLC0xNzQuODUiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMjI1LjM5LC0xNzIuODcgMjE3LjczLC0xNjkuMjUgMjIxLjQ2LC0xNzYuODYgMjI1LjM5LC0xNzIuODciLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjMwNy45NCIgeT0iLTE5NS4zMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNS4wMCIgZmlsbD0iIzMzMzgzZCI+55Sx6ZyA5rGC546p5a625L2/55SoPC90ZXh0Pg0KPC9nPg0KPCEtLSBUJiM0NTsmZ3Q7WCAtLT4NCjxnIGlkPSJlZGdlMTIiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5UJiM0NTsmZ3Q7WDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSI1LDIiIGQ9Ik0zODQuMSwtMjMyLjQyQzQzMS4zNCwtMjE0LjI4IDQ5Mi45MywtMTkwLjYyIDU0Mi44NCwtMTcxLjQ1Ii8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjU0My41NCwtMTc0LjE5IDU1MCwtMTY4LjcgNTQxLjUzLC0xNjguOTYgNTQzLjU0LC0xNzQuMTkiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjUwNS4xOCIgeT0iLTE5NS4zMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNS4wMCIgZmlsbD0iIzMzMzgzZCI+6LSn5qy+PC90ZXh0Pg0KPC9nPg0KPCEtLSBVJiM0NTsmZ3Q7bm90ZSAtLT4NCjxnIGlkPSJlZGdlMTQiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5VJiM0NTsmZ3Q7bm90ZTwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSI1LDIiIGQ9Ik0xODUuNDYsLTEwNC45OUMxODUuNDYsLTkxLjY2IDE4NS40NiwtNzYuMDUgMTg1LjQ2LC02Mi43MSIvPg0KPC9nPg0KPCEtLSBOJiM0NTsmZ3Q7WSAtLT4NCjxnIGlkPSJlZGdlMTMiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5OJiM0NTsmZ3Q7WTwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSI1LDIiIGQ9Ik00NTIuNjUsLTUxMi4yM0M0ODUuNDMsLTQ4OS41OSA1MjQuNDYsLTQ2Mi42MiA1MjQuNDYsLTQ2Mi42MiA1MjQuNDYsLTQ2Mi42MiA1NDguOTgsLTQ0My4zNiA1NzMuMSwtNDI0LjQiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iNTc0LjU2LC00MjYuODIgNTc5LjEyLC00MTkuNjggNTcxLjEsLTQyMi40MiA1NzQuNTYsLTQyNi44MiIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNTY0LjkiIHk9Ii00NzcuMzciIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuWlluWKseWPr+iDveWQq+i0p+W4gTwvdGV4dD4NCjwvZz4NCjwhLS0gTSYjNDU7Jmd0O1ggLS0+DQo8ZyBpZD0iZWRnZTkiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5NJiM0NTsmZ3Q7WDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNNjMxLjQ2LC0yNDEuNDRDNjMxLjQ2LC0yMjQuNDggNjMxLjQ2LC0xOTkuMjQgNjMxLjQ2LC0xNzcuODciLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iNjM0LjI2LC0xNzcuODcgNjMxLjQ2LC0xNjkuODcgNjI4LjY2LC0xNzcuODcgNjM0LjI2LC0xNzcuODciLz4NCjwvZz4NCjwhLS0gTSYjNDU7Jmd0O1ogLS0+DQo8ZyBpZD0iZWRnZTEwIiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+TSYjNDU7Jmd0O1o8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTY2My40OSwtMjQxLjQ0QzY5My44NSwtMjIzLjE4IDc0MC4yLC0xOTUuMzEgNzc3LjI4LC0xNzMuMDEiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iNzc4LjU1LC0xNzUuNTEgNzgzLjk3LC0xNjguOTkgNzc1LjY3LC0xNzAuNzEgNzc4LjU1LC0xNzUuNTEiLz4NCjwvZz4NCjwhLS0gWSYjNDU7Jmd0O00gLS0+DQo8ZyBpZD0iZWRnZTExIiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+WSYjNDU7Jmd0O008L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTYyMi40MywtMzU1LjUxQzYyNC4zMiwtMzM2LjA0IDYyNi43NiwtMzEwLjk2IDYyOC42MywtMjkxLjc3Ii8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjYzMS40MSwtMjkyLjExIDYyOS40LC0yODMuODggNjI1Ljg0LC0yOTEuNTcgNjMxLjQxLC0yOTIuMTEiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjY0MS4xOCIgeT0iLTMyMC41OSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNS4wMCIgZmlsbD0iIzMzMzgzZCI+5oqV5pS+PC90ZXh0Pg0KPC9nPg0KPCEtLSBQIC0tPg0KPGcgaWQ9Im5vZGUxIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+UDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTMyOC4xNywtNzQwLjQ2QzMyOC4xNywtNzQwLjQ2IDIyMi43NSwtNzQwLjQ2IDIyMi43NSwtNzQwLjQ2IDIxNi43NSwtNzQwLjQ2IDIxMC43NSwtNzM0LjQ2IDIxMC43NSwtNzI4LjQ2IDIxMC43NSwtNzI4LjQ2IDIxMC43NSwtNzEyLjY4IDIxMC43NSwtNzEyLjY4IDIxMC43NSwtNzA2LjY4IDIxNi43NSwtNzAwLjY4IDIyMi43NSwtNzAwLjY4IDIyMi43NSwtNzAwLjY4IDMyOC4xNywtNzAwLjY4IDMyOC4xNywtNzAwLjY4IDMzNC4xNywtNzAwLjY4IDM0MC4xNywtNzA2LjY4IDM0MC4xNywtNzEyLjY4IDM0MC4xNywtNzEyLjY4IDM0MC4xNywtNzI4LjQ2IDM0MC4xNywtNzI4LjQ2IDM0MC4xNywtNzM0LjQ2IDMzNC4xNywtNzQwLjQ2IDMyOC4xNywtNzQwLjQ2Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIyNzUuNDYiIHk9Ii03MTUuNjciIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPueUn+S6p+iOt+WPlui1hOa6kDwvdGV4dD4NCjwvZz4NCjwhLS0gUiAtLT4NCjxnIGlkPSJub2RlMiIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPlI8L3RpdGxlPg0KPHBhdGggZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0zMjguMTcsLTY1Ny42OEMzMjguMTcsLTY1Ny42OCAyMjIuNzUsLTY1Ny42OCAyMjIuNzUsLTY1Ny42OCAyMTYuNzUsLTY1Ny42OCAyMTAuNzUsLTY1MS42OCAyMTAuNzUsLTY0NS42OCAyMTAuNzUsLTY0NS42OCAyMTAuNzUsLTYyOS45IDIxMC43NSwtNjI5LjkgMjEwLjc1LC02MjMuOSAyMTYuNzUsLTYxNy45IDIyMi43NSwtNjE3LjkgMjIyLjc1LC02MTcuOSAzMjguMTcsLTYxNy45IDMyOC4xNywtNjE3LjkgMzM0LjE3LC02MTcuOSAzNDAuMTcsLTYyMy45IDM0MC4xNywtNjI5LjkgMzQwLjE3LC02MjkuOSAzNDAuMTcsLTY0NS42OCAzNDAuMTcsLTY0NS42OCAzNDAuMTcsLTY1MS42OCAzMzQuMTcsLTY1Ny42OCAzMjguMTcsLTY1Ny42OCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjc1LjQ2IiB5PSItNjMyLjg5IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7otYTmupDkuI7liqDlt6Xlk4E8L3RleHQ+DQo8L2c+DQo8IS0tIEMgLS0+DQo8ZyBpZD0ibm9kZTMiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5DPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjMwLjQyLC01NzQuOUMyMzAuNDIsLTU3NC45IDkwLjUsLTU3NC45IDkwLjUsLTU3NC45IDg0LjUsLTU3NC45IDc4LjUsLTU2OC45IDc4LjUsLTU2Mi45IDc4LjUsLTU2Mi45IDc4LjUsLTUyNC42MiA3OC41LC01MjQuNjIgNzguNSwtNTE4LjYyIDg0LjUsLTUxMi42MiA5MC41LC01MTIuNjIgOTAuNSwtNTEyLjYyIDIzMC40MiwtNTEyLjYyIDIzMC40MiwtNTEyLjYyIDIzNi40MiwtNTEyLjYyIDI0Mi40MiwtNTE4LjYyIDI0Mi40MiwtNTI0LjYyIDI0Mi40MiwtNTI0LjYyIDI0Mi40MiwtNTYyLjkgMjQyLjQyLC01NjIuOSAyNDIuNDIsLTU2OC45IDIzNi40MiwtNTc0LjkgMjMwLjQyLC01NzQuOSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTYwLjQ2IiB5PSItNTUwLjExIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7liqDlt6XliLbkvZw8L3RleHQ+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxNjAuNDYiIHk9Ii01MjcuNjEiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuWOn+aWmei9rOaNouS4uuaWsOS6p+eJqTwvdGV4dD4NCjwvZz4NCjwhLS0gTyAtLT4NCjxnIGlkPSJub2RlNCIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPk88L3RpdGxlPg0KPHBhdGggZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0yMzAuNDIsLTQxOC4xMkMyMzAuNDIsLTQxOC4xMiA5MC41LC00MTguMTIgOTAuNSwtNDE4LjEyIDg0LjUsLTQxOC4xMiA3OC41LC00MTIuMTIgNzguNSwtNDA2LjEyIDc4LjUsLTQwNi4xMiA3OC41LC0zNjcuODQgNzguNSwtMzY3Ljg0IDc4LjUsLTM2MS44NCA4NC41LC0zNTUuODQgOTAuNSwtMzU1Ljg0IDkwLjUsLTM1NS44NCAyMzAuNDIsLTM1NS44NCAyMzAuNDIsLTM1NS44NCAyMzYuNDIsLTM1NS44NCAyNDIuNDIsLTM2MS44NCAyNDIuNDIsLTM2Ny44NCAyNDIuNDIsLTM2Ny44NCAyNDIuNDIsLTQwNi4xMiAyNDIuNDIsLTQwNi4xMiAyNDIuNDIsLTQxMi4xMiAyMzYuNDIsLTQxOC4xMiAyMzAuNDIsLTQxOC4xMiIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTYwLjQ2IiB5PSItMzkzLjMzIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7oo4XlpIfjgIHlop7lvLrnsbvkuqfniak8L3RleHQ+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxNjAuNDYiIHk9Ii0zNzAuODMiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPumjn+WTgeS4juiNr+WTgeetiTwvdGV4dD4NCjwvZz4NCjwhLS0gVCAtLT4NCjxnIGlkPSJub2RlNSIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPlQ8L3RpdGxlPg0KPHBhdGggZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0zNzEuOCwtMjkyLjg0QzM3MS44LC0yOTIuODQgMjQ5LjEzLC0yOTIuODQgMjQ5LjEzLC0yOTIuODQgMjQzLjEzLC0yOTIuODQgMjM3LjEzLC0yODYuODQgMjM3LjEzLC0yODAuODQgMjM3LjEzLC0yODAuODQgMjM3LjEzLC0yNDIuNTYgMjM3LjEzLC0yNDIuNTYgMjM3LjEzLC0yMzYuNTYgMjQzLjEzLC0yMzAuNTYgMjQ5LjEzLC0yMzAuNTYgMjQ5LjEzLC0yMzAuNTYgMzcxLjgsLTIzMC41NiAzNzEuOCwtMjMwLjU2IDM3Ny44LC0yMzAuNTYgMzgzLjgsLTIzNi41NiAzODMuOCwtMjQyLjU2IDM4My44LC0yNDIuNTYgMzgzLjgsLTI4MC44NCAzODMuOCwtMjgwLjg0IDM4My44LC0yODYuODQgMzc3LjgsLTI5Mi44NCAzNzEuOCwtMjkyLjg0Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIzMTAuNDYiIHk9Ii0yNjguMDUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPueOqeWutuS6pOaYk++8j+WnlOaJmDwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjMxMC40NiIgeT0iLTI0NS41NSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+6L2s56e75omA5pyJ5p2DPC90ZXh0Pg0KPC9nPg0KPCEtLSBVIC0tPg0KPGcgaWQ9Im5vZGU2IiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+VTwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTI2NC4wNSwtMTY3LjU2QzI2NC4wNSwtMTY3LjU2IDEwNi44OCwtMTY3LjU2IDEwNi44OCwtMTY3LjU2IDEwMC44OCwtMTY3LjU2IDk0Ljg4LC0xNjEuNTYgOTQuODgsLTE1NS41NiA5NC44OCwtMTU1LjU2IDk0Ljg4LC0xMTcuMjggOTQuODgsLTExNy4yOCA5NC44OCwtMTExLjI4IDEwMC44OCwtMTA1LjI4IDEwNi44OCwtMTA1LjI4IDEwNi44OCwtMTA1LjI4IDI2NC4wNSwtMTA1LjI4IDI2NC4wNSwtMTA1LjI4IDI3MC4wNSwtMTA1LjI4IDI3Ni4wNSwtMTExLjI4IDI3Ni4wNSwtMTE3LjI4IDI3Ni4wNSwtMTE3LjI4IDI3Ni4wNSwtMTU1LjU2IDI3Ni4wNSwtMTU1LjU2IDI3Ni4wNSwtMTYxLjU2IDI3MC4wNSwtMTY3LjU2IDI2NC4wNSwtMTY3LjU2Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxODUuNDYiIHk9Ii0xNDIuNzciIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuWunumZheS9v+eUqOS4juaIkOmVv+aKleWFpTwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE4NS40NiIgeT0iLTEyMC4yNyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5oyJ5ZCE6Ieq6KeE5YiZ5raI6ICXPC90ZXh0Pg0KPC9nPg0KPCEtLSBOIC0tPg0KPGcgaWQ9Im5vZGU3IiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+TjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTQ5Ni4wNSwtNTc0LjlDNDk2LjA1LC01NzQuOSAzMjAuODgsLTU3NC45IDMyMC44OCwtNTc0LjkgMzE0Ljg4LC01NzQuOSAzMDguODgsLTU2OC45IDMwOC44OCwtNTYyLjkgMzA4Ljg4LC01NjIuOSAzMDguODgsLTUyNC42MiAzMDguODgsLTUyNC42MiAzMDguODgsLTUxOC42MiAzMTQuODgsLTUxMi42MiAzMjAuODgsLTUxMi42MiAzMjAuODgsLTUxMi42MiA0OTYuMDUsLTUxMi42MiA0OTYuMDUsLTUxMi42MiA1MDIuMDUsLTUxMi42MiA1MDguMDUsLTUxOC42MiA1MDguMDUsLTUyNC42MiA1MDguMDUsLTUyNC42MiA1MDguMDUsLTU2Mi45IDUwOC4wNSwtNTYyLjkgNTA4LjA1LC01NjguOSA1MDIuMDUsLTU3NC45IDQ5Ni4wNSwtNTc0LjkiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQwOC40NiIgeT0iLTU1MC4xMSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+TlBD5Lqk5piT44CB5YWR5o2i5LiO6K6i5Y2VPC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNDA4LjQ2IiB5PSItNTI3LjYxIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7liIbliKvmoLjlr7nmipXlhaXlkozkuqflh7o8L3RleHQ+DQo8L2c+DQo8IS0tIE0gLS0+DQo8ZyBpZD0ibm9kZTgiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5NPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNNzAxLjQyLC0yODEuNTlDNzAxLjQyLC0yODEuNTkgNTYxLjUsLTI4MS41OSA1NjEuNSwtMjgxLjU5IDU1NS41LC0yODEuNTkgNTQ5LjUsLTI3NS41OSA1NDkuNSwtMjY5LjU5IDU0OS41LC0yNjkuNTkgNTQ5LjUsLTI1My44MSA1NDkuNSwtMjUzLjgxIDU0OS41LC0yNDcuODEgNTU1LjUsLTI0MS44MSA1NjEuNSwtMjQxLjgxIDU2MS41LC0yNDEuODEgNzAxLjQyLC0yNDEuODEgNzAxLjQyLC0yNDEuODEgNzA3LjQyLC0yNDEuODEgNzEzLjQyLC0yNDcuODEgNzEzLjQyLC0yNTMuODEgNzEzLjQyLC0yNTMuODEgNzEzLjQyLC0yNjkuNTkgNzEzLjQyLC0yNjkuNTkgNzEzLjQyLC0yNzUuNTkgNzA3LjQyLC0yODEuNTkgNzAxLjQyLC0yODEuNTkiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjYzMS40NiIgeT0iLTI1Ni44IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7msr/nlKjml6LmnInnu5/kuIDotKfluIE8L3RleHQ+DQo8L2c+DQo8IS0tIFggLS0+DQo8ZyBpZD0ibm9kZTkiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5YPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNNzE4LjY3LC0xNjcuNTZDNzE4LjY3LC0xNjcuNTYgNTQ0LjI1LC0xNjcuNTYgNTQ0LjI1LC0xNjcuNTYgNTM4LjI1LC0xNjcuNTYgNTMyLjI1LC0xNjEuNTYgNTMyLjI1LC0xNTUuNTYgNTMyLjI1LC0xNTUuNTYgNTMyLjI1LC0xMTcuMjggNTMyLjI1LC0xMTcuMjggNTMyLjI1LC0xMTEuMjggNTM4LjI1LC0xMDUuMjggNTQ0LjI1LC0xMDUuMjggNTQ0LjI1LC0xMDUuMjggNzE4LjY3LC0xMDUuMjggNzE4LjY3LC0xMDUuMjggNzI0LjY3LC0xMDUuMjggNzMwLjY3LC0xMTEuMjggNzMwLjY3LC0xMTcuMjggNzMwLjY3LC0xMTcuMjggNzMwLjY3LC0xNTUuNTYgNzMwLjY3LC0xNTUuNTYgNzMwLjY3LC0xNjEuNTYgNzI0LjY3LC0xNjcuNTYgNzE4LjY3LC0xNjcuNTYiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjYzMS40NiIgeT0iLTE0Mi43NyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5pSv5LuY57uZ5YW25LuW546p5a6255qE6LSn5qy+PC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNjMxLjQ2IiB5PSItMTIwLjI3IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7lsZ7kuo7otKfluIHmtYHovaw8L3RleHQ+DQo8L2c+DQo8IS0tIFkgLS0+DQo8ZyBpZD0ibm9kZTEwIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+WTwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTY4OS44LC00MTguMTJDNjg5LjgsLTQxOC4xMiA1NDkuMTIsLTQxOC4xMiA1NDkuMTIsLTQxOC4xMiA1NDMuMTIsLTQxOC4xMiA1MzcuMTIsLTQxMi4xMiA1MzcuMTIsLTQwNi4xMiA1MzcuMTIsLTQwNi4xMiA1MzcuMTIsLTM2Ny44NCA1MzcuMTIsLTM2Ny44NCA1MzcuMTIsLTM2MS44NCA1NDMuMTIsLTM1NS44NCA1NDkuMTIsLTM1NS44NCA1NDkuMTIsLTM1NS44NCA2ODkuOCwtMzU1Ljg0IDY4OS44LC0zNTUuODQgNjk1LjgsLTM1NS44NCA3MDEuOCwtMzYxLjg0IDcwMS44LC0zNjcuODQgNzAxLjgsLTM2Ny44NCA3MDEuOCwtNDA2LjEyIDcwMS44LC00MDYuMTIgNzAxLjgsLTQxMi4xMiA2OTUuOCwtNDE4LjEyIDY4OS44LC00MTguMTIiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjYxOS40NiIgeT0iLTM5My4zMyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+TlBD5aWW5Yqx5ZCr6LSn5biB5pe2PC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNjE5LjQ2IiB5PSItMzcwLjgzIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7orqHlhaXotKfluIHmipXmlL48L3RleHQ+DQo8L2c+DQo8IS0tIFogLS0+DQo8ZyBpZD0ibm9kZTExIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+WjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTg5Ny44LC0xNjcuNTZDODk3LjgsLTE2Ny41NiA3NzUuMTIsLTE2Ny41NiA3NzUuMTIsLTE2Ny41NiA3NjkuMTIsLTE2Ny41NiA3NjMuMTIsLTE2MS41NiA3NjMuMTIsLTE1NS41NiA3NjMuMTIsLTE1NS41NiA3NjMuMTIsLTExNy4yOCA3NjMuMTIsLTExNy4yOCA3NjMuMTIsLTExMS4yOCA3NjkuMTIsLTEwNS4yOCA3NzUuMTIsLTEwNS4yOCA3NzUuMTIsLTEwNS4yOCA4OTcuOCwtMTA1LjI4IDg5Ny44LC0xMDUuMjggOTAzLjgsLTEwNS4yOCA5MDkuOCwtMTExLjI4IDkwOS44LC0xMTcuMjggOTA5LjgsLTExNy4yOCA5MDkuOCwtMTU1LjU2IDkwOS44LC0xNTUuNTYgOTA5LjgsLTE2MS41NiA5MDMuOCwtMTY3LjU2IDg5Ny44LC0xNjcuNTYiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjgzNi40NiIgeT0iLTE0Mi43NyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+57O757uf5pS26LS55LiO5Zue5pS2PC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iODM2LjQ2IiB5PSItMTIwLjI3IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7mjInlr7nlupTmuKDpgZPmoLjlr7k8L3RleHQ+DQo8L2c+DQo8IS0tIG5vdGUgLS0+DQo8ZyBpZD0ibm9kZTEyIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+bm90ZTwvdGl0bGU+DQo8cG9seWdvbiBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjM2NC45MiwtNjIuMjggMCwtNjIuMjggMCwwIDM3MC45MiwwIDM3MC45MiwtNTYuMjggMzY0LjkyLC02Mi4yOCIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMzY0LjkyLC02Mi4yOCAzNjQuOTIsLTU2LjI4Ii8+DQo8cG9seWxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIzNzAuOTIsLTU2LjI4IDM2NC45MiwtNTYuMjgiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE4NS40NiIgeT0iLTM3LjQ5IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7kuqTmmJPkuI3nrYnkuo7mtojogJfvvJvliqDlt6XkuI3nrYnkuo7lhajpg6jku7flgLzpgIDlh7rjgII8L3RleHQ+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxODUuNDYiIHk9Ii0xNC45OSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5Zue5pS25LiO5paw5aKe5Lqn5Ye66ZyA6KaB5YiG5Yir5qC45a+544CCPC90ZXh0Pg0KPC9nPg0KPC9nPg0KPC9zdmc+DQo=" alt="资源与货币的流转、转换及回收关系图"></button><figcaption><span>资源与货币的流转、转换及回收关系图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>资源与货币分开核对；玩家间转移不直接视为系统回收，NPC及其他系统交互的新增产出也需计入。</p>
+<p><strong>流转与消耗示例：鱼类加工为食品</strong></p>
+<p>以下链路仅说明本例中的加工、交易与使用，不统一规定其他产物的加工职业、交易渠道、消耗方式或效果计算。</p>
+<ol>
+<li>钓鱼玩家获取普通鱼，进入集市出售。</li>
+<li>烹饪玩家买入鱼类，支付资源成交金额及买方手续费；钓鱼玩家获得资源成交金额。</li>
+<li>烹饪玩家将食材加工为食品，成品效果受所用食材影响。</li>
+<li>烹饪玩家将具有相应效果的食品挂上交易行，由需要该效果的玩家购买，双方按交易行规则承担手续费。</li>
+<li>购买者食用食品并获得效果，食品被消耗。</li>
+</ol>
+<p>本例中，加工将原料转为食品，食用形成最终消耗，食品用途带来鱼类需求。交易转移物品与货币，手续费与支付给其他玩家的货款分别核对。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-31"><span class="sub-number">6.3</span>NPC交易与成长兑换</h3>
+<div class="exhibit-title"><strong>表6-3 NPC交互内容</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>交互内容</th>
+  <th>条件与投入</th>
+  <th>获得内容或作用</th>
+  <th>核对重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>条件开放型交易</td>
+  <td>达到对应亲密度或职业专精等来源条件，按条目支付所需内容</td>
+  <td>开放相应NPC交易并获取商品</td>
+  <td>交易资格与物品可交易、可使用条件分别判断</td>
+</tr>
+<tr>
+  <td>专精与属性兑换</td>
+  <td>向NPC提交对应资源</td>
+  <td>直接获得属性或职业专精进度，代替部分不可交易商品</td>
+  <td>具体内容按条目确定；仍保留仅供本人使用的专精资源</td>
+</tr>
+<tr>
+  <td>订单与回收</td>
+  <td>提交订单物品或可回收物品</td>
+  <td>订单可提升亲密度，支持后续交易开放；回收按条目给予奖励</td>
+  <td>分别记录回收资源与奖励；奖励含货币时计入货币投放</td>
+</tr>
+</tbody>
+</table></div>
+<p>表中同时描述开放条件与交互功能，各项可以重叠，不作为互斥的NPC类别。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-32"><span class="sub-number">6.4</span>货币与兑换回路约束</h3>
+<p>沿用原游戏的统一货币结算，不为生产系统新增独立交易货币。NPC亲密度与职业专精作为关系及成长进度管理，不作为新增流通货币。</p>
+<p>NPC出售、兑换与回收之间，不得形成仅靠重复NPC操作即可无限增加资源或货币的固定盈利回路。兑换过程需有来自实际生产或玩家供应的额外投入，且该投入不能在同一回路中无成本补回。</p>
+<p>检查兑换回路时，需核对材料来源、获取成本和回收结果，不能仅因新增了材料要求就认定约束有效。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-33"><span class="sub-number">6.5</span>装备成长与失败反馈</h3>
+<p>强化、附魔与镶嵌提供中长期资源需求，不同目标配置可以需要多套工具与装备，分别投入相应资源。各方向均设有最终成长上限，不采用无条件、无限增长的数值目标。</p>
+<p>装备强化按阶段设置材料需求与成功率：前期投入较低、成功率较高，后期逐步增加材料需求、提高稀有道具要求并降低成功率。材料成本与概率共同控制成长跨度，避免两者叠加形成过高门槛。</p>
+<p>强化失败仅消耗本次投入的材料，不降级、不损坏装备，也不移除已有强化成果。</p>
+<p>失败领悟作为可拓展方向：失败时积累强化领悟度，为后续尝试减少材料消耗或提高成功率。</p>
+<p>解锁高级或专属配方的玩家，可制作符合流通规则的产物，通过出售或委托服务其他玩家。配方带来制造能力与服务价值，购买者仍需满足对应物品的使用条件。</p>
+<div class="exhibit-title"><strong>图6-3 装备强化的成功与失败处理</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：装备强化成功与失败处理流程图"><img width="652" height="580" style="width:100%;aspect-ratio:652/580" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iDQogImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIEdlbmVyYXRlZCBieSBncmFwaHZpeiB2ZXJzaW9uIDEyLjIuMSAoMjAyNDEyMDYuMjM1MykNCiAtLT4NCjwhLS0gVGl0bGU6IEcgUGFnZXM6IDEgLS0+DQo8c3ZnIHdpZHRoPSI2NTJwdCIgaGVpZ2h0PSI1ODBwdCINCiB2aWV3Qm94PSIwLjAwIDAuMDAgNjUyLjMzIDU4MC4xNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQo8ZyBpZD0iZ3JhcGgwIiBjbGFzcz0iZ3JhcGgiIHRyYW5zZm9ybT0ic2NhbGUoMSAxKSByb3RhdGUoMCkgdHJhbnNsYXRlKDIxLjYgNTU4LjU2KSI+DQo8dGl0bGU+RzwvdGl0bGU+DQo8cG9seWdvbiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSJub25lIiBwb2ludHM9Ii0yMS42LDIxLjYgLTIxLjYsLTU1OC41NiA2MzAuNzMsLTU1OC41NiA2MzAuNzMsMjEuNiAtMjEuNiwyMS42Ii8+DQo8IS0tIEEmIzQ1OyZndDtCIC0tPg0KPGcgaWQ9ImVkZ2UxIiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+QSYjNDU7Jmd0O0I8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE0Ni42NywtNDk2LjgyQzE0Ni42NywtNDg3Ljc1IDE0Ni42NywtNDc2LjMgMTQ2LjY3LC00NjQuMzMiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTQ5LjQ3LC00NjQuNDggMTQ2LjY3LC00NTYuNDggMTQzLjg3LC00NjQuNDggMTQ5LjQ3LC00NjQuNDgiLz4NCjwvZz4NCjwhLS0gQiYjNDU7Jmd0O0MgLS0+DQo8ZyBpZD0iZWRnZTIiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5CJiM0NTsmZ3Q7QzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMTM3LjM1LC0zMzMuMjdDMTMxLjE1LC0yOTQuOTYgMTIzLjI3LC0yNDYuMjggMTE4LjM1LC0yMTUuODYiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTIxLjEzLC0yMTUuNTMgMTE3LjA5LC0yMDguMDggMTE1LjYsLTIxNi40MyAxMjEuMTMsLTIxNS41MyIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTQ3Ljk5IiB5PSItMjk0LjM3IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE1LjAwIiBmaWxsPSIjMzMzODNkIj7miJDlip88L3RleHQ+DQo8L2c+DQo8IS0tIEImIzQ1OyZndDtEIC0tPg0KPGcgaWQ9ImVkZ2UzIiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+QiYjNDU7Jmd0O0Q8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTE4My42OSwtMzQ0LjgxQzIwMi4zNSwtMzIxLjU3IDIyNC4zMywtMjk0LjIxIDI0MC4xOSwtMjc0LjQ3Ii8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjI0Mi4xOSwtMjc2LjQ1IDI0NS4wMiwtMjY4LjQ2IDIzNy44MywtMjcyLjk0IDI0Mi4xOSwtMjc2LjQ1Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIyNDIuNjkiIHk9Ii0yOTQuMzciIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuWksei0pTwvdGV4dD4NCjwvZz4NCjwhLS0gQyYjNDU7Jmd0O0YgLS0+DQo8ZyBpZD0iZWRnZTUiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5DJiM0NTsmZ3Q7RjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMTE1Ljg5LC0xNjUuODFDMTE5LjIsLTEzNy4yNCAxMjUuNDUsLTgzLjIyIDEyOS4zMiwtNDkuODIiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTMyLjA5LC01MC4yNCAxMzAuMjMsLTQxLjk3IDEyNi41MywtNDkuNTkgMTMyLjA5LC01MC4yNCIvPg0KPC9nPg0KPCEtLSBEJiM0NTsmZ3Q7RSAtLT4NCjxnIGlkPSJlZGdlNCIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPkQmIzQ1OyZndDtFPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0yNjAuNDksLTIyNi40M0MyNTkuMzUsLTIwNy43NyAyNTcuNTksLTE3OC45NCAyNTYuMTQsLTE1NS4yNiIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIyNTguOTMsLTE1NS4xIDI1NS42NSwtMTQ3LjI5IDI1My4zNCwtMTU1LjQ0IDI1OC45MywtMTU1LjEiLz4NCjwvZz4NCjwhLS0gRCYjNDU7Jmd0O0cgLS0+DQo8ZyBpZD0iZWRnZTciIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5EJiM0NTsmZ3Q7RzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSI1LDIiIGQ9Ik0yOTUuNzUsLTIyNi40M0MzMzMuNDEsLTIwNS4xMSAzOTQuNTQsLTE3MC40OSA0MzguNzEsLTE0NS40OCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNDM1LjM2IiB5PSItMTgyLjIiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTUuMDAiIGZpbGw9IiMzMzM4M2QiPuWPr+aLk+WxleaWueWQkTwvdGV4dD4NCjwvZz4NCjwhLS0gRSYjNDU7Jmd0O0YgLS0+DQo8ZyBpZD0iZWRnZTYiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5FJiM0NTsmZ3Q7RjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjEzLjcxLC04Mi41M0MxOTguMTIsLTcwLjY3IDE4MC40NiwtNTcuMjQgMTY1LjYyLC00NS45NSIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIxNjcuNjUsLTQzLjk3IDE1OS41OCwtNDEuMzYgMTY0LjI2LC00OC40MyAxNjcuNjUsLTQzLjk3Ii8+DQo8L2c+DQo8IS0tIEEgLS0+DQo8ZyBpZD0ibm9kZTEiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5BPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjE2LjYzLC01MzYuOTZDMjE2LjYzLC01MzYuOTYgNzYuNzEsLTUzNi45NiA3Ni43MSwtNTM2Ljk2IDcwLjcxLC01MzYuOTYgNjQuNzEsLTUzMC45NiA2NC43MSwtNTI0Ljk2IDY0LjcxLC01MjQuOTYgNjQuNzEsLTUwOS4xOCA2NC43MSwtNTA5LjE4IDY0LjcxLC01MDMuMTggNzAuNzEsLTQ5Ny4xOCA3Ni43MSwtNDk3LjE4IDc2LjcxLC00OTcuMTggMjE2LjYzLC00OTcuMTggMjE2LjYzLC00OTcuMTggMjIyLjYzLC00OTcuMTggMjI4LjYzLC01MDMuMTggMjI4LjYzLC01MDkuMTggMjI4LjYzLC01MDkuMTggMjI4LjYzLC01MjQuOTYgMjI4LjYzLC01MjQuOTYgMjI4LjYzLC01MzAuOTYgMjIyLjYzLC01MzYuOTYgMjE2LjYzLC01MzYuOTYiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE0Ni42NyIgeT0iLTUxMi4xNyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5oqV5YWl5pys5qyh5by65YyW5p2Q5paZPC90ZXh0Pg0KPC9nPg0KPCEtLSBCIC0tPg0KPGcgaWQ9Im5vZGUyIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+QjwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTEzNS42MiwtNDQ5LjQ5QzEzNS42MiwtNDQ5LjQ5IDExLjA1LC0zOTYuNTkgMTEuMDUsLTM5Ni41OSA1LjUyLC0zOTQuMjUgNS41MiwtMzg5LjU1IDExLjA1LC0zODcuMjEgMTEuMDUsLTM4Ny4yMSAxMzUuNjIsLTMzNC4zMSAxMzUuNjIsLTMzNC4zMSAxNDEuMTUsLTMzMS45NyAxNTIuMTksLTMzMS45NyAxNTcuNzIsLTMzNC4zMSAxNTcuNzIsLTMzNC4zMSAyODIuMjksLTM4Ny4yMSAyODIuMjksLTM4Ny4yMSAyODcuODIsLTM4OS41NSAyODcuODIsLTM5NC4yNSAyODIuMjksLTM5Ni41OSAyODIuMjksLTM5Ni41OSAxNTcuNzIsLTQ0OS40OSAxNTcuNzIsLTQ0OS40OSAxNTIuMTksLTQ1MS44MyAxNDEuMTUsLTQ1MS44MyAxMzUuNjIsLTQ0OS40OSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTQ2LjY3IiB5PSItMzk4LjI1IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7mjInlvZPliY3pmLbmrrXop4TliJk8L3RleHQ+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxNDYuNjciIHk9Ii0zNzUuNzUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuWIpOWumuW8uuWMlue7k+aenDwvdGV4dD4NCjwvZz4NCjwhLS0gQyAtLT4NCjxnIGlkPSJub2RlMyIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPkM8L3RpdGxlPg0KPHBhdGggZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0yMDkuNSwtMjA1Ljg0QzIwOS41LC0yMDUuODQgMTcuODQsLTIwNS44NCAxNy44NCwtMjA1Ljg0IDExLjg0LC0yMDUuODQgNS44NCwtMTk5Ljg0IDUuODQsLTE5My44NCA1Ljg0LC0xOTMuODQgNS44NCwtMTc4LjA2IDUuODQsLTE3OC4wNiA1Ljg0LC0xNzIuMDYgMTEuODQsLTE2Ni4wNiAxNy44NCwtMTY2LjA2IDE3Ljg0LC0xNjYuMDYgMjA5LjUsLTE2Ni4wNiAyMDkuNSwtMTY2LjA2IDIxNS41LC0xNjYuMDYgMjIxLjUsLTE3Mi4wNiAyMjEuNSwtMTc4LjA2IDIyMS41LC0xNzguMDYgMjIxLjUsLTE5My44NCAyMjEuNSwtMTkzLjg0IDIyMS41LC0xOTkuODQgMjE1LjUsLTIwNS44NCAyMDkuNSwtMjA1Ljg0Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxMTMuNjciIHk9Ii0xODEuMDUiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuaIkOWKn++8muiOt+W+l+WvueW6lOW8uuWMluaIkOaenDwvdGV4dD4NCjwvZz4NCjwhLS0gRCAtLT4NCjxnIGlkPSJub2RlNCIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPkQ8L3RpdGxlPg0KPHBhdGggZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0zNDguODgsLTI2Ni42MkMzNDguODgsLTI2Ni42MiAxNzQuNDYsLTI2Ni42MiAxNzQuNDYsLTI2Ni42MiAxNjguNDYsLTI2Ni42MiAxNjIuNDYsLTI2MC42MiAxNjIuNDYsLTI1NC42MiAxNjIuNDYsLTI1NC42MiAxNjIuNDYsLTIzOC44NCAxNjIuNDYsLTIzOC44NCAxNjIuNDYsLTIzMi44NCAxNjguNDYsLTIyNi44NCAxNzQuNDYsLTIyNi44NCAxNzQuNDYsLTIyNi44NCAzNDguODgsLTIyNi44NCAzNDguODgsLTIyNi44NCAzNTQuODgsLTIyNi44NCAzNjAuODgsLTIzMi44NCAzNjAuODgsLTIzOC44NCAzNjAuODgsLTIzOC44NCAzNjAuODgsLTI1NC42MiAzNjAuODgsLTI1NC42MiAzNjAuODgsLTI2MC42MiAzNTQuODgsLTI2Ni42MiAzNDguODgsLTI2Ni42MiIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjYxLjY3IiB5PSItMjQxLjgzIiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7lpLHotKXvvJrku4XmtojogJfmnKzmrKHmnZDmlpk8L3RleHQ+DQo8L2c+DQo8IS0tIEUgLS0+DQo8ZyBpZD0ibm9kZTUiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5FPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMzMyLjI1LC0xNDUuMDZDMzMyLjI1LC0xNDUuMDYgMTc1LjA5LC0xNDUuMDYgMTc1LjA5LC0xNDUuMDYgMTY5LjA5LC0xNDUuMDYgMTYzLjA5LC0xMzkuMDYgMTYzLjA5LC0xMzMuMDYgMTYzLjA5LC0xMzMuMDYgMTYzLjA5LC05NC43OCAxNjMuMDksLTk0Ljc4IDE2My4wOSwtODguNzggMTY5LjA5LC04Mi43OCAxNzUuMDksLTgyLjc4IDE3NS4wOSwtODIuNzggMzMyLjI1LC04Mi43OCAzMzIuMjUsLTgyLjc4IDMzOC4yNSwtODIuNzggMzQ0LjI1LC04OC43OCAzNDQuMjUsLTk0Ljc4IDM0NC4yNSwtOTQuNzggMzQ0LjI1LC0xMzMuMDYgMzQ0LjI1LC0xMzMuMDYgMzQ0LjI1LC0xMzkuMDYgMzM4LjI1LC0xNDUuMDYgMzMyLjI1LC0xNDUuMDYiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1My42NyIgeT0iLTEyMC4yNyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5LiN6ZmN57qn44CB5LiN5o2f5Z2P6KOF5aSHPC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjUzLjY3IiB5PSItOTcuNzciIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuS4jeenu+mZpOW3suacieW8uuWMluaIkOaenDwvdGV4dD4NCjwvZz4NCjwhLS0gRiAtLT4NCjxnIGlkPSJub2RlNiIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPkY8L3RpdGxlPg0KPHBhdGggZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0yMTkuODgsLTM5Ljc4QzIxOS44OCwtMzkuNzggNDUuNDYsLTM5Ljc4IDQ1LjQ2LC0zOS43OCAzOS40NiwtMzkuNzggMzMuNDYsLTMzLjc4IDMzLjQ2LC0yNy43OCAzMy40NiwtMjcuNzggMzMuNDYsLTEyIDMzLjQ2LC0xMiAzMy40NiwtNiAzOS40NiwwIDQ1LjQ2LDAgNDUuNDYsMCAyMTkuODgsMCAyMTkuODgsMCAyMjUuODgsMCAyMzEuODgsLTYgMjMxLjg4LC0xMiAyMzEuODgsLTEyIDIzMS44OCwtMjcuNzggMjMxLjg4LC0yNy43OCAyMzEuODgsLTMzLjc4IDIyNS44OCwtMzkuNzggMjE5Ljg4LC0zOS43OCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTMyLjY3IiB5PSItMTQuOTkiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPueOqeWutuiHquihjOWGs+WumuWQjue7reaKleWFpTwvdGV4dD4NCjwvZz4NCjwhLS0gRyAtLT4NCjxnIGlkPSJub2RlNyIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPkc8L3RpdGxlPg0KPHBvbHlnb24gZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWRhc2hhcnJheT0iNSwyIiBwb2ludHM9IjYwMy4xMywtMTQ1LjA2IDM3Ni4yMSwtMTQ1LjA2IDM3Ni4yMSwtODIuNzggNjA5LjEzLC04Mi43OCA2MDkuMTMsLTEzOS4wNiA2MDMuMTMsLTE0NS4wNiIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1kYXNoYXJyYXk9IjUsMiIgcG9pbnRzPSI2MDMuMTMsLTE0NS4wNiA2MDMuMTMsLTEzOS4wNiIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1kYXNoYXJyYXk9IjUsMiIgcG9pbnRzPSI2MDkuMTMsLTEzOS4wNiA2MDMuMTMsLTEzOS4wNiIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNDkyLjY3IiB5PSItMTIwLjI3IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7lj6/mi5PlsZXvvJrlpLHotKXpoobmgp88L3RleHQ+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0OTIuNjciIHk9Ii05Ny43NyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5YeP5bCR5p2Q5paZ5raI6ICX5oiW5o+Q6auY5oiQ5Yqf546HPC90ZXh0Pg0KPC9nPg0KPC9nPg0KPC9zdmc+DQo=" alt="装备强化成功与失败处理流程图"></button><figcaption><span>装备强化成功与失败处理流程图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>图仅对应装备强化，不统一规定附魔、镶嵌也采用相同成功率与失败处理。虚线标注的失败领悟为可拓展机制。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-34"><span class="sub-number">6.6</span>长期需求与毕业边界</h3>
+<p>装备成长提供有终点的长期消耗。玩家按不同目标完成对应配置的毕业，不采用单一毕业路线。</p>
+<p>同一配置毕业后，成长投入会减少。后续需求来自其他配置、其他玩家的成长，以及食品、药品等持续使用；强化后期成本较高，并不代表所有资源都有足够的长期消耗。</p>
+<p>装备耐久、掉落等损失性机制可作为拓展方向，带来修复与补充需求，不作为当前基础循环存在永久消耗的依据。毕业玩家仍可转向供货、收集、挑战与社交协作。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-35"><span class="chapter-number" aria-hidden="true">07</span><span>七、社交与协作设计</span></h2>
+<p>生产协作按组织方式分为正式组队协作与无需正式组队的开放协作；开放协作再按合作必要性，分为互助型与必要合作型。通用组织原则与具体玩法案例分别说明。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-36"><span class="sub-number">7.1</span>协作结构与组织方式</h3>
+<ol>
+<li><p>正式组队协作：玩家建立正式队伍，按对应活动的要求共同完成目标。</p>
+</li>
+<li><p>无需正式组队的开放协作：玩家不必建立队伍关系，可因共同目标、所在位置或互补需求形成合作，进一步分为两类：</p>
+<ul>
+<li>互助型：合作提供额外帮助、效率或收益，但不作为完成该类常规活动的必要条件。</li>
+<li>必要合作型：特定目标本身要求玩家配合，即使没有正式队伍，也需要通过合作完成。</li>
+</ul>
+</li>
+</ol>
+<p>是否需要正式队伍与是否必须多人合作分别由玩法规则确定，不能仅依据场景位置判断。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-37"><span class="sub-number">7.2</span>正式组队协作</h3>
+<p>玩家自主选择参加要求正式队伍的活动，进入后按对应玩法完成合作目标。行动要求与分工由活动本身决定，不为所有生产职业预设统一角色。</p>
+<p>成果按对应活动的分配标准结算，不另设生产贡献评分。参与、完成与领奖资格仍依活动规则判断。</p>
+<p>具体活动流程、参与条件与奖励在对应内容中展开。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-38"><span class="sub-number">7.3</span>无需正式组队的开放协作</h3>
+<p class="topic-label"><strong>互助型协作：</strong></p>
+<p>玩家因共同目标、所在位置或互补需求自发提供帮助，无需建立正式队伍。合作能够带来帮助、效率或额外收益，但不是完成该目标的必要条件。</p>
+<p>互助方式、作用效果及是否提供额外奖励由具体玩法决定，不将某一种帮助行为设为所有职业的统一模式。</p>
+<p class="topic-label"><strong>必要合作型协作：</strong></p>
+<p>特定目标要求多人配合，但不要求建立正式队伍；合作必要性来自目标的完成条件。</p>
+<p>具体目标分别规定配合要求、参与方式与成果归属，收益处理遵循7.4节。必要合作只适用于相应目标，不扩展为所有常规生产的统一门槛。</p>
+<div class="exhibit-title"><strong>表7-1 协作方式对照</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>协作方式</th>
+  <th>是否需要正式队伍</th>
+  <th>合作必要性</th>
+  <th>行动与分配规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>正式组队协作</td>
+  <td>需要</td>
+  <td>具体配合要求由活动决定</td>
+  <td>按活动要求行动，沿用对应成果分配，不另设生产贡献评分</td>
+</tr>
+<tr>
+  <td>开放协作：互助型</td>
+  <td>不需要</td>
+  <td>合作提供帮助，但不是完成目标的必要条件</td>
+  <td>互助方式、作用与是否提供额外奖励，由对应玩法确定</td>
+</tr>
+<tr>
+  <td>开放协作：必要合作型</td>
+  <td>不需要</td>
+  <td>特定目标必须多人配合</td>
+  <td>分别明确必要合作条件、参与方式、成果归属与奖励规则</td>
+</tr>
+</tbody>
+</table></div>
+<p>本表只比较协作内容，不将多人合作设为全部生产玩法的统一要求。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-39"><span class="sub-number">7.4</span>收益归属与规则边界</h3>
+<ul>
+<li>正式组队活动沿用对应活动的分配标准，不另设生产贡献排名。</li>
+<li>开放协作分别明确参与资格、成果归属及奖励条件，不因无需组队而省略判定，也不统一要求贡献评分或协助奖励。</li>
+<li>基础资源收集度遵循5.2节的本人生产统计原则，不因同处场景或接收他人交付，自动获得他人的生产记录。职业经验、数值成长与成就按各自规则结算，不直接套用收集度的统计限制。</li>
+</ul>
+<p>有偿协作可通过赏金小队等方式约定目标与报酬。成员可在参与前确认活动允许调整的分配方式，但不能改变活动的参与、完成条件，或转让系统不允许转移的奖励。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-40"><span class="sub-number">7.5</span>社交联系与组织</h3>
+<div class="exhibit-title"><strong>表7-2 社交联系与组织</strong></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据与规则对照表"><table><thead>
+<tr>
+  <th>形式</th>
+  <th>连接的玩家或组织</th>
+  <th>主要作用</th>
+  <th>规则边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>物品委托</td>
+  <td>需求玩家与资源、制作服务提供者</td>
+  <td>用订单连接物品供需</td>
+  <td>交付、报酬与资源预付规则归第六章</td>
+</tr>
+<tr>
+  <td>赏金小队</td>
+  <td>委托方与受雇玩家</td>
+  <td>按约定目标陪同行动，获得雇佣报酬</td>
+  <td>战利品与工资分别处理，只允许原活动支持的分配调整</td>
+</tr>
+<tr>
+  <td>公会</td>
+  <td>长期合作的玩家社群</td>
+  <td>沿用社群组织，可拓展内部订单、集市与委托</td>
+  <td>内部交易可降低手续费，沿用既有公会组织，不重做完整系统</td>
+</tr>
+</tbody>
+</table></div>
+<p>三种形式可以结合使用，不要求玩家只能选择其中一种。</p>
+<p class="topic-label"><strong>物品委托：</strong></p>
+<p>以订单连接需求玩家与资源、制作服务提供者。交付、混合报酬及资源预付规则见第六章。</p>
+<p class="topic-label"><strong>赏金小队：</strong></p>
+<p>连接委托方（“老板”）与受雇玩家（“雇佣兵”）。委托方选择行动目标，在活动允许范围内规划成果分配，并提前列明报酬与发放形式；受雇玩家确认约定后，作为小队成员陪同行动。</p>
+<p>活动战利品与雇佣报酬分别说明。分配约定仅使用原玩法允许的选择，不改变掉落内容、个人奖励资格或不可转移的收益。</p>
+<p class="topic-label"><strong>公会：</strong></p>
+<p>沿用原游戏公会系统，作为大型玩家社群的交流与长期合作载体。可拓展公会订单、内部集市与委托功能，并对内部交易提供低于外部渠道的手续费。</p>
+<p>公会内部功能依托既有公会组织，不重做完整公会系统。</p>
+</section><section class="doc-subsection example-section"><h3 class="subsection-title example-title" id="section-41"><span class="sub-number">7.6</span>协作关系示例<small class="example-label">案例</small></h3>
+<p>以下案例仅用于说明协作关系，不作为各职业的通用规则。</p>
+<p class="topic-label"><strong>钓鱼协作示例：</strong></p>
+<p>玩家可自发分工，一部分人专注钓鱼，另一部分人专注讨伐，无需建立正式队伍。钓获者与协助者的收益规则见4.4节。</p>
+<p class="topic-label"><strong>分层矿物示例：</strong></p>
+<p>两层资源分别满足不同玩家的需求，通过开采关系形成互利；也可以进一步探索需要共同操作才能开采的节点。前者可用于表达互助，后者可用于表达无需正式组队的必要合作。</p>
+<p>该例说明可拓展的合作形式，不作为矿物的通用开采规则。</p>
+<p class="topic-label"><strong>赏金分配示例：</strong></p>
+<p>若活动允许成员自主选择是否参与共享战利品的roll点，受雇成员可事先约定放弃指定战利品的roll点，由委托方取得物品，受雇成员另获约定报酬。该约定仅限原活动允许的分配选择。</p>
+</section></section><section class="doc-chapter"><h2 class="chapter-title" id="section-42"><span class="chapter-number" aria-hidden="true">08</span><span>八、内容与玩法拓展<small class="expansion-label">可拓展方向</small></span></h2>
+<p>本章在基础生产、成长与流转规则之外，提出外观消费、搜打撤模式及生产主题活动三个拓展方向，分别增加长期追求目标、连接战斗需求、丰富生产体验。</p>
+<section class="doc-subsection"><h3 class="subsection-title" id="section-43"><span class="sub-number">8.1</span>外观消费与长期目标拓展</h3>
+<p class="topic-label"><strong>设计定位与目标：</strong></p>
+<p>通过外观、特效等美术向内容增加数值毕业后的追求目标。玩家可持续参与生产、积累游戏货币，购买喜欢的内容；系统借此回收货币，不改变基础生产玩法。</p>
+<p>现实货币购买作为另一种获取渠道与商业化手段；本节以长期追求与货币回收为主要目标，不以付费为参与前提。</p>
+<p class="topic-label"><strong>获取方式与货币回收：</strong></p>
+<p>玩家可以直接使用现实货币购买对应内容，也可以通过生产等玩法积累游戏货币后向系统购买。游戏货币沿用原游戏的统一货币，不新增生产专用币种。</p>
+<p>商品由系统出售，不通过付费玩家转售。玩家出售生产材料获得货币时，只发生流转；向系统支付购买费用后，货币才退出流通。本渠道回收货币，不直接消耗出售的生产材料。</p>
+<div class="exhibit-title"><strong>图8-1 外观获取路径与货币回收</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：外观双渠道获取与游戏货币回收流程图"><img width="515" height="514" style="width:100%;aspect-ratio:515/514" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iDQogImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIEdlbmVyYXRlZCBieSBncmFwaHZpeiB2ZXJzaW9uIDEyLjIuMSAoMjAyNDEyMDYuMjM1MykNCiAtLT4NCjwhLS0gVGl0bGU6IEcgUGFnZXM6IDEgLS0+DQo8c3ZnIHdpZHRoPSI1MTVwdCIgaGVpZ2h0PSI1MTRwdCINCiB2aWV3Qm94PSIwLjAwIDAuMDAgNTE1LjI1IDUxNC4zOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+DQo8ZyBpZD0iZ3JhcGgwIiBjbGFzcz0iZ3JhcGgiIHRyYW5zZm9ybT0ic2NhbGUoMSAxKSByb3RhdGUoMCkgdHJhbnNsYXRlKDIxLjYgNDkyLjc4KSI+DQo8dGl0bGU+RzwvdGl0bGU+DQo8cG9seWdvbiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSJub25lIiBwb2ludHM9Ii0yMS42LDIxLjYgLTIxLjYsLTQ5Mi43OCA0OTMuNjQsLTQ5Mi43OCA0OTMuNjQsMjEuNiAtMjEuNiwyMS42Ii8+DQo8IS0tIFQmIzQ1OyZndDtSIC0tPg0KPGcgaWQ9ImVkZ2UxIiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+VCYjNDU7Jmd0O1I8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTI3MS44MywtNDMxLjEyQzI1NC41MiwtNDAyLjU4IDIyMS44OCwtMzQ4Ljc3IDIwMi4wNiwtMzE2LjA5Ii8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjIwNC41NiwtMzE0LjgxIDE5OC4wMSwtMzA5LjQzIDE5OS43NywtMzE3LjcyIDIwNC41NiwtMzE0LjgxIi8+DQo8L2c+DQo8IS0tIFQmIzQ1OyZndDtQIC0tPg0KPGcgaWQ9ImVkZ2UyIiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+VCYjNDU7Jmd0O1A8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTMwMy43OSwtNDMwLjk4QzMxNC43MywtNDIwLjU5IDMyOC4zNywtNDA3LjY0IDM0MC4yMSwtMzk2LjM5Ii8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjM0Mi4xMiwtMzk4LjQzIDM0NiwtMzkwLjkgMzM4LjI3LC0zOTQuMzcgMzQyLjEyLC0zOTguNDMiLz4NCjwvZz4NCjwhLS0gUiYjNDU7Jmd0O08gLS0+DQo8ZyBpZD0iZWRnZTUiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5SJiM0NTsmZ3Q7TzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMTg1LjQ2LC0yNjcuNTZDMTg1LjQ2LC0yMzkuMzggMTg1LjQ2LC0xODYuNTggMTg1LjQ2LC0xNTMuNzkiLz4NCjxwb2x5Z29uIGZpbGw9IiM2MDY2NmMiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMTg4LjI2LC0xNTQuMTMgMTg1LjQ2LC0xNDYuMTMgMTgyLjY2LC0xNTQuMTMgMTg4LjI2LC0xNTQuMTMiLz4NCjwvZz4NCjwhLS0gUCYjNDU7Jmd0O0MgLS0+DQo8ZyBpZD0iZWRnZTMiIGNsYXNzPSJlZGdlIj4NCjx0aXRsZT5QJiM0NTsmZ3Q7QzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMzcwLjg1LC0zNDkuMkMzNzIuNTIsLTMzOS42OSAzNzQuNTYsLTMyOC4wNCAzNzYuNDEsLTMxNy41MSIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIzNzkuMTYsLTMxOC4wMiAzNzcuNzksLTMwOS42NSAzNzMuNjUsLTMxNy4wNSAzNzkuMTYsLTMxOC4wMiIvPg0KPC9nPg0KPCEtLSBDJiM0NTsmZ3Q7UyAtLT4NCjxnIGlkPSJlZGdlNCIgY2xhc3M9ImVkZ2UiPg0KPHRpdGxlPkMmIzQ1OyZndDtTPC90aXRsZT4NCjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0zODEuNDYsLTI2Ny40MkMzODEuNDYsLTI1Ny45MSAzODEuNDYsLTI0Ni4yNiAzODEuNDYsLTIzNS43MyIvPg0KPHBvbHlnb24gZmlsbD0iIzYwNjY2YyIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIzODQuMjYsLTIzNS45IDM4MS40NiwtMjI3LjkgMzc4LjY2LC0yMzUuOSAzODQuMjYsLTIzNS45Ii8+DQo8L2c+DQo8IS0tIFMmIzQ1OyZndDtPIC0tPg0KPGcgaWQ9ImVkZ2U2IiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+UyYjNDU7Jmd0O088L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTMzNC4wMSwtMTg1LjY0QzMwNi4xOSwtMTc0LjMxIDI3MC44OCwtMTU5Ljk0IDI0MS42NiwtMTQ4LjA1Ii8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjI0Mi45NiwtMTQ1LjU1IDIzNC40OSwtMTQ1LjEzIDI0MC44NCwtMTUwLjc0IDI0Mi45NiwtMTQ1LjU1Ii8+DQo8L2c+DQo8IS0tIFMmIzQ1OyZndDtLIC0tPg0KPGcgaWQ9ImVkZ2U3IiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+UyYjNDU7Jmd0O0s8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTM4MS40NiwtMTg1LjY0QzM4MS40NiwtMTc2LjEzIDM4MS40NiwtMTY0LjQ4IDM4MS40NiwtMTUzLjk1Ii8+DQo8cG9seWdvbiBmaWxsPSIjNjA2NjZjIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjM4NC4yNiwtMTU0LjEyIDM4MS40NiwtMTQ2LjEyIDM3OC42NiwtMTU0LjEyIDM4NC4yNiwtMTU0LjEyIi8+DQo8L2c+DQo8IS0tIE8mIzQ1OyZndDtub3RlIC0tPg0KPGcgaWQ9ImVkZ2U4IiBjbGFzcz0iZWRnZSI+DQo8dGl0bGU+TyYjNDU7Jmd0O25vdGU8L3RpdGxlPg0KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWRhc2hhcnJheT0iNSwyIiBkPSJNMTg1LjQ2LC0xMDMuODZDMTg1LjQ2LC05MS44NiAxODUuNDYsLTc2LjE3IDE4NS40NiwtNjIuNTIiLz4NCjwvZz4NCjwhLS0gVCAtLT4NCjxnIGlkPSJub2RlMSIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPlQ8L3RpdGxlPg0KPHBhdGggZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik0zNjIuMDUsLTQ3MS4xOEMzNjIuMDUsLTQ3MS4xOCAyMDQuODgsLTQ3MS4xOCAyMDQuODgsLTQ3MS4xOCAxOTguODgsLTQ3MS4xOCAxOTIuODgsLTQ2NS4xOCAxOTIuODgsLTQ1OS4xOCAxOTIuODgsLTQ1OS4xOCAxOTIuODgsLTQ0My40IDE5Mi44OCwtNDQzLjQgMTkyLjg4LC00MzcuNCAxOTguODgsLTQzMS40IDIwNC44OCwtNDMxLjQgMjA0Ljg4LC00MzEuNCAzNjIuMDUsLTQzMS40IDM2Mi4wNSwtNDMxLjQgMzY4LjA1LC00MzEuNCAzNzQuMDUsLTQzNy40IDM3NC4wNSwtNDQzLjQgMzc0LjA1LC00NDMuNCAzNzQuMDUsLTQ1OS4xOCAzNzQuMDUsLTQ1OS4xOCAzNzQuMDUsLTQ2NS4xOCAzNjguMDUsLTQ3MS4xOCAzNjIuMDUsLTQ3MS4xOCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjgzLjQ2IiB5PSItNDQ2LjM5IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7pgInmi6nlpJbop4LmiJbnibnmlYjnm67moIc8L3RleHQ+DQo8L2c+DQo8IS0tIFIgLS0+DQo8ZyBpZD0ibm9kZTIiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5SPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjU1LjQyLC0zMDcuNjJDMjU1LjQyLC0zMDcuNjIgMTE1LjUsLTMwNy42MiAxMTUuNSwtMzA3LjYyIDEwOS41LC0zMDcuNjIgMTAzLjUsLTMwMS42MiAxMDMuNSwtMjk1LjYyIDEwMy41LC0yOTUuNjIgMTAzLjUsLTI3OS44NCAxMDMuNSwtMjc5Ljg0IDEwMy41LC0yNzMuODQgMTA5LjUsLTI2Ny44NCAxMTUuNSwtMjY3Ljg0IDExNS41LC0yNjcuODQgMjU1LjQyLC0yNjcuODQgMjU1LjQyLC0yNjcuODQgMjYxLjQyLC0yNjcuODQgMjY3LjQyLC0yNzMuODQgMjY3LjQyLC0yNzkuODQgMjY3LjQyLC0yNzkuODQgMjY3LjQyLC0yOTUuNjIgMjY3LjQyLC0yOTUuNjIgMjY3LjQyLC0zMDEuNjIgMjYxLjQyLC0zMDcuNjIgMjU1LjQyLC0zMDcuNjIiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE4NS40NiIgeT0iLTI4Mi44MyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+546w5a6e6LSn5biB6LSt5Lmw5rig6YGTPC90ZXh0Pg0KPC9nPg0KPCEtLSBQIC0tPg0KPGcgaWQ9Im5vZGUzIiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+UDwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTQ0Ni4wNSwtMzg5LjRDNDQ2LjA1LC0zODkuNCAyODguODgsLTM4OS40IDI4OC44OCwtMzg5LjQgMjgyLjg4LC0zODkuNCAyNzYuODgsLTM4My40IDI3Ni44OCwtMzc3LjQgMjc2Ljg4LC0zNzcuNCAyNzYuODgsLTM2MS42MiAyNzYuODgsLTM2MS42MiAyNzYuODgsLTM1NS42MiAyODIuODgsLTM0OS42MiAyODguODgsLTM0OS42MiAyODguODgsLTM0OS42MiA0NDYuMDUsLTM0OS42MiA0NDYuMDUsLTM0OS42MiA0NTIuMDUsLTM0OS42MiA0NTguMDUsLTM1NS42MiA0NTguMDUsLTM2MS42MiA0NTguMDUsLTM2MS42MiA0NTguMDUsLTM3Ny40IDQ1OC4wNSwtMzc3LjQgNDU4LjA1LC0zODMuNCA0NTIuMDUsLTM4OS40IDQ0Ni4wNSwtMzg5LjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjM2Ny40NiIgeT0iLTM2NC42MSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5Y+C5LiO55Sf5Lqn562J5ri45oiP546p5rOVPC90ZXh0Pg0KPC9nPg0KPCEtLSBDIC0tPg0KPGcgaWQ9Im5vZGU0IiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+QzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTQ1MS40MiwtMzA3LjYyQzQ1MS40MiwtMzA3LjYyIDMxMS41LC0zMDcuNjIgMzExLjUsLTMwNy42MiAzMDUuNSwtMzA3LjYyIDI5OS41LC0zMDEuNjIgMjk5LjUsLTI5NS42MiAyOTkuNSwtMjk1LjYyIDI5OS41LC0yNzkuODQgMjk5LjUsLTI3OS44NCAyOTkuNSwtMjczLjg0IDMwNS41LC0yNjcuODQgMzExLjUsLTI2Ny44NCAzMTEuNSwtMjY3Ljg0IDQ1MS40MiwtMjY3Ljg0IDQ1MS40MiwtMjY3Ljg0IDQ1Ny40MiwtMjY3Ljg0IDQ2My40MiwtMjczLjg0IDQ2My40MiwtMjc5Ljg0IDQ2My40MiwtMjc5Ljg0IDQ2My40MiwtMjk1LjYyIDQ2My40MiwtMjk1LjYyIDQ2My40MiwtMzAxLjYyIDQ1Ny40MiwtMzA3LjYyIDQ1MS40MiwtMzA3LjYyIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIzODEuNDYiIHk9Ii0yODIuODMiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuenr+e0r+aXouaciea4uOaIj+i0p+W4gTwvdGV4dD4NCjwvZz4NCjwhLS0gUyAtLT4NCjxnIGlkPSJub2RlNSIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPlM8L3RpdGxlPg0KPHBhdGggZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIGQ9Ik00NjAuMDUsLTIyNS44NEM0NjAuMDUsLTIyNS44NCAzMDIuODgsLTIyNS44NCAzMDIuODgsLTIyNS44NCAyOTYuODgsLTIyNS44NCAyOTAuODgsLTIxOS44NCAyOTAuODgsLTIxMy44NCAyOTAuODgsLTIxMy44NCAyOTAuODgsLTE5OC4wNiAyOTAuODgsLTE5OC4wNiAyOTAuODgsLTE5Mi4wNiAyOTYuODgsLTE4Ni4wNiAzMDIuODgsLTE4Ni4wNiAzMDIuODgsLTE4Ni4wNiA0NjAuMDUsLTE4Ni4wNiA0NjAuMDUsLTE4Ni4wNiA0NjYuMDUsLTE4Ni4wNiA0NzIuMDUsLTE5Mi4wNiA0NzIuMDUsLTE5OC4wNiA0NzIuMDUsLTE5OC4wNiA0NzIuMDUsLTIxMy44NCA0NzIuMDUsLTIxMy44NCA0NzIuMDUsLTIxOS44NCA0NjYuMDUsLTIyNS44NCA0NjAuMDUsLTIyNS44NCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzgxLjQ2IiB5PSItMjAxLjA1IiBmb250LWZhbWlseT0iTWljcm9zb2Z0IFlhSGVpIiBmb250LXNpemU9IjE3LjAwIiBmaWxsPSIjMTcxOTFjIj7lkJHns7vnu5/mlK/ku5jmuLjmiI/otKfluIE8L3RleHQ+DQo8L2c+DQo8IS0tIE8gLS0+DQo8ZyBpZD0ibm9kZTYiIGNsYXNzPSJub2RlIj4NCjx0aXRsZT5PPC90aXRsZT4NCjxwYXRoIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBkPSJNMjU1LjQyLC0xNDQuMDZDMjU1LjQyLC0xNDQuMDYgMTE1LjUsLTE0NC4wNiAxMTUuNSwtMTQ0LjA2IDEwOS41LC0xNDQuMDYgMTAzLjUsLTEzOC4wNiAxMDMuNSwtMTMyLjA2IDEwMy41LC0xMzIuMDYgMTAzLjUsLTExNi4yOCAxMDMuNSwtMTE2LjI4IDEwMy41LC0xMTAuMjggMTA5LjUsLTEwNC4yOCAxMTUuNSwtMTA0LjI4IDExNS41LC0xMDQuMjggMjU1LjQyLC0xMDQuMjggMjU1LjQyLC0xMDQuMjggMjYxLjQyLC0xMDQuMjggMjY3LjQyLC0xMTAuMjggMjY3LjQyLC0xMTYuMjggMjY3LjQyLC0xMTYuMjggMjY3LjQyLC0xMzIuMDYgMjY3LjQyLC0xMzIuMDYgMjY3LjQyLC0xMzguMDYgMjYxLjQyLC0xNDQuMDYgMjU1LjQyLC0xNDQuMDYiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE4NS40NiIgeT0iLTExOS4yNyIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+6I635b6X5a+55bqU5aSW6KeC5YaF5a65PC90ZXh0Pg0KPC9nPg0KPCEtLSBLIC0tPg0KPGcgaWQ9Im5vZGU3IiBjbGFzcz0ibm9kZSI+DQo8dGl0bGU+SzwvdGl0bGU+DQo8cGF0aCBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgZD0iTTQ1MS40MiwtMTQ0LjA2QzQ1MS40MiwtMTQ0LjA2IDMxMS41LC0xNDQuMDYgMzExLjUsLTE0NC4wNiAzMDUuNSwtMTQ0LjA2IDI5OS41LC0xMzguMDYgMjk5LjUsLTEzMi4wNiAyOTkuNSwtMTMyLjA2IDI5OS41LC0xMTYuMjggMjk5LjUsLTExNi4yOCAyOTkuNSwtMTEwLjI4IDMwNS41LC0xMDQuMjggMzExLjUsLTEwNC4yOCAzMTEuNSwtMTA0LjI4IDQ1MS40MiwtMTA0LjI4IDQ1MS40MiwtMTA0LjI4IDQ1Ny40MiwtMTA0LjI4IDQ2My40MiwtMTEwLjI4IDQ2My40MiwtMTE2LjI4IDQ2My40MiwtMTE2LjI4IDQ2My40MiwtMTMyLjA2IDQ2My40MiwtMTMyLjA2IDQ2My40MiwtMTM4LjA2IDQ1Ny40MiwtMTQ0LjA2IDQ1MS40MiwtMTQ0LjA2Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIzODEuNDYiIHk9Ii0xMTkuMjciIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPua4uOaIj+i0p+W4gemAgOWHuua1gemAmjwvdGV4dD4NCjwvZz4NCjwhLS0gbm90ZSAtLT4NCjxnIGlkPSJub2RlOCIgY2xhc3M9Im5vZGUiPg0KPHRpdGxlPm5vdGU8L3RpdGxlPg0KPHBvbHlnb24gZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjA2NjZjIiBzdHJva2Utd2lkdGg9IjEuMiIgcG9pbnRzPSIzNjQuOTIsLTYyLjI4IDAsLTYyLjI4IDAsMCAzNzAuOTIsMCAzNzAuOTIsLTU2LjI4IDM2NC45MiwtNjIuMjgiLz4NCjxwb2x5bGluZSBmaWxsPSJub25lIiBzdHJva2U9IiM2MDY2NmMiIHN0cm9rZS13aWR0aD0iMS4yIiBwb2ludHM9IjM2NC45MiwtNjIuMjggMzY0LjkyLC01Ni4yOCIvPg0KPHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYwNjY2YyIgc3Ryb2tlLXdpZHRoPSIxLjIiIHBvaW50cz0iMzcwLjkyLC01Ni4yOCAzNjQuOTIsLTU2LjI4Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxODUuNDYiIHk9Ii0zNy40OSIgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSIgZm9udC1zaXplPSIxNy4wMCIgZmlsbD0iIzE3MTkxYyI+5ouT5bGV5o+Q5qGI77ya5LiN6YCa6L+H5LuY6LS5546p5a626L2s5ZSu44CCPC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTg1LjQ2IiB5PSItMTQuOTkiIGZvbnQtZmFtaWx5PSJNaWNyb3NvZnQgWWFIZWkiIGZvbnQtc2l6ZT0iMTcuMDAiIGZpbGw9IiMxNzE5MWMiPuS4jeaUueWPmOWfuuehgOeUn+S6p+eOqeazle+8jOa4uOaIj+i0p+W4geeUseezu+e7n+WbnuaUtuOAgjwvdGV4dD4NCjwvZz4NCjwvZz4NCjwvc3ZnPg0K" alt="外观双渠道获取与游戏货币回收流程图"></button><figcaption><span>外观双渠道获取与游戏货币回收流程图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>本图为拓展提案，沿用既有统一货币，不增加生产专用币种。</p>
+<p class="topic-label"><strong>持续参与与设计边界：</strong></p>
+<p>玩家按偏好选择外观目标，将生产收益用于收藏和外观表现。这些目标补充参与动力，不替代生产过程本身的乐趣。</p>
+</section><section class="doc-subsection"><h3 class="subsection-title" id="section-44"><span class="sub-number">8.2</span>搜打撤模式与生产经济联动</h3>
+<p class="topic-label"><strong>设计定位与目标：</strong></p>
+<p>围绕战备投入、局内探索与战斗、撤离结算设计风险收益循环，让战斗玩家通过新模式参与生产经济。该模式可归入生产系统，也可作为与生产系统联动的PVP/PVE内容。</p>
+<p>目标是为战斗玩家增加玩法选择，为生产产物增加用途，并通过补给、消耗和产出流转连接生产玩家与战斗玩家，不要求战斗玩家深入体验全部生产职业。</p>
+<p class="topic-label"><strong>投入与产出：</strong></p>
+<ol>
+<li>玩家携带装备与消耗品进入，携入的装备、消耗品均由生产系统制造。</li>
+<li>玩家在局内通过探索与战斗获取资源，成功撤离后，可将生产系统所需的资源与货币带出，重新进入既有成长和流转体系。</li>
+<li>对局中的消耗品使用及失败损失形成补给需求。失败时，背包内装备与资源面临损失。</li>
+</ol>
+<p>模式提供争取更高价值产出的机会，不保证每次参与都能盈利。局内获得的临时资源在成功撤离后转化为长期资源。</p>
+<p class="topic-label"><strong>与生产系统的循环关系：</strong></p>
+<p>玩家通过生产或交易准备战备，进入模式后消耗物资并争取撤离收益，再将带出的资源用于制作、成长或交易，为后续参与准备补给。</p>
+<p>战备可以自行生产，也可向其他玩家购买，不强制玩家间交易。模式不能在局内完全自给，需要持续的外部生产投入与合理消耗。</p>
+<p>实际使用、损耗或退出流通的物资，与转移给其他玩家的物资分别记录。若装备仅因战斗转移所有者，不直接算作系统回收；模式的货币投放与回收分别记录，不以物资消耗代替货币回收。</p>
+<div class="exhibit-title"><strong>图8-2 搜打撤与生产经济联动</strong></div>
+<p><figure class="diagram-figure"><button type="button" class="diagram-trigger" aria-label="放大：搜打撤与生产系统联动泳道活动图"><img width="1220" height="1120" style="width:100%;aspect-ratio:1220/1120" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjIwIiBoZWlnaHQ9IjExMjAiIHZpZXdCb3g9IjAgMCAxMjIwIDExMjAiPg0KPHRpdGxlPuaQnOaJk+aSpOS4jueUn+S6p+e7j+a1juiBlOWKqOazs+mBk+Wbvu+8iOaLk+WxleaPkOahiO+8iTwvdGl0bGU+PGRlc2M+5bGV56S65q2j5paH5Lit55qE6KeE5YiZ5YWz57O75LiO5Y+v5ouT5bGV5pa55ZCR44CCPC9kZXNjPg0KPGRlZnM+PG1hcmtlciBpZD0iYXJyb3ciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0gMCAxIEwgOSA1IEwgMCA5IHoiIGZpbGw9IiM2MjY5NzAiLz48L21hcmtlcj48L2RlZnM+DQo8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ3aGl0ZSIvPg0KPGcgZm9udC1mYW1pbHk9Ik1pY3Jvc29mdCBZYUhlaSwgc2Fucy1zZXJpZiIgZmlsbD0iIzFEMjMyOSIgZm9udC13ZWlnaHQ9IjQwMCI+PHJlY3QgeD0iMjAuMCIgeT0iMjAiIHdpZHRoPSIzOTMuMzMzMzMzMzMzMzMzMyIgaGVpZ2h0PSIxMDgwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjQkJDMUM3Ii8+PHJlY3QgeD0iMjAuMCIgeT0iMjAiIHdpZHRoPSIzOTMuMzMzMzMzMzMzMzMzMyIgaGVpZ2h0PSI1NCIgZmlsbD0iI0YxRjNGNCIgc3Ryb2tlPSIjQkJDMUM3Ii8+DQo8cmVjdCB4PSI0MTMuMzMzMzMzMzMzMzMzMyIgeT0iMjAiIHdpZHRoPSIzOTMuMzMzMzMzMzMzMzMzMyIgaGVpZ2h0PSIxMDgwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjQkJDMUM3Ii8+PHJlY3QgeD0iNDEzLjMzMzMzMzMzMzMzMzMiIHk9IjIwIiB3aWR0aD0iMzkzLjMzMzMzMzMzMzMzMzMiIGhlaWdodD0iNTQiIGZpbGw9IiNGMUYzRjQiIHN0cm9rZT0iI0JCQzFDNyIvPg0KPHJlY3QgeD0iODA2LjY2NjY2NjY2NjY2NjYiIHk9IjIwIiB3aWR0aD0iMzkzLjMzMzMzMzMzMzMzMzMiIGhlaWdodD0iMTA4MCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iI0JCQzFDNyIvPjxyZWN0IHg9IjgwNi42NjY2NjY2NjY2NjY2IiB5PSIyMCIgd2lkdGg9IjM5My4zMzMzMzMzMzMzMzMzIiBoZWlnaHQ9IjU0IiBmaWxsPSIjRjFGM0Y0IiBzdHJva2U9IiNCQkMxQzciLz4NCjxwYXRoIGQ9Ik0gMjE1LDE4NSBMIDIxNSwyNDUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDM3MCwyODUgTCA0NTUsMjg1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA2MTAsMzI1IEwgNjEwLDM5MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNjEwLDQ4NSBMIDYxMCw1NjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDc2NSw2MjIgTCA4NTAsNjIyIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA2MTAsNjgwIEwgNjEwLDgwMCBMIDg1MCw4MDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDExNjAsNjIwIEwgMTE4MCw2MjAgTCAxMTgwLDEwNDUgTCAyMTUsMTA0NSBMIDIxNSwxMDI1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSAxMDA1LDg1NSBMIDEwMDUsOTM1IiBmaWxsPSJub25lIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPg0KPHBhdGggZD0iTSA4NTAsOTgwIEwgMzcwLDk4MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjxwYXRoIGQ9Ik0gNDU1LDQzNyBMIDQxMCw0MzcgTCA0MTAsODc1IEwgMzUwLDg3NSBMIDM1MCw5MzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+DQo8cGF0aCBkPSJNIDYwLDk4MCBMIDQwLDk4MCBMIDQwLDI4NSBMIDYwLDI4NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjEiPjx0c3BhbiB4PSIyMTYuNjY2NjY2NjY2NjY2NjYiIHk9IjU0LjAiPuWxgOWklueUn+S6p+S4juS6pOaYkzwvdHNwYW4+PC90ZXh0Pg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyMSI+PHRzcGFuIHg9IjYxMC4wIiB5PSI1NC4wIj7lsYDlhoXmjqLntKLkuI7miJjmlpc8L3RzcGFuPjwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjEiPjx0c3BhbiB4PSIxMDAzLjMzMzMzMzMzMzMzMzMiIHk9IjU0LjAiPuaSpOemu+e7k+eulzwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNjAiIHk9IjExMCIgd2lkdGg9IjMxMCIgaGVpZ2h0PSI3NSIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iMjE1LjAiIHk9IjE0MC4yIj7nlJ/kuqfns7vnu5/liLbpgKA8L3RzcGFuPjx0c3BhbiB4PSIyMTUuMCIgeT0iMTY2LjgiPuijheWkh+S4jua2iOiAl+WTgTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNjAiIHk9IjI0NSIgd2lkdGg9IjMxMCIgaGVpZ2h0PSI4MCIgcng9IjgiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM2MjY5NzAiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE4Ij48dHNwYW4geD0iMjE1LjAiIHk9IjI5MS4wIj7oh6rooYzliLbkvZzmiJbotK3kubDmiJjlpIc8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjQ1NSIgeT0iMjQ1IiB3aWR0aD0iMzEwIiBoZWlnaHQ9IjgwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiPjx0c3BhbiB4PSI2MTAuMCIgeT0iMjkxLjAiPuaQuuW4puaImOWkh+i/m+WFpTwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iNDU1IiB5PSIzOTAiIHdpZHRoPSIzMTAiIGhlaWdodD0iOTUiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjYxMC4wIiB5PSI0MzAuMiI+5o6i57Si44CB5oiY5paX5LiO54mp6LWE5raI6ICXPC90c3Bhbj48dHNwYW4geD0iNjEwLjAiIHk9IjQ1Ni44Ij7ojrflj5blsYDlhoXkuLTml7botYTmupA8L3RzcGFuPjwvdGV4dD4NCjxwb2x5Z29uIHBvaW50cz0iNjEwLjAsNTY1IDc2NSw2MjIuNSA2MTAuMCw2ODAgNDU1LDYyMi41IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyI+PHRzcGFuIHg9IjYxMC4wIiB5PSI2MjguNSI+5pys5bGA5pKk56a757uT5p6cPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI4NTAiIHk9IjU2NSIgd2lkdGg9IjMxMCIgaGVpZ2h0PSIxMTAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCI+PHRzcGFuIHg9IjEwMDUuMCIgeT0iNjEyLjciPuaIkOWKn++8muW4puWHuui1hOa6kOS4jui0p+W4gTwvdHNwYW4+PHRzcGFuIHg9IjEwMDUuMCIgeT0iNjM5LjMiPuS4tOaXtui1hOa6kOi9rOS4uumVv+acn+i1hOa6kDwvdHNwYW4+PC90ZXh0Pg0KPHJlY3QgeD0iODUwIiB5PSI3NDUiIHdpZHRoPSIzMTAiIGhlaWdodD0iMTEwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciPjx0c3BhbiB4PSIxMDA1LjAiIHk9Ijc5My40Ij7lpLHotKXvvJrmjInmjZ/ogJfop4TliJnlpITnkIY8L3RzcGFuPjx0c3BhbiB4PSIxMDA1LjAiIHk9IjgxOC42Ij7oo4XlpIfkuI7otYTmupDpnaLkuLTmjZ/lpLE8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9Ijg1MCIgeT0iOTM1IiB3aWR0aD0iMzEwIiBoZWlnaHQ9IjkwIiByeD0iOCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzYyNjk3MCIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciPjx0c3BhbiB4PSIxMDA1LjAiIHk9Ijk3My40Ij7lrp7pmYXmtojogJflvaLmiJDooaXnu5npnIDmsYI8L3RzcGFuPjx0c3BhbiB4PSIxMDA1LjAiIHk9Ijk5OC42Ij7nianlk4Hovaznp7vkuI3nm7TmjqXop4bkuLrlm57mlLY8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjYwIiB5PSI5MzUiIHdpZHRoPSIzMTAiIGhlaWdodD0iOTAiIHJ4PSI4IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjNjI2OTcwIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyI+PHRzcGFuIHg9IjIxNS4wIiB5PSI5NzMuNCI+5Lqn54mp55So5LqO5Yi25L2c44CB5oiQ6ZW/5oiW5Lqk5piTPC90c3Bhbj48dHNwYW4geD0iMjE1LjAiIHk9Ijk5OC42Ij7lh4blpIflkI7nu63ooaXnu5k8L3RzcGFuPjwvdGV4dD4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciPjx0c3BhbiB4PSI2MTAiIHk9IjEwODAuMCI+5pys5Zu+5LiN56Gu5a6a6KOF5aSH5Lii5aSx44CB6ICQ5LmF5o2f6ICX5oiW6LWE5rqQ5o2f5aSx5q+U5L6L77yb5bGA5YaF5LiN6IO95b2i5oiQ5a6M5YWo6Ieq57uZ55qE5bCB6Zet5b6q546v44CCPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI3ODQuMCIgeT0iNTgwLjIiIHdpZHRoPSI0Ni4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iODA3IiB5PSI2MDAuMCI+5oiQ5YqfPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI2OTcuMCIgeT0iNzYwLjIiIHdpZHRoPSI0Ni4wIiBoZWlnaHQ9IjI5LjciIGZpbGw9IndoaXRlIi8+DQo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij48dHNwYW4geD0iNzIwIiB5PSI3ODAuMCI+5aSx6LSlPC90c3Bhbj48L3RleHQ+DQo8cmVjdCB4PSI1NzEuMCIgeT0iMTAyMC4yIiB3aWR0aD0iNzguMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjYxMCIgeT0iMTA0MC4wIj7kuqflh7rlm57mtYE8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjU3MS4wIiB5PSI5NDAuMiIgd2lkdGg9Ijc4LjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI2MTAiIHk9Ijk2MC4wIj7ooaXnu5npnIDmsYI8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjM3MS4wIiB5PSI3NDAuMiIgd2lkdGg9Ijc4LjAiIGhlaWdodD0iMjkuNyIgZmlsbD0id2hpdGUiLz4NCjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiPjx0c3BhbiB4PSI0MTAiIHk9Ijc2MC4wIj7lsYDlhoXmtojogJc8L3RzcGFuPjwvdGV4dD4NCjxyZWN0IHg9IjczLjAiIHk9Ijg0MC4yIiB3aWR0aD0iOTQuMCIgaGVpZ2h0PSIyOS43IiBmaWxsPSJ3aGl0ZSIvPg0KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiI+PHRzcGFuIHg9IjEyMCIgeT0iODYwLjAiPuS4i+S4gOasoeWHhuWkhzwvdHNwYW4+PC90ZXh0PjwvZz48L3N2Zz4NCg==" alt="搜打撤与生产系统联动泳道活动图"></button><figcaption><span>搜打撤与生产系统联动泳道活动图</span><span>点击放大 ↗</span></figcaption></figure></p>
+<p>本图为拓展提案。泳道区分活动环节而非玩家身份，同一玩家可以自行生产并参加战斗；图中只表示损耗与资源回流关系，不规定具体损耗形式或比例。</p>
+<p class="topic-label"><strong>适用范围与可拓展方向：</strong></p>
+<p>本节说明搜打撤与生产经济的联动，损耗关系仅适用于该拓展模式，不推广至常规生产或第六章的强化失败处理。</p>
+<p>损耗形式可拓展为装备损失、耐久消耗或按资源类别分层处理；多人组织与局内互动可进一步增加合作及社交体验。这些是拓展选项，不统一规定全部模式采用同一种形式。</p>
+<p>相关分析见<a href="extraction-analysis.html">《搜打撤能否适配MMO》</a>。</p>
+</section><section class="doc-subsection example-section"><h3 class="subsection-title example-title" id="section-45"><span class="sub-number">8.3</span>生产主题秘境与活动示例<small class="example-label">案例</small></h3>
+<p class="topic-label"><strong>拓展方向：</strong></p>
+<p>面向生产玩家增加特殊区域、挑战与主题活动。“秘境、副本”不限于传统战斗副本，也可采用限时区域或开放地图，按活动、轮换或常驻方式开放。门票、组队等条件由具体内容决定，不统一要求。</p>
+<p>具体内容可以围绕特殊资源获取、探索或大型目标展开，通过不同的行为、选择及参与方式，形成与常规生产的体验区别。</p>
+<h4 id="section-46">万食节活动示例</h4>
+<p>以下案例说明生产主题活动的组织方式。食材贡献、双阶段福利、各秘境形式及奖励条件仅适用于本案例，不作为所有生产活动的通用规则。</p>
+<p class="topic-label"><strong>活动定位与阶段：</strong></p>
+<p>主城举办万食节，活动分为较长的前夕与较短的节中。前夕以获取、提交食材为主，节中兑现全服福利与个人增益，让玩家享受筹备成果，不再以重复提交作为主要循环。</p>
+<p class="topic-label"><strong>前夕的参与内容：</strong></p>
+<p>前夕开放多个食材获取场景，提供不同的参与选择：</p>
+<ol>
+<li>狩猎鲤鱼王：需要组队参加的大型副本挑战。个人活动奖励只需通关一次即可获得，不要求反复刷取，也不要求全部玩家参加。</li>
+<li>蘑菇岛：采用普通大世界地图形式，零门槛参与，支持常规生产，并提供NPC小故事任务与小游戏，补充探索和轻量互动体验。</li>
+<li>危险动物实验室清理战：采用普通副本活动形式，零门槛参与，可重复挑战，提供常规资源获取途径。</li>
+</ol>
+<p>大型挑战不是所有玩家获取活动福利的必经途径。</p>
+<p class="topic-label"><strong>贡献统计与节中福利：</strong></p>
+<p>玩家提交食材后，按食材种类对应的贡献值，同时累计个人贡献与全服贡献。同一次提交计入两者，两类进度用途不同：</p>
+<ul>
+<li>全服贡献：在万食节节中开始时，依据全服累计成果向全服玩家发放福利。</li>
+<li>个人贡献：决定玩家在节中期间获得的对应增益，支持玩家按自身目标选择投入程度。</li>
+</ul>
+<p>提交食材形成资源回收，贡献值只记录活动进度，不作为流通货币。各类食材的贡献值按获取成本配置。</p>
+<p>全服贡献可探索Bingo式共同目标，作为候选的目标组织方式。</p>
+<p class="topic-label"><strong>个人增益的分层原则：</strong></p>
+<p>若后续活动对某类能力存在要求，对应增益应作为所有玩家均可轻松获得的基础福利，避免高贡献要求成为参与门槛。具体领取条件结合活动配置，低门槛不等同于无条件领取。</p>
+<p>若增益不影响活动正常参与，仅服务于玩家自选的收集、收益或挑战目标，则可设置更高贡献要求，提供进阶追求。奖励档位需结合整场活动内容确定，不能只按属性名称判断获取难度。</p>
+<p class="topic-label"><strong>增益分层示例：</strong></p>
+<p>在本活动中，若后续包含海怪战斗，海怪伤害提升0.5%可作为低门槛增益；若活动不要求取得某种海怪稀有掉落，该掉落的稀有掉率提升1%可对应更高贡献目标。两项数值仅示意奖励分层，不作为正式配置。</p>
+<p class="topic-label"><strong>活动作用：</strong></p>
+<p>万食节让玩家选择生产、探索或组队挑战，通过食材贡献推进个人与全服目标，再于节中集中兑现成果。活动旨在丰富生产体验，不增加所有玩家必须完成的日常任务。</p>
+</section></section><div class="document-end"><span>全文结束</span><a href="index.html#design">返回策划作品 ↗</a></div></article></div></div></main><dialog class="figure-dialog" aria-labelledby="figure-title"><header><p id="figure-title">图示</p><button type="button" data-figure-close>关闭 ×</button></header><div class="figure-toolbar"><button type="button" data-zoom="out" aria-label="缩小图片">−</button><output id="figure-scale">100%</output><button type="button" data-zoom="in" aria-label="放大图片">＋</button><button type="button" data-zoom="fit">适应窗口</button><button type="button" data-zoom="actual">原尺寸</button></div><div class="figure-scroll" tabindex="0" role="region" aria-label="图示放大查看区域"><img id="figure-image" alt=""></div></dialog><footer class="site-footer wrap"><span>方思源 · 游戏系统策划作品集</span><span class="site-credit">页面由Codex生成</span><a href="#main">回到顶部 ↑</a></footer></body></html>
